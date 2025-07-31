@@ -6,7 +6,8 @@
     <title>Struktur Desa</title>
 </head>
 <body>
-    <form action="{{ route('structure.store') }}" method="POST">
+    <!-- 2.1 tempat untuk menambahkan data enctype-->
+    <form action="{{ route('structure.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label>Nama:</label>
     <input type="text" name="name" id="name" placeholder="Isi name"> <br>
@@ -14,8 +15,9 @@
     <label>Jabatan:</label>
     <input type="text" name="position" id="position" placeholder="Isi jabatan"> <br>
 
+    <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
     <label>Gambar:</label>
-    <input type="text" name="image" id="image" placeholder=""> <br>
+    <input type="file" name="image" id="image">
     <button type="submit">Simpan</button>
 </form>
 </body>

@@ -6,7 +6,7 @@
     <title>Struktur Staff</title>
 </head>
 <body>
-     <form action="{{ route('structurestaff.store') }}" method="POST">
+     <form action="{{ route('structurestaff.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label>Nama:</label>
     <input type="text" name="name" id="name" placeholder="Isi name"> <br>
@@ -15,7 +15,7 @@
     <input type="text" name="position" id="position" placeholder="Isi jabatan"> <br>
 
     <label>Gambar:</label>
-    <input type="text" name="image" id="image" placeholder=""> <br>
+    <input type="file" name="image" id="image" placeholder=""> <br>
     <button type="submit">Simpan</button>
 </form>
 </body>
