@@ -16,6 +16,7 @@
                 <th>Visi Desa</th>
                 <th>Misi Desa</th>
                 <th>Gambar</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,14 @@
                 <td>{{ $profil->misi_desa }}</td>
                 <!-- 2.4 Untuk menampilkan gambar, dan menjalankan link >> 2.5 ada di profildesa controller -->
                 <td><img src="{{asset('storage/' . ($profil->image ?: 'profil_images/default.png')) }}" alt="gambar" width="100"></td>
+                <td>
+                    <form action="{{route('profildesa.delete', $profil->id)}}" method="POST" onsubmit="return confirm ('Yakin Mau Dihapus?')" >
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Hapus</button>
+                    </form>
+                </td>
+                
             </tr>
             @endforeach
         </tbody>

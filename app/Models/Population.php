@@ -7,15 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class DataApbd extends Model
+class Population extends Model
 {
-    use HasFactory, Notifiable;
-    protected $table='dataapbd';
+     use HasFactory, Notifiable;
+    protected $table='population';
     protected $fillable = [
-        'pendapatan',
-        'pengeluaran',
-        'belanja',
-        'surplus_defisit',
-        'pdf',
+        'type',
+        'years',
+        'total',
     ];
 }

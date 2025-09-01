@@ -1,14 +1,23 @@
-
-    <x-layout>
+<x-layout>
         <x-slot:title>
             Beranda
         </x-slot>
 
-    <body>
+    <style>
+    .card {
+      margin: 0 auto;
+      max-width: 700px;
+      background: white;
+      padding: 20px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+  </style>
+
     <!-- jumbotron -->
     <section
       class="jumbotron relative min-h-screen bg-cover bg-center"
-      style="background-image: url({{asset('storage/assets/expenses.png')}})"
+      style="background-image: url('{{asset('storage/assets/jumbotron 1.png')}}')"
     >
       <!-- Overlay Hitam Transparan -->
       <div
@@ -87,7 +96,7 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="/img/jumbotron 1.png"
+                src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -116,7 +125,7 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="/img/jumbotron 1.png"
+                  src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -145,7 +154,7 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="/img/jumbotron 1.png"
+                  src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -175,7 +184,7 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="/img/jumbotron 1.png"
+                  src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -205,7 +214,7 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="/img/jumbotron 1.png"
+                  src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
@@ -313,18 +322,20 @@
     <!-- End Summary -->
 
     <!-- Chart Warga -->
-    <section class="diagram my-16">
+    <div class="container max-w-6xl mx-auto">
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
         >
-          Grafik Penduduk Desa Adat Bualu
+          Grafik Pertumbuhan Penduduk Desa
         </h2>
       </div>
-
-      <!-- Btn Edit -->
-      <div class="row">
-        <div class="md:ml-auto mx-auto w-fit my-10">
+    </div>
+    <div class="card">
+      <h2>Grafik Pertumbuhan Penduduk</h2>
+      <div id="chartpenduduk"></div>
+      
+      <a href="{{route('population.index')}}">
           <button
             type="button"
             class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
@@ -332,108 +343,67 @@
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
-        </div>
-      </div>
-      <!-- End Btn Edit -->
+      </a>
+    </div>
 
-      <div class="max-w-4xl mx-auto">
-        <canvas id="populationChart" class="min-w-full h-auto mx-auto"></canvas>
-      </div>
+    <script>
+      var options = {
+        series: [
+          {
+            name: "Pertumbuhan Penduduk Adat",
+            data: {{$adat}},
+          },
 
-      <script>
-        const ctx = document.getElementById("populationChart").getContext("2d");
+          {
+            name: "Pertumbuhan Penduduk Pendatang",
+            data: {{$pendatang}},
+          },
 
-        const datapenduduk = {
-          labels: ["2020", "2021", "2022", "2023", "2024"],
-          datasets: [
-            {
-              label: "Jumlah Penduduk",
-              data: [100, 1500, 1400, 1700, 1600],
-              fill: true,
-              backgroundColor: (context) => {
-                const gradient = context.chart.ctx.createLinearGradient(
-                  0,
-                  0,
-                  0,
-                  300
-                );
-                gradient.addColorStop(0, "rgba(251, 191, 36, 0.9)");
-                gradient.addColorStop(1, "rgba(217, 119, 6, 0.2)");
-                return gradient;
-              },
-              borderColor: "#f59e0b",
-              tension: 0.4,
-              pointBackgroundColor: "yellow",
-              pointRadius: 6,
-              pointHoverRadius: 8,
-            },
-          ],
-        };
-
-        const options = {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: function (context) {
-                  return ` ${context.parsed.y} orang`;
-                },
-              },
-            },
-            datalabels: {
-              anchor: "end",
-              align: "top",
-              color: "#000",
-              font: {
-                weight: "bold",
-              },
-              formatter: function (value) {
-                return value;
-              },
+        ],
+        chart: {
+          height: 350,
+          type: "area",
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        xaxis: {
+          categories: {{$year}},
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "Rp" + val.toLocaleString("id-ID");
             },
           },
-          scales: {
-            x: {
-              grid: {
-                display: false, // hilangkan garis bantu vertikal
-              },
-            },
-            y: {
-              beginAtZero: true,
-              ticks: {
-                callback: (value) => `${value} org`,
-              },
-            },
-          },
-        };
+        },
+      };
 
-        // Load plugin for datalabels
-        Chart.register(ChartDataLabels);
-
-        new Chart(ctx, {
-          type: "line",
-          data: datapenduduk,
-          options: options,
-          plugins: [ChartDataLabels],
-        });
-      </script>
-    </section>
+      var chart = new ApexCharts(
+        document.querySelector("#chartpenduduk"),
+        options
+      );
+      chart.render();
+    </script>
     <!-- End Chart Warga -->
 
     <!-- Chart Pendapatan -->
-    <section class="diagram my-16">
+    <div class="container max-w-6xl mx-auto">
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
         >
-          Grafik Pendapatan Desa Adat Bualu
+          Grafik Pendapatan dan Pengeluaran Desa
         </h2>
       </div>
-
-      <!-- Btn Edit -->
-      <div class="row">
-        <div class="md:ml-auto mx-auto w-fit my-10">
+    </div>
+    <div class="card">
+      <h2>Grafik Pendapatan dan Pengeluaran</h2>
+      <div id="chartpendapatan"></div>
+        <a href="{{route('financial.index')}}">
           <button
             type="button"
             class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
@@ -441,95 +411,49 @@
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
-        </div>
-      </div>
-      <!-- End Btn Edit -->
+        </a>
+    </div>
 
-      <div class="max-w-4xl mx-auto">
-        <canvas id="pendapatanChart" class="min-w-full mx-auto h-auto"></canvas>
-      </div>
-
-      <script>
-        const ctx2 = document
-          .getElementById("pendapatanChart")
-          .getContext("2d");
-
-        const datapendapatan = {
-          labels: ["2020", "2021", "2022", "2023", "2024"],
-          datasets: [
-            {
-              label: "Jumlah Pendapatan",
-              data: [100, 1500, 1400, 1700, 1600],
-              fill: true,
-              backgroundColor: (context) => {
-                const gradient = context.chart.ctx.createLinearGradient(
-                  0,
-                  0,
-                  0,
-                  300
-                );
-                gradient.addColorStop(0, "rgba(251, 191, 36, 0.9)");
-                gradient.addColorStop(1, "rgba(217, 119, 6, 0.2)");
-                return gradient;
-              },
-              borderColor: "#f59e0b",
-              tension: 0.4,
-              pointBackgroundColor: "yellow",
-              pointRadius: 6,
-              pointHoverRadius: 8,
-            },
-          ],
-        };
-
-        const options2 = {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: function (context) {
-                  return ` ${context.parsed.y} orang`;
-                },
-              },
-            },
-            datalabels: {
-              anchor: "end",
-              align: "top",
-              color: "#000",
-              font: {
-                weight: "bold",
-              },
-              formatter: function (value) {
-                return value;
-              },
+    <script>
+      var options = {
+        series: [
+          {
+            name: "Pendapatan Desa",
+            data: {{$pendapatan}},
+          },
+          {
+            name: "Belanja Desa",
+            data: {{$belanja}},
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "area",
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: "smooth",
+        },
+        xaxis: {
+          categories: {{$year}},
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "Rp" + val.toLocaleString("id-ID");
             },
           },
-          scales: {
-            x: {
-              grid: {
-                display: false, // hilangkan garis bantu vertikal
-              },
-            },
-            y: {
-              beginAtZero: true,
-              ticks: {
-                callback: (value) => `${value} org`,
-              },
-            },
-          },
-        };
+        },
+      };
 
-        // Load plugin for datalabels
-        Chart.register(ChartDataLabels);
-
-        new Chart(ctx2, {
-          type: "line",
-          data: datapendapatan,
-          options: options2,
-          plugins: [ChartDataLabels],
-        });
-      </script>
-    </section>
+      var chart = new ApexCharts(
+        document.querySelector("#chartpendapatan"),
+        options
+      );
+      chart.render();
+    </script>
     <!-- End Chart Pendapatan -->
 
     <!-- Data APBD Desa -->
@@ -568,16 +492,7 @@
             <h4 class="text-xl font-bold">Perbaharui Data</h4>
             <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet.</p>
             <form action="" method="post">
-              <div class="input-group mt-3 font-bold">
-                <label for="input-warga">Warga</label>
-                <input
-                  class="border-2 border-gray-500 w-full rounded-xl p-3"
-                  type="number"
-                  name="input-warga"
-                  id="input-warga"
-                  placeholder="Masukkan Jumlah Warga"
-                />
-              </div>
+              
 
               <div class="input-group mt-3 font-bold">
                 <label for="input-pendapatan">Pendapatan</label>
@@ -686,7 +601,7 @@
           >
             <div>
               <p class="text-lg font-medium">Pendapatan</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearinc->income}}</p>
             </div>
             <img src="{{asset('storage/assets/income.png')}}" alt="pendapatan" class="w-25 h-25" />
           </div>
@@ -696,7 +611,7 @@
           >
             <div>
               <p class="text-lg font-medium">Belanja</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
             </div>
             <img src="{{asset('storage/assets/shopping-bag.png')}}" alt="belanja" class="w-25 h-25" />
           </div>
@@ -713,7 +628,7 @@
           >
             <div>
               <p class="text-lg font-medium">Surplus/Defisit</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{ $surplus }}</p>
             </div>
             <img
               src="{{asset('storage/assets/surplus-def.png')}}"
@@ -727,7 +642,7 @@
           >
             <div>
               <p class="text-lg font-medium">Pengeluaran</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
             </div>
             <img src="{{asset('storage/assets/expenses.png')}}" alt="pengeluaran" class="w-25 h-25" />
           </div>
@@ -736,6 +651,5 @@
       </div>
     </section>
     <!-- End Data APBD Desa -->
-    </body>
-</html>
-</x-layout>
+
+    </x-layout>

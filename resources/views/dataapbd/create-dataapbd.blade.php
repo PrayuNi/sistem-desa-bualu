@@ -23,7 +23,7 @@
 
     <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
     <label>file APBD:</label>
-    <input type="file" name="file_apbd" id="file_apbd">
+    <input type="file" name="pdf" id="pdf" accept="application/pdf">
     <button type="submit">Simpan</button>
 </form>
 </body>

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('dataapbd', function (Blueprint $table) {
+        
+         Schema::create('population', function (Blueprint $table) {
             $table->id();
-            $table->integer('pendapatan');
-            $table->integer('pengeluaran');
-            $table->integer('belanja');
-            $table->integer('surplus_defisit');
-            $table->string('pdf');
+            $table->string('type');
+            $table->string('years');
+            $table->integer('total');
+            $table->rememberToken();
             $table->timestamps();
-    });
-}
+          });
+    }
 
     /**
      * Reverse the migrations.

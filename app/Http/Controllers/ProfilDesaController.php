@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProfilDesa;
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\Storage;
 
 class ProfilDesaController extends Controller
 {
@@ -34,5 +35,17 @@ class ProfilDesaController extends Controller
         // 2.4 ada di profil.index
         ProfilDesa::create($validated);
         return redirect()->route('profil.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
+    }
+    public function delete ($id) {
+        $profilsdesa = ProfilDesa::findOrFail ($id);
+
+        if ($profilsdesa->image && $profilsdesa->image !== 'profil_images/default.png'){
+            Storage::disk('public')->delete($profilsdesa->image);
+        }
+
+        $profilsdesa->delete();
+        return redirect()->route('profil.index')->with('success', 'Data Berhasil Dihapus!');
+    }
+
 }
-}
+

@@ -16,6 +16,7 @@
                 <th>Belanja</th>
                 <th>Surplus/Defisit</th>
                 <th>File APBD</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,14 @@
                 <td>{{ $dataapbd->belanja }}</td>
                 <td>{{ $dataapbd->surplus_defisit }}</td>
                 <!-- 2.4 Untuk menampilkan gambar, dan menjalankan link >> 2.5 ada di profildesa controller -->
-                <td>{{ $dataapbd->file_apbd }}</td>
+                <td>{{ $dataapbd->pdf }}</td>
+                <td>
+                    <form action="{{route('dataapbd.delete', $dataapbd->id)}}" method="POST" onsubmit="return confirm ('Yakin Mau Dihapus?')" >
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Hapus</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>
