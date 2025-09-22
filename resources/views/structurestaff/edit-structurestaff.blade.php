@@ -64,7 +64,7 @@
     <label>Gambar Sebelumnya:</label>
     <img src="{{asset('storage/'.  $structuresstaff->image)}}" alt=""> 
     <label>Gambar:</label>
-    <input type="file" name="image" id="image" value="{{asset('storage/'.  $structuresstaff->image)}}"> <br>
+    <input type="file" name="image" id="image" value="{{old('image', $structuresstaff->image)}}"> <br>
     <button type="submit">Update</button>
 </form>
 </x-layout>

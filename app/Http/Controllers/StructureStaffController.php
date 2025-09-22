@@ -38,7 +38,7 @@ class StructureStaffController extends Controller
         $validated = $request->validate([
             'name'=>'required|max:20',
             'position'=>'required|max:20',
-            'image'=>'nullable|max:1000|image|mimes:jpg,jpeg,png',
+            'image'=>'nullable|max:10000|image|mimes:jpg,jpeg,png',
         ]);
 
         if ($request->hasFile('image')){
