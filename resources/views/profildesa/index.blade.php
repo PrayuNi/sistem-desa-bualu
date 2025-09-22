@@ -15,8 +15,10 @@
       </div>
 
       <!-- Btn Edit -->
+      @foreach ($profilsdesa as $p)
       <div class="row">
         <div class="md:ml-auto mx-auto w-fit my-10">
+          <a href="{{route('profildesa.edit-profildesa', $p->id)}}">
           <button
             type="button"
             class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
@@ -33,13 +35,14 @@
         <div
           class="card max-w-full text-center items-center shadow-amber-600 shadow-xl mx-auto p-5 rounded-2xl"
         >
-          <img class="w-60 mx-auto" src="{{asset('storage/structure_images/default.png')}}" alt="" />
+          <img class="w-60 mx-auto" src="{{asset('storage/' . ($p->image ?: 'profil_images/default.png'))}}" alt="" />
           <h4 class="font-bold text-balance mt-2 text-lg">
             I Wayan Mudita, SH.
           </h4>
           <p class="text-sm mt-2">BENDESA ADAT BUALU</p>
         </div>
       </div>
+     
 
       <!-- Text Sambutan -->
       <div class="text-center my-10">
@@ -260,6 +263,7 @@
           </div>
         </div>
       </div>
+      @endforeach
 
       <!-- End Informasi Geografis -->
     </section>

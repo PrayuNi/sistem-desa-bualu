@@ -14,6 +14,7 @@ class ProfilDesa extends Model
     protected $fillable = [
         'image',
         'sambutan_bendesa',
+        'name',
         'sejarah_desa',
         'visi_desa',
         'misi_desa',

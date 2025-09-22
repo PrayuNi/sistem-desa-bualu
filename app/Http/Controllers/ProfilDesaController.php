@@ -12,6 +12,39 @@ class ProfilDesaController extends Controller
         $profilsdesa = ProfilDesa::all(); //1.1 untuk baca semua data
         return view('profildesa.index', compact('profilsdesa')); // 1.2 untuk menampilkan halaman dari data
     }
+
+    public function edit($id){
+        $profilsdesa = ProfilDesa::findOrFail($id);
+        return view('profildesa.edit-profildesa', compact('profilsdesa'));
+    }
+
+     public function update(Request $request, $id){
+        $profilsdesa = ProfilDesa::findOrFail($id);
+        $validated = $request->validate([
+             'image' => 'nullable|max:10000|image|mimes:jpg,jpeg,png',
+             'sambutan_bendesa' => 'max:200',
+             'name' => 'max:100',
+             'sejarah_desa'=> 'max:5000',
+             'visi_desa' => 'max:1000',
+             'misi_desa'=> 'max:1000', 
+        ]);
+
+        if ($request->hasFile('image')){
+            if($profilsdesa->image && $profilsdesa->image !== 'profil_images/default.png'){
+                Storage::disk('public')->delete($profilsdesa->image);
+            }
+
+            $originalName = time(). '_' .$request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('profil_images', $originalName, 'public');
+            $validated['image']=$path;
+        } else {
+            $validated['image'] = $profilsdesa->image;
+        }
+
+        $profilsdesa->update($validated);
+
+        return redirect()->route('profil.index');
+    }
      public function create(){
         return view('profildesa.create-profildesa');
     }

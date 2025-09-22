@@ -50,6 +50,8 @@ Route::get ('/structurestaff', [StructureStaffController::class, 'index'])->name
 Route::get('/profildesa/create', [ProfilDesaController::class, 'create'])->name('profildesa.create-profildesa');
 Route::post('/profildesa/store', [ProfilDesaController::class, 'store'])->name('profildesa.store');
 Route::delete('/profildesa/delete/{id}', [ProfilDesaController::class, 'delete'])->name('profildesa.delete');
+Route::get('/profildesa/edit/{id}', [ProfilDesaController::class, 'edit'])->name('profildesa.edit-profildesa');
+Route::post('/profildesa/update/{id}', [ProfilDesaController::class, 'update'])->name('profildesa.update');
 Route::get ('/profildesa', [ProfilDesaController::class, 'index'])->name('profil.index');
 
 Route::get('/dataapbd/create', [DataApbdController::class, 'create'])->name('dataapbd.create-dataapbd');
