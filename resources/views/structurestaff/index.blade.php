@@ -19,96 +19,38 @@
       <!-- Card Staff -->
       <div class="row my-10 flex justify-center flex-wrap">
         <!-- Card Admin 1-->
-        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
-          <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
-          @if(isset($structuresstaff['Staff Admin 1']))
-            <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 1']->id)}}">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
-          </a>
-          @endif
+         @foreach($structuresstaff as $s)
+        <div class="card max-w-60 max-h-120 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
+          <!-- <img class="w-60 mx-auto" src="{{asset('storage/' . ($s-> image ?? 'structure_images/default.png'))}}" alt="" /> -->
+          <div class="row flex float-right">
+            <a href="{{route('structurestaff.edit-structurestaff', $s->id)}}">
+            <button
+              type="button"
+              class="btn bg-green-900 rounded-full w-fit px-4 py-2 mb-3  text-white font-semibold"
+            >
+              <i class="fa-solid fa-edit"></i>
+            </button>
+            </a>
 
-          <img class="w-60 mx-auto" src="{{asset('storage/' . ($structuresstaff['Staff Admin 1']->image ?? 'structure_images/default.png'))}}" alt="" />
+        
+              <form action="{{route('structurestaff.delete', $s->id)}}" method="POST" onsubmit="return confirm ('Yakin Mau Dihapus?')" >
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn bg-red-700 rounded-full w-fit px-4 py-2 text-white font-semibold" type="submit"> <i class="fa-solid fa-trash"></i> </button>
+                </form>  
+          </div>
+
+
+        
+
+          <img class="w-60 mx-auto" src="{{asset('storage/' . ($s->image ?? 'structure_images/default.png'))}}" alt="" />
           <h4 class="font-bold text-balance mt-2 text-lg">
-            {{$structuresstaff['Staff Admin 1']->name}}
+            {{$s->name}}
           </h4>
-          <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 1']->position}}</p>
+          <p class="text-sm mt-2">{{$s->position}}</p>
         </div>
+        @endforeach
 
-        <!-- Card Admin 2 -->
-        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
-          <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
-           @if(isset($structuresstaff['Staff Admin 2']))
-            <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 2']->id)}}">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
-          </a>
-          @endif
-
-          <img class="w-60 mx-auto" src="{{asset('storage/' . ($structuresstaff['Staff Admin 2']->image ?? 'structure_images/default.png'))}}" alt="" />
-          <h4 class="font-bold text-balance mt-2 text-lg">
-            {{$structuresstaff['Staff Admin 2']->name}}
-          </h4>
-          <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 2']->position}}</p>
-        </div>
-      </div>
-
-      <!-- Card Admin 3 -->
-      <div class="row my-5 flex justify-center flex-wrap">
-        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
-          <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
-           @if(isset($structuresstaff['Staff Admin 3']))
-            <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 3']->id)}}">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
-          </a>
-          @endif
-
-          <img class="w-60 mx-auto" src="{{asset('storage/' . ($structuresstaff['Staff Admin 3']->image ?? 'structure_images/default.png'))}}" alt="" />
-          <h4 class="font-bold text-balance mt-2 text-lg">
-            {{$structuresstaff['Staff Admin 3']->name}}
-          </h4>
-          <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 3']->position}}</p>
-        </div>
-
-        <!-- Card Admin 4 -->
-        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
-          <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
-         @if(isset($structuresstaff['Staff Admin 4']))
-            <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 4']->id)}}">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
-          </a>
-          @endif
-
-          <img class="w-60 mx-auto" src="{{asset('storage/' . ($structuresstaff['Staff Admin 4']->image ?? 'structure_images/default.png'))}}" alt="" />
-          <h4 class="font-bold text-balance mt-2 text-lg">
-            {{$structuresstaff['Staff Admin 4']->name}}
-          </h4>
-          <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 4']->position}}</p>
-        </div>
-      </div>
-      <!-- End Row 1 Kepala Desa -->
     </section>
     <!-- End Konten -->
     </x-layout>

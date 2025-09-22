@@ -9,22 +9,7 @@ Use Illuminate\Support\Facades\Storage;
 class StructureStaffController extends Controller
 {
     public function index() {
-        $structuresstaff = StructureStaff::whereIn('position',[
-            'Staff Admin 1',
-            'Staff Admin 2',
-            'Staff Admin 3',
-            'Staff Admin 4',
-        ])
-        ->orderByRaw("FIELD(position, 'Staff Admin 1',  'Staff Admin 2', 'Staff Admin 3', 'Staff Admin 4')")
-        ->get()
-        ->keyBy('position'); 
-         //1.1 untuk baca semua data
-
-        foreach ($structuresstaff as $structurestaff){
-            if (!$structurestaff->image || !Storage::disk('public')->exists($structurestaff->image)) {
-                $structurestaff->image = 'structure_images/default.png';
-            }
-        }
+       $structuresstaff = StructureStaff::all();
         return view('structurestaff.index', compact('structuresstaff')); // 1.2 untuk menampilkan halaman dari data
     }
 
@@ -62,7 +47,7 @@ class StructureStaffController extends Controller
         return view('structurestaff.create-structurestaff');
     }
 
-    public function  store(Request $request) {
+    public function store(Request $request) {
         $validated = $request -> validate ([
             'name'=> 'required|max:20',
             'position'=> 'required|max:20',
