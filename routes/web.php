@@ -45,7 +45,7 @@ Route::post('/structurestaff/store', [StructureStaffController::class, 'store'])
 Route::delete('/structurestaff/delete/{id}', [StructureStaffController::class, 'delete'])->name('structurestaff.delete');
 Route::get('/structurestaff/edit/{id}', [StructureStaffController::class, 'edit'])->name('structurestaff.edit-structurestaff');
 Route::post('/structurestaff/update/{id}', [StructureStaffController::class, 'update'])->name('structurestaff.update');
-Route::get ('/structures/staff', [StructureStaffController::class, 'index'])->name('staff.index');
+Route::get ('/structurestaff', [StructureStaffController::class, 'index'])->name('staff.index');
 
 Route::get('/profildesa/create', [ProfilDesaController::class, 'create'])->name('profildesa.create-profildesa');
 Route::post('/profildesa/store', [ProfilDesaController::class, 'store'])->name('profildesa.store');
