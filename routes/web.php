@@ -7,6 +7,7 @@ use App\Http\Controllers\StructureStaffController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanSuratController;
+use App\Http\Controllers\JenisSuratController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -62,4 +63,13 @@ Route::delete('/pengajuansurat/delete/{id}', [PengajuanSuratController::class, '
 Route::get('/pengajuansurat/edit/{id}', [PengajuanSuratController::class, 'edit'])->name('pengajuansurat.edit');
 Route::post('/pengajuansurat/update/{id}', [PengajuanSuratController::class, 'update'])->name('pengajuansurat.update');
 Route::get('/pengajuansurats', [PengajuanSuratController::class, 'index'])->name('pengajuansurat.index');
+
+Route::get('/jenissurat/create', [JenisSuratController::class, 'create'])->name('jenissurat.create-jenissurat');
+Route::post('/jenissurat/store', [JenisSuratController::class, 'store'])->name('jenissurat.store');
+Route::delete('/jenissurat/delete/{id}', [JenisSuratController::class, 'delete'])->name('jenissurat.delete');
+Route::get('/jenissurat/edit/{id}', [JenisSuratController::class, 'edit'])->name('jenissurat.edit');
+Route::post('/jenissurat/update/{id}', [JenisSuratController::class, 'update'])->name('jenissurat.update');
+Route::get('/jenissurats', [JenisSuratController::class, 'index'])->name('jenissurat.index');
+
+
 

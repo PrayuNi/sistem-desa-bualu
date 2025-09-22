@@ -1,9 +1,9 @@
     <x-layout>
         <x-slot:title>
-            Edit Pengajuan Surat
+            Jenis Surat
         </x-slot>
 
-        <h2>Edit Pengajuan Surat</h2>
+        <h2>Jenis Surat</h2>
         <style>
             h2{
                 text-align: center;
@@ -13,7 +13,7 @@
                 color: #F79E17;
             }
             table{
-                width: 80%;
+                width: fit-content;
                 margin: 20px auto;
                 border-collapse: collapse;
                 box-shadow: 0 20px 5px rgba(0,0,0,0,1);
@@ -33,28 +33,25 @@
              tr:hover{
                 background-color: #f1f1f1;
              }
+             .row{
+                display: flex;
+                width: fit-content;
+             }
         </style>
         <table>
             <tr>
-                <th>Nama</th>
-                <th>NIK</th>
+                <th>Id</th>  
                 <th>Jenis Surat</th>
-                <th>No Whatsapp</th>
-                <th>Tanggal Pengajuan</th>
-                <th>Status</th>
                 <th>Aksi</th>
             </tr>
 
-            @foreach($pengajuansurat as $item)
+            @foreach($jenissurat as $item)
             <tr>
-                <td>{{$item->name}}</td>
-                <td>{{$item->nik}}</td>
-                <td>{{$item->jenis_surat}}</td>
-                <td>{{$item->no_whatsapp}}</td>
-                <td>{{$item->tanggal_pengajuan}}</td>
-                <td>{{$item->image}}</td>
-                <td>
-                    <a href="{{route('pengajuansurat.edit', $item->id)}}">
+                <td>{{$item->id}}</td>
+                <td>{{$item->jenis}}</td>
+            <td>
+                <div class="row">
+                    <a href="{{route('jenissurat.edit', $item->id)}}">
                         <button
                             type="button"
                             class="btn bg-blue-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
@@ -62,7 +59,16 @@
                             <i class="fa-solid fa-edit"></i>
                         </button>
                     </a>
-                </td>
+                    <form action="{{route('jenissurat.delete', $item->id)}}" method="POST" onsubmit="return confirm ('Yakin Mau Dihapus?')" >
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn bg-red-700 rounded-full w-fit px-6 py-3 text-white font-semibold" type="submit"> <i class="fa-solid fa-trash"></i> </button>
+                    </form>    
+                </div>
+            </td>
+
+               
+            
             </tr>
             @endforeach
         </table>

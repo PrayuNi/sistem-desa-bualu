@@ -104,6 +104,7 @@
               </div>
             </div>
             <a href="profildesa.html">Profil Desa</a>
+            <a href="/jenissurats">Jenis Surat</a>
           </div>
         </div>
 
@@ -197,7 +198,7 @@
       >
         <!-- Logo dan Lokasi -->
         <div class="md:flex text-center">
-          <img src="{{asset('storage/assets/logodesa.png')}}" alt="logo" class="max-w-32 mb-4" />
+          <img src="{{asset('storage/assets/logodesa.png')}}" alt="logo" class="max-w-35 mb-5" />
           <h3
             class="ml-2 text-lg text-center md:text-3xl font-bold leading-tight md:text-left"
           >
@@ -234,9 +235,9 @@
             </a>
           </div>
           <div class="flex items-start space-x-3">
-            <a href="">
+            <a href="https://maps.app.goo.gl/Cz6F9eayEz2h5heW7">
               <i class="fa-solid fa-location-dot mt-1 w-5 text-lg"></i>
-              <span>Jl.Kurusetra No.1</span>
+              <span>Jl.Kuruksetra No.1, Benoa, Kec.Kuta Selatan, Kab.Badung, Bali 80361</span>
             </a>
           </div>
 

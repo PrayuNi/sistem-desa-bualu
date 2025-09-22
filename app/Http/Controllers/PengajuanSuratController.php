@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataApbd;
 use App\Models\PengajuanSurat;
+use App\Models\JenisSurat;
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +14,9 @@ class PengajuanSuratController extends Controller
         return view('pengajuansurat.index', compact('pengajuansurat')); // 1.2 untuk menampilkan halaman dari data
     }
      public function create(){
-        return view('pengajuansurat.create-pengajuansurat');
+        $jenis = JenisSurat::all();
+
+        return view('pengajuansurat.create-pengajuansurat', compact('jenis'));
     }
 
     public function edit($id){
@@ -25,14 +27,30 @@ class PengajuanSuratController extends Controller
     public function update(Request $request, $id){
         $pengajuansurat = PengajuanSurat::findOrFail($id);
         $validated = $request->validate([
-            'name'=>'required|max:20',
+            'name'=>'required|max:100',
             'nik'=>'required|max:20',
-            'jenis_surat' =>'required|max:20',
+            'jenis_surat' =>'required|max:100',
             'no_whatsapp' =>'required|max:20',
-            'tanggal_pengajuan' =>'required|max:20',
-            'image'=>'nullable|max:1000|image|mimes:jpg,jpeg,png,pdf',
+            'tanggal_pengajuan' =>'required',
+            'image'=>'nullable|image|mimes:jpg,jpeg,png,pdf',
             'status' => 'required|max:20',
         ]);
+
+        if ($request->hasFile('image')){
+            if($pengajuansurat->image && $pengajuansurat->image !== 'structure_images/default.png'){
+                Storage::disk('public')->delete($pengajuansurat->image);
+            }
+
+            $originalName = time(). '_' .$request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('structure_images', $originalName, 'public');
+            $validated['image']=$path;
+        } else {
+            $validated['image'] = $pengajuansurat->image;
+        }
+
+        $pengajuansurat->update($validated);
+
+        return redirect()->route('pengajuansurat.index');
     }
 
     public function  store(Request $request) {

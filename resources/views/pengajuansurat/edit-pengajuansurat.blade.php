@@ -11,6 +11,7 @@
         text-align: center;
         color: #F99C0F;
         font-weight: bold;
+        font-size: large;
     }
     .form-card {
         margin: 10px auto;
@@ -30,7 +31,6 @@
     input[type="text"],
     input[type="file"] {
         margin: 0 auto;
-        display: block;
         width: 90%;
         padding: 10px;
         margin-bottom: 15px;
@@ -48,6 +48,22 @@
     button:hover {
         background-color: #218838;
     }
+    .input-group{
+        padding: 0 20px;
+        margin: 10px;
+        height: fit-content;
+    }
+    .input-group label{
+        margin: 0;
+    }
+    .input-group input{
+        border: 0.5px lightgray solid;
+        border-radius: 4px;
+        width: 100%;
+        height: fit-content;
+        padding: 5px 10px;
+        display: inline-block;
+    }
 
 </style>
 
@@ -58,30 +74,47 @@
     <h1>
         Edit Pengajuan Surat
     </h1>
-<label>Nama:</label>
-    <input type="text" name="name" id="name" placeholder="Isi name"> <br>
 
-    <label>NIK:</label>
-    <input type="text" name="nik" id="nik" placeholder="Isi No KTP"> <br>
+    <div class="input-group">
+        <label>Nama:</label>
+        <input type="text" value="{{ $pengajuansurat->name }}" name="name" id="name" placeholder="Isi nama lengkap"> <br>
+    </div>
 
-    <label>Jenis Surat:</label>
-    <input type="text" name="jenis_surat" id="jenis_surat" placeholder="Isi Jenis Surat Yang Diperlukan"> <br>
+    <div class="input-group">   
+        <label>NIK:</label>
+        <input type="text" value="{{ $pengajuansurat->nik }}" name="nik" id="nik" placeholder="Isi no KTP"> <br>
+    </div>
+    
+    <div class="input-group">
+        <label>Jenis Surat:</label>
+        <input type="text" value="{{ $pengajuansurat->jenis_surat }}" name="jenis_surat" id="jenis_surat" placeholder="Isi jenis surat yang diperlukan"> <br>
+    </div>
 
-    <label>No Whatsapp:</label>
-    <input type="text" name="no-whatsapp" id="no_whatsapp" placeholder="Isi No Whatsapp"> <br>
+    <div class="input-group">
+        <label>No Whatsapp:</label>
+        <input type="text" value="{{ $pengajuansurat->no_whatsapp }}" name="no-whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
+    </div>
 
-    <label>Tanggal Pengajuan:</label>
-    <input type="date" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
+    <div class="input-group">
+        <label>Tanggal Pengajuan:</label>
+        <input type="date" value="{{ $pengajuansurat->tanggal_pengajuan }}" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
+    </div>
 
-    <label>Status:</label>
-    <input type="text" name="status" id="status" placeholder=""> <br>
+    <div class="input-group">
+        <label>Status:</label>
+        <input type="text" value="{{ $pengajuansurat->status }}" name="status" id="status" placeholder=""> <br>
+    </div>
 
+    <div class="input-group">
+        <label>Gambar Sebelumnya:</label>
+        <img src="{{asset('storage/'.  $pengajuansurat->image)}}" alt=""> 
+     </div>
 
-    <label>Gambar Sebelumnya:</label>
-    <img src="{{asset('storage/'.  $pengajuansurat->image)}}" alt=""> 
     <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
-    <label>Input Gambar Baru:</label>
-    <input type="file" name="image" id="image" value="{{asset('storage/'.  $pengajuan->image)}}"> 
+    <div class="input-group">
+        <label>Input Gambar Baru:</label>
+        <input type="file" name="image" id="image" value="{{asset('storage/'.  $pengajuansurat->image)}}">
+    </div>
     <button type="submit">Update</button>
 </form>    
 </x-layout>

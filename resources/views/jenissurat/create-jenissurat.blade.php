@@ -1,6 +1,6 @@
 <x-layout>
 <x-slot:title>
-    Form Pengajuan Surat
+    Form Nambah Jenis Surat
 </x-slot>
 
 <style>
@@ -66,61 +66,21 @@
         padding: 5px 10px;
         display: inline-block;
     }
-
-    .input-group select{
-        padding: 0 20px;
-        border: 0.5px lightgray solid;
-        border-radius: 4px;
-        width: 100%;
-        height: fit-content;
-        padding: 5px 10px;
-        display: inline-block;
-    }
 </style>
 
     <!-- 2.1 tempat untuk menambahkan data enctype-->
-    <form class="form-card" action="{{ route('pengajuansurat.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="form-card" action="{{ route('jenissurat.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <h1>
-        Form Pengajuan Surat
+        Form Tambah Jenis Surat
     </h1>
 
     <div class="input-group">
-        <label>Nama:</label>
-        <input type="text" name="name" id="name" placeholder="Isi nama lengkap"> <br>
-    </div>
-
-    <div class="input-group">
-        <label>NIK:</label>
-        <input type="text" name="nik" id="nik" placeholder="Isi no KTP"> <br>
-    </div>
-    
-    <div class="input-group">
         <label>Jenis Surat:</label>
-        <select  name="jenis" id="jenis_surat">
-            <option selected disabled>Pilih jenis surat</option>
-            @foreach ($jenis as $item)
-            <option value="{{$item->jenis}}">{{$item->jenis}}</option>
-            @endforeach
-        </select>
+        <input type="text" name="jenis_surat" id="jenis_surat" placeholder=""> <br>
     </div>
       
-    <div class="input-group">
-        <label>No Whatsapp:</label>
-        <input type="text" name="no-whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
-    </div>
-
-    <div class="input-group">
-        <label>Tanggal Pengajuan:</label>
-        <input type="date" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
-    </div>
-    
-    <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
-    <div class="input-group">
-        <label>Gambar:</label>
-        <input type="file" name="image" id="image">
-    </div>
     <button type="submit">Simpan</button>
 </form>
 </x-layout>

@@ -9,22 +9,23 @@
       <!-- Title -->
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
         >
           Struktur Staff Kantor Desa
         </h2>
       </div>
       <!-- End Title -->
 
-      <!-- Row 1 Admin -->
-      <div class="row my-5 flex justify-center flex-wrap">
-        <div class="card max-w-48 text-center items-center shadow-xl mx-5 p-5">
+      <!-- Card Staff -->
+      <div class="row my-10 flex justify-center flex-wrap">
+        <!-- Card Admin 1-->
+        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
           <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
           @if(isset($structuresstaff['Staff Admin 1']))
             <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 1']->id)}}">
           <button
             type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
+            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
           >
             <i class="fa-solid fa-edit"></i>
             Edit Data
@@ -39,13 +40,14 @@
           <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 1']->position}}</p>
         </div>
 
-        <div class="card max-w-48 text-center items-center shadow-xl mx-5 p-5">
+        <!-- Card Admin 2 -->
+        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
           <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
            @if(isset($structuresstaff['Staff Admin 2']))
             <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 2']->id)}}">
           <button
             type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
+            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
           >
             <i class="fa-solid fa-edit"></i>
             Edit Data
@@ -61,14 +63,15 @@
         </div>
       </div>
 
+      <!-- Card Admin 3 -->
       <div class="row my-5 flex justify-center flex-wrap">
-        <div class="card max-w-48 text-center items-center shadow-xl mx-5 p-5">
+        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
           <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
            @if(isset($structuresstaff['Staff Admin 3']))
             <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 3']->id)}}">
           <button
             type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
+            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
           >
             <i class="fa-solid fa-edit"></i>
             Edit Data
@@ -83,13 +86,14 @@
           <p class="text-sm mt-2">{{$structuresstaff['Staff Admin 3']->position}}</p>
         </div>
 
-        <div class="card max-w-48 text-center items-center shadow-xl mx-5 p-5">
+        <!-- Card Admin 4 -->
+        <div class="card max-w-60 text-center items-center shadow-xl shadow-amber-700 mx-auto p-10 rounded-xl">
           <img class="w-60 mx-auto" src="/img/business-man.png" alt="" />
          @if(isset($structuresstaff['Staff Admin 4']))
             <a href="{{route('structurestaff.edit-structurestaff', $structuresstaff['Staff Admin 4']->id)}}">
           <button
             type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
+            class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
           >
             <i class="fa-solid fa-edit"></i>
             Edit Data

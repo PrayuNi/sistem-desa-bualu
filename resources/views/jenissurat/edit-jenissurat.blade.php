@@ -1,8 +1,7 @@
 <x-layout>
 <x-slot:title>
-    Form Tambah Struktur Staff Kantor Desa
+    Edit Jenis Surat
 </x-slot>
-
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -12,7 +11,7 @@
         text-align: center;
         color: #F99C0F;
         font-weight: bold;
-        font-size: larger;
+        font-size: large;
     }
     .form-card {
         margin: 10px auto;
@@ -32,7 +31,6 @@
     input[type="text"],
     input[type="file"] {
         margin: 0 auto;
-        display: block;
         width: 90%;
         padding: 10px;
         margin-bottom: 15px;
@@ -67,34 +65,21 @@
         display: inline-block;
     }
 
-    .input-group select{
-        padding: 0 20px;
-        border: 0.5px lightgray solid;
-        border-radius: 4px;
-        width: 100%;
-        height: fit-content;
-        padding: 5px 10px;
-        display: inline-block;
-    }
 </style>
 
-<body>
-     <form class="form-card" action="{{ route('structurestaff.store') }}" method="POST" enctype="multipart/form-data">
+    <!-- 2.1 tempat untuk menambahkan data enctype-->
+     
+<form class="form-card" action="{{route('jenissurat.update', $jenissurat->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
-
     <h1>
-        Form Tambah Struktur Staff Kantor Desa
+        Edit Jenis Surat
     </h1>
+    
+    <div class="input-group">
+        <label>Jenis Surat:</label>
+        <input type="text" value="{{ $jenissurat->jenis}}" name="jenis_surat" id="jenis_surat" placeholder=""> <br>
+    </div>
 
-    <label>Nama:</label>
-    <input type="text" name="name" id="name" placeholder="Isi nama lengkap"> <br>
-
-    <label>Jabatan:</label>
-    <input type="text" name="position" id="position" placeholder="Isi jabatan"> <br>
-
-    <label>Gambar:</label>
-    <input type="file" name="image" id="image" placeholder=""> <br>
-    <button type="submit">Simpan</button>
-</form>
-</body>
+    <button type="submit">Update</button>
+</form>    
 </x-layout>
