@@ -60,20 +60,20 @@
       <!-- Visi Misi -->
       <div class="row container mx-auto flex">
         <div
-          class="visi text-center shadow-lg shadow-amber-400 bg-amber-500 rounded-lg m-5 p-5"
+          class="visi text-center p-10 shadow-lg shadow-amber-400 bg-amber-500 rounded-lg m-5"
         >
           <h4 class="font-bold text-4xl text-amber-50">Visi</h4>
-          <p class="mt-5 text-white">
+          <p class="mt-5 text-white text-justify">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos beatae
             cupiditate culpa reprehenderit quae sit soluta aperiam dolor
             mollitia nostrum!
           </p>
         </div>
         <div
-          class="Misi text-center  shadow-lg shadow-amber-400 bg-amber-500 rounded-lg m-5 p-5"
+          class="misi p-10 text-center  shadow-lg shadow-amber-400 bg-amber-500 rounded-lg m-5 text-white"
         >
           <h4 class="font-bold text-4xl text-amber-50">Misi</h4>
-          <p class="mt-5  text-white">
+          <div class="text-left">
             <li>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
               numquam? Nostrum accusantium, dolores veniam autem deserunt
@@ -89,7 +89,7 @@
               numquam? Nostrum accusantium, dolores veniam autem deserunt
               architecto. Accusantium, debitis perferendis.
             </li>
-          </p>
+          </div>
         </div>
       </div>
       <!-- End Visi Misi -->
