@@ -56,9 +56,10 @@
 
           <!-- Menu Utama (DIPERBAIKI: ditambahkan class md:flex agar hanya muncul di desktop) -->
           <div id="menu" class="hidden md:flex space-x-6 text-white font-bold">
-            <a href="">Beranda</a>
-            <a href="strukturprejuru.html">Struktur Prejuru</a>
-            <a href="strukturstaff.html">Struktur Staff</a>
+            <a href="/">Beranda</a>
+            <a href="/profildesa">Profil Desa</a>
+            <a href="/structures">Struktur Prejuru</a>
+            <a href="/structurestaff">Struktur Staff</a>
             <div class="relative inline-block text-center">
               <div>
                 <button
@@ -103,7 +104,8 @@
                 </div>
               </div>
             </div>
-            <a href="profildesa.html">Profil Desa</a>
+            <a href="/dataapbd">Data APBD</a>
+            <a href="/pengajuansurats">Pengajuan Surat</a>
             <a href="/jenissurats">Jenis Surat</a>
           </div>
         </div>
