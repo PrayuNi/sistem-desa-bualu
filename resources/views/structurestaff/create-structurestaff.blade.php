@@ -79,7 +79,7 @@
 </style>
 
 <body>
-     <form class="form-card" action="{{ route('structurestaff.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="form-card" action="{{ route('structurestaff.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <h1>
@@ -93,7 +93,7 @@
     <input type="text" name="position" id="position" placeholder="Isi jabatan"> <br>
 
     <label>Gambar:</label>
-    <input type="file" name="image" id="image" placeholder=""> <br>
+    <input type="file" name="image" id="image"><br>
     <button type="submit">Simpan</button>
 </form>
 </body>

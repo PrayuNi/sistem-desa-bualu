@@ -49,10 +49,13 @@ class StructureStaffController extends Controller
 
     public function store(Request $request) {
         $validated = $request -> validate ([
-            'name'=> 'required|max:20',
+            'name'=> 'required|max:200',
             'position'=> 'required|max:20',
             'image'=> 'max:10000|image|mimes:jpg,jpeg,png', // 2.3 mengubah ukuran image jadi 10k
         ]);
+
+        // dd($validated);
+
         if($request->hasFile('image')){
             $originalName = time().'_'.$request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('structure_images', $originalName, 'public');

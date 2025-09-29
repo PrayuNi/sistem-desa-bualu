@@ -73,6 +73,12 @@
         </div>
         <!-- End Row 2 -->
       </div>
+
+      <div class="row flex">
+        <a class="btn bg-green-700 rounded-full mx-auto w-fit px-4 py-2 mb-3 text-white font-semibold" target="_blank" href="https://drive.google.com/drive/folders/1BIdNDWKkNAq9zH1Li2bcc9DcvHZ8kHBH?usp=sharing">
+          <i class="fa-solid fa-arrow-down"></i> Download
+        </a>
+      </div>
     </section>
     <!-- End Data APBD Desa -->
 
