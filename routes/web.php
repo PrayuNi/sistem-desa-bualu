@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanSuratController;
 use App\Http\Controllers\JenisSuratController;
+use App\Http\Controllers\DataPendudukController;
+use App\Http\Controllers\DataPendudukTamiuController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -58,6 +60,16 @@ Route::get('/dataapbd/create', [DataApbdController::class, 'create'])->name('dat
 Route::post('/dataapbd/store', [DataApbdController::class, 'store'])->name('dataapbd.store');
 Route::delete('/dataapbd/delete/{id}', [DataApbdController::class, 'delete'])->name('dataapbd.delete');
 Route::get ('/dataapbd', [DataApbdController::class, 'index'])->name('dataapbd.index');
+
+Route::post('/datapenduduk/store', [DataPendudukController::class, 'store'])->name('datapenduduk.store');
+Route::get('/datapenduduk/edit/{id}', [DataPendudukController::class, 'edit'])->name('datapenduduk.edit-datapenduduk');
+Route::post('/datapenduduk/update/{id}', [DataPendudukController::class, 'update'])->name('datapenduduk.update');
+Route::get('/datapenduduk', [DataPendudukController::class, 'index'])->name('datapenduduk.index');
+
+Route::post('/datapenduduktamiu/store', [DataPendudukTamiuController::class, 'store'])->name('datapenduduktamiu.store');
+Route::get('/datapenduduktamiu/edit/{id}', [DataPendudukTamiuController::class, 'edit'])->name('datapenduduktamiu.edit-datapenduduktamiu');
+Route::post('/datapenduduktamiu/update/{id}', [DataPendudukTamiuController::class, 'update'])->name('datapenduduktamiu.update');
+Route::get('/datapenduduktamiu', [DataPendudukTamiuController::class, 'index'])->name('datapenduduktamiu.index');
 
 Route::get('/pengajuansurat/create', [PengajuanSuratController::class, 'create'])->name('pengajuansurat.create-pengajuansurat');
 Route::post('/pengajuansurat/store', [PengajuanSuratController::class, 'store'])->name('pengajuansurat.store');

@@ -213,9 +213,9 @@
         <!-- Kontak -->
         <div class="text-white space-y-4 text-sm w-full md:w-auto">
           <div class="flex items-start space-x-3">
-            <a href="https://mail.google.com/mail/u/desaadatbualu@gmail.com">
+            <a href="https://mail.google.com/mail/u/desaadatbualu04.11@gmail.com">
               <i class="fa-solid fa-envelope mt-1 w-5 text-lg"></i>
-              <span>desaadatbualu@gmail.com</span>
+              <span>desaadatbualu04.11@gmail.com</span>
             </a>
           </div>
           <div class="flex items-start space-x-3">

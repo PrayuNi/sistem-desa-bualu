@@ -22,7 +22,7 @@
       <!-- Overlay Hitam Transparan -->
       <div
         class="absolute inset-0"
-        style="background-color: rgba(0, 0, 0, 0.395)"
+        style="background-color: rgba(90, 52, 11, 0.395)"
       ></div>
       <!-- End Overlay -->
 
@@ -67,25 +67,11 @@
       <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mt-10 mb-5">
           <h2
-            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
           >
             Berita Desa
           </h2>
         </div>
-
-        <!-- Btn Edit -->
-        <div class="row">
-          <div class="md:ml-auto mx-auto w-fit my-10">
-            <button
-              type="button"
-              class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
-            >
-              <i class="fa-solid fa-edit"></i>
-              Edit Data
-            </button>
-          </div>
-        </div>
-        <!-- End Btn Edit -->
 
         <!-- Swiper -->
         <div class="swiper mySwiper">
@@ -96,24 +82,22 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                src="{{asset('storage/assets/jumbotron 1.png')}}"
+                src="{{asset('storage/berita_images/image.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
                   <span
-                    class="inline-block bg-purple-600 text-white text-xs px-2 py-1 rounded-full mb-2"
-                    >Training</span
+                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
+                    >tanggal pemasangnnya"</span
                   >
-                  <h3 class="font-semibold text-lg">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quod, eo.
+                  <h3 class="font-semibold text-lg px-5">
+                    Pemasangan Letter Box Tulisan "Desa Adat Bualu"
                   </h3>
-                  <p class="text-sm text-gray-600 mt-2">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Aperiam, obcaecati fuga? Architecto magni, quibusdam
-                    repellat rerum laudantium voluptate, aut eum quam fugit a
-                    sed in facere optio, cumque eveniet? Ducimus?
+                  <p class=" text-gray-700 mt-2 px-5">
+                    Desa adat bualu telah melaksanakan pemasangan letter box dengan tujuan untuk memberi wates bahwa daerah tersebut sudah
+                    memasuki wilayah dari Desa Adat Bualu, dan kegiatan pemasangan ini sebagai wujud kegiatan
+                    dari Baga Palemahan Desa Adat Bualu
                   </p>
                 </div>
               </div>
@@ -125,24 +109,21 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="{{asset('storage/assets/jumbotron 1.png')}}"
+                  src="{{asset('storage/berita_images/bersih_pantai.jpg')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
-                  <span
-                    class="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full mb-2"
-                    >Workout</span
+                   <span
+                    class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
+                    >Acara Tahunan Desa</span
                   >
-                  <h3 class="font-semibold text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit, quo.
+                  <h3 class="font-semibold text-lg px-5">
+                    Dresta Lango & Dharma Shanti Desa Adat Bualu
                   </h3>
-                  <p class="text-sm text-gray-600 mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quidem reiciendis rerum saepe itaque, iste pariatur
-                    praesentium adipisci? Officia quasi amet, sapiente molestias
-                    error labore excepturi nihil. Dicta nam laborum sed.
+                  <p class=" text-gray-700 mt-2 px-5">
+                    Kegiatan Dresta Lango dan Dharma Shanti dilaksanakan setiap tahun sekali.
+                    Dresta Lango digelar saat hari raya Pengerupukan dengan parade ogoh-ogoh dari seluruh banjar di desa, sedangkan Dharma Shanti berlangsung sehari setelah Nyepi (Ngembak Geni) dengan pementasan seni tari dan musik untuk menghibur masyarakat. Selain itu, ogoh-ogoh dari seluruh banjar turut dipajang dalam acara Dharma Shanti.
                   </p>
                 </div>
               </div>
@@ -154,25 +135,20 @@
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="{{asset('storage/assets/jumbotron 1.png')}}"
+                  src="{{asset('storage/berita_images/maskot_desa.jpg')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
                   <span
-                    class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full mb-2"
-                    >Nutrition</span
+                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
+                    >Minggu, 10 April 2022</span
                   >
-                  <h3 class="font-semibold text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Temporibus, saepe.
+                  <h3 class="font-semibold text-lg px-5">
+                    Launching Maskot Desa Adat Bualu "Padma Kesara"
                   </h3>
-                  <p class="text-sm text-gray-600 mt-2">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Itaque cupiditate repudiandae ex maxime, tenetur non
-                    delectus ipsum tempore mollitia quis. Ipsum autem culpa
-                    suscipit explicabo consequuntur? Rerum maxime omnis
-                    sapiente!
+                  <p class=" text-gray-700 mt-2 px-5">
+                    Launching Maskot Desa Adat Bualu "Padma Kesara" merupakan acara peresmian maskot resmi Desa Adat Bualu yang diberi nama Padma Kesara. Kegiatan ini bertujuan memperkenalkan simbol identitas dan semangat kebersamaan masyarakat Desa Adat Bualu, sekaligus memperkuat nilai budaya serta jati diri desa dalam berbagai kegiatan adat dan sosial.
                   </p>
                 </div>
               </div>
@@ -182,27 +158,21 @@
             <div class="swiper-slide">
               <div
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
-              >
                 <img
-                  src="{{asset('storage/assets/jumbotron 1.png')}}"
+                  src="{{asset('storage/berita_images/bersih_pantai.jpg')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
-                  <span
-                    class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full mb-2"
-                    >Nutrition</span
+                   <span
+                    class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
+                    >Kegiatan Rutinan Desa</span
                   >
-                  <h3 class="font-semibold text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quia, ducimus.
+                  <h3 class="font-semibold text-lg px-5">
+                    Bersih-Bersih Area Pantai
                   </h3>
-                  <p class="text-sm text-gray-600 mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aperiam fuga nesciunt voluptatem deleniti placeat sed
-                    libero! Ipsam facere, modi quam exercitationem obcaecati
-                    reiciendis inventore eaque sapiente blanditiis ratione
-                    eligendi corporis.
+                  <p class=" text-gray-600 mt-2 px-5">
+                    Staff dan masyarakat bekerja sama dalam menjaga kebersihan alam, yaitu dengan melaksanakan bersih-bersih di area pantai. Tujuan dari kegiatan ini untuk menjaga keseimbangan alam dengan manusia agar terhindar dari bencana yang tidak diinginkan.
                   </p>
                 </div>
               </div>
@@ -212,7 +182,6 @@
             <div class="swiper-slide">
               <div
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
-              >
                 <img
                   src="{{asset('storage/assets/jumbotron 1.png')}}"
                   alt=""
