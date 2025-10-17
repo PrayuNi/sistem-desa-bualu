@@ -10,8 +10,9 @@ Use Illuminate\Support\Facades\Storage;
 class PengajuanSuratController extends Controller
 {
     public function index() {
+        $jenis = JenisSurat::all();
         $pengajuansurat = PengajuanSurat::all(); //1.1 untuk baca semua data
-        return view('pengajuansurat.index', compact('pengajuansurat')); // 1.2 untuk menampilkan halaman dari data
+        return view('pengajuansurat.index', compact('pengajuansurat', 'jenis')); // 1.2 untuk menampilkan halaman dari data
     }
      public function create(){
         $jenis = JenisSurat::all();

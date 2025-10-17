@@ -95,11 +95,11 @@
         <label>NIK:</label>
         <input type="text" name="nik" id="nik" placeholder="Isi no KTP"> <br>
     </div>
-     <div class="input-group">
+     <!-- <div class="input-group">
         <label>Jenis Surat:</label>
         <input type="text" name="jenis_surat" id="jenis_surat" placeholder=""> <br>
-    </div>
-    <!-- <div class="input-group">
+    </div> -->
+    <div class="input-group">
         <label>Jenis Surat:</label>
         <select  name="jenis_surat" id="jenis_surat">
             <option selected disabled>Pilih jenis surat</option>
@@ -107,7 +107,7 @@
             <option value="{{$item->jenis}}">{{$item->jenis}}</option>
             @endforeach
         </select>
-    </div> -->
+    </div>
       
     <div class="input-group">
         <label>No Whatsapp:</label>
