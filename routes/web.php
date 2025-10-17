@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DataApbdController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\StructureStaffController;
 use App\Http\Controllers\ProfilDesaController;
@@ -12,6 +13,12 @@ use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\DataPendudukTamiuController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post ('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('dashboard');
@@ -73,7 +80,7 @@ Route::get('/datapenduduktamiu', [DataPendudukTamiuController::class, 'index'])-
 
 Route::get('/pengajuansurat/create', [PengajuanSuratController::class, 'create'])->name('pengajuansurat.create-pengajuansurat');
 Route::post('/pengajuansurat/store', [PengajuanSuratController::class, 'store'])->name('pengajuansurat.store');
-Route::delete('/pengajuansurat/delete/{id}', [PengajuanSuratController::class, 'delete'])->name('structure.delete');
+Route::delete('/pengajuansurat/delete/{id}', [PengajuanSuratController::class, 'delete'])->name('pengajuansurat.delete');
 Route::get('/pengajuansurat/edit/{id}', [PengajuanSuratController::class, 'edit'])->name('pengajuansurat.edit');
 Route::post('/pengajuansurat/update/{id}', [PengajuanSuratController::class, 'update'])->name('pengajuansurat.update');
 Route::get('/pengajuansurats', [PengajuanSuratController::class, 'index'])->name('pengajuansurat.index');
