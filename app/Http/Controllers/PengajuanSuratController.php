@@ -33,7 +33,7 @@ class PengajuanSuratController extends Controller
             'no_whatsapp' =>'required|max:20',
             'tanggal_pengajuan' =>'required',
             'image'=>'nullable|image|mimes:jpg,jpeg,png,pdf',
-            'status' => 'required|max:20',
+            'status' => 'nullable | max:20',
         ]);
 
         if ($request->hasFile('image')){
@@ -61,7 +61,7 @@ class PengajuanSuratController extends Controller
             'no_whatsapp'=> 'required',
             'tanggal_pengajuan'=> 'required',
             'image'=> 'nullable|mimes:jpg,jpeg,png,pdf',
-            'status' => 'required|max:20',
+            'status' => 'nullable|max:20',
         ]);
         if($request->hasFile('image')){
             $pdfName = time().'_'.$request->file('image')->getClientOriginalName();

@@ -13,8 +13,8 @@ class Financial extends Model
     use HasFactory, Notifiable;
     protected $table='financial';
     protected $fillable = [
-        'type',
         'years',
-        'nominal',
+        'income',
+        'spending',
     ];
 }

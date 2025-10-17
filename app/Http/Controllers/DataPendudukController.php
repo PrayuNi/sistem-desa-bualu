@@ -23,7 +23,7 @@ class DataPendudukController extends Controller
         $datapenduduk = DataPenduduk::findOrFail($id);
         $validated = $request->validate([
              'penduduk'=> 'required',
-            'laki-laki'=> 'required',
+            'laki_laki'=> 'required',
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
         ]);

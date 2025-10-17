@@ -12,11 +12,11 @@ class ProfilDesa extends Model
     use HasFactory, Notifiable;
     protected $table='profildesa';
     protected $fillable = [
-        'image',
-        'sambutan_bendesa',
         'name',
+        'sambutan_bendesa',
         'sejarah_desa',
         'visi_desa',
         'misi_desa',
+        'image',
     ];
 }

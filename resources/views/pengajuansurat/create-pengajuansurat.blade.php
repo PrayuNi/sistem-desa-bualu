@@ -95,30 +95,38 @@
         <label>NIK:</label>
         <input type="text" name="nik" id="nik" placeholder="Isi no KTP"> <br>
     </div>
-    
-    <div class="input-group">
+     <div class="input-group">
         <label>Jenis Surat:</label>
-        <select  name="jenis" id="jenis_surat">
+        <input type="text" name="jenis_surat" id="jenis_surat" placeholder=""> <br>
+    </div>
+    <!-- <div class="input-group">
+        <label>Jenis Surat:</label>
+        <select  name="jenis_surat" id="jenis_surat">
             <option selected disabled>Pilih jenis surat</option>
             @foreach ($jenis as $item)
             <option value="{{$item->jenis}}">{{$item->jenis}}</option>
             @endforeach
         </select>
-    </div>
+    </div> -->
       
     <div class="input-group">
         <label>No Whatsapp:</label>
-        <input type="text" name="no-whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
+        <input type="text" name="no_whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
     </div>
 
     <div class="input-group">
         <label>Tanggal Pengajuan:</label>
-        <input type="date" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
+        <input type="text" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
+    </div>
+
+     <div class="input-group">
+        <label>Status:</label>
+        <input type="text" name="status" id="status" placeholder=""> <br>
     </div>
     
     <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
     <div class="input-group">
-        <label>Gambar:</label>
+        <label>Foto KTP:</label>
         <input type="file" name="image" id="image">
     </div>
     <button type="submit">Simpan</button>

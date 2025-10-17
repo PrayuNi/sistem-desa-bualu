@@ -77,43 +77,43 @@
 
     <div class="input-group">
         <label>Nama:</label>
-        <input type="text" value="{{ $pengajuansurat->name }}" name="name" id="name" placeholder="Isi nama lengkap"> <br>
+        <input type="text" value="{{old('name', $pengajuansurat->name)}}" name="name" id="name" placeholder="Isi nama lengkap"> <br>
     </div>
 
     <div class="input-group">   
         <label>NIK:</label>
-        <input type="text" value="{{ $pengajuansurat->nik }}" name="nik" id="nik" placeholder="Isi no KTP"> <br>
+        <input type="text" value="{{old('nik', $pengajuansurat->nik)}}" name="nik" id="nik" placeholder="Isi no KTP"> <br>
     </div>
     
     <div class="input-group">
         <label>Jenis Surat:</label>
-        <input type="text" value="{{ $pengajuansurat->jenis_surat }}" name="jenis_surat" id="jenis_surat" placeholder="Isi jenis surat yang diperlukan"> <br>
+        <input type="text" value="{{old('jenis_surat', $pengajuansurat->jenis_surat)}}" name="jenis_surat" id="jenis_surat" placeholder="Isi jenis surat yang diperlukan"> <br>
     </div>
 
     <div class="input-group">
         <label>No Whatsapp:</label>
-        <input type="text" value="{{ $pengajuansurat->no_whatsapp }}" name="no-whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
+        <input type="text" value="{{old('no_whatsapp', $pengajuansurat->no_whatsapp)}}" name="no_whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
     </div>
 
     <div class="input-group">
         <label>Tanggal Pengajuan:</label>
-        <input type="date" value="{{ $pengajuansurat->tanggal_pengajuan }}" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
+        <input type="text" value="{{ old('tanggal_pengajuan', $pengajuansurat->tanggal_pengajuan) }}" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>
     </div>
 
     <div class="input-group">
         <label>Status:</label>
-        <input type="text" value="{{ $pengajuansurat->status }}" name="status" id="status" placeholder=""> <br>
+        <input type="text" value="{{ old('status', $pengajuansurat->status) }}" name="status" id="status" placeholder=""> <br>
     </div>
 
     <div class="input-group">
-        <label>Gambar Sebelumnya:</label>
-        <img src="{{asset('storage/'.  $pengajuansurat->image)}}" alt=""> 
+        <label>Foto KTP Sebelumnya:</label>
+        <img src="{{asset('storage/'. $pengajuansurat->image)}}" alt=""> 
      </div>
 
     <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
     <div class="input-group">
-        <label>Input Gambar Baru:</label>
-        <input type="file" name="image" id="image" value="{{asset('storage/'.  $pengajuansurat->image)}}">
+        <label>Input Foto KTP Baru:</label>
+        <input type="file" name="image" id="image" value="{{old('image', $pengajuansurat->image)}}">
     </div>
     <button type="submit">Update</button>
 </form>    

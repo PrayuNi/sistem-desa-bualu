@@ -52,7 +52,7 @@
                 <td>{{$item->jenis_surat}}</td>
                 <td>{{$item->no_whatsapp}}</td>
                 <td>{{$item->tanggal_pengajuan}}</td>
-                <td>{{$item->image}}</td>
+                <td>{{$item->status}}</td>
                 <td>
                     <a href="{{route('pengajuansurat.edit', $item->id)}}">
                         <button

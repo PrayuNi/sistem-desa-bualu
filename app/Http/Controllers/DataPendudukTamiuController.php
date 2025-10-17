@@ -8,38 +8,38 @@ use Illuminate\Http\Request;
 class DataPendudukTamiuController extends Controller
 {
     public function index() {
-        $datapenduduk = DataPendudukTamiu::all(); //1.1 untuk baca semua data
+        $datapenduduktamiu = DataPendudukTamiu::all(); //1.1 untuk baca semua data
         // dd($datapenduduk);
-        return view('datapenduduk.index', compact('datapenduduk')); // 1.2 untuk menampilkan halaman dari data
+        return view('datapenduduktamiu.index', compact('datapenduduktamiu')); // 1.2 untuk menampilkan halaman dari data
     }
 
      public function edit($id){
-        $datapenduduk = DataPendudukTamiu::findOrFail($id);
-        return view('datapenduduk.edit-datapenduduk', compact('datapenduduk'));
+        $datapenduduktamiu = DataPendudukTamiu::findOrFail($id);
+        return view('datapenduduktamiu.edit-datapenduduktamiu', compact('datapenduduktamiu'));
     }
 
     public function update(Request $request, $id){
-        $datapenduduk = DataPendudukTamiu::findOrFail($id);
+        $datapenduduktamiu = DataPendudukTamiu::findOrFail($id);
         $validated = $request->validate([
-             'penduduk'=> 'required',
-            'laki-laki'=> 'required',
+            'penduduk'=> 'required',
+            'laki_laki'=> 'required',
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
         ]);
 
-        $datapenduduk->update($validated);
+        $datapenduduktamiu->update($validated);
 
-        return redirect()->route('datapenduduk.index');
+        return redirect()->route('datapenduduktamiu.index');
     }
 
      public function create(){
-        return view('datapenduduk.create-datapenduduk');
+        return view('datapenduduktamiu.create-datapenduduktamiu');
     }
 
     public function  store(Request $request) {
         $validated = $request -> validate ([
             'penduduk'=> 'required',
-            'laki-laki'=> 'required',
+            'laki_laki'=> 'required',
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
         ]);
@@ -47,6 +47,6 @@ class DataPendudukTamiuController extends Controller
 
         // 2.4 ada di datapenduduk.index
         DataPendudukTamiu::create($validated); 
-        return redirect()->route('datapenduduk.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
+        return redirect()->route('datapenduduktamiu.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
     }
 }

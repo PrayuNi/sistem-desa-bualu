@@ -21,12 +21,12 @@ class ProfilDesaController extends Controller
      public function update(Request $request, $id){
         $profilsdesa = ProfilDesa::findOrFail($id);
         $validated = $request->validate([
-             'image' => 'nullable|max:10000|image|mimes:jpg,jpeg,png',
-             'sambutan_bendesa' => 'max:200',
              'name' => 'max:100',
+             'sambutan_bendesa' => 'max:200',
              'sejarah_desa'=> 'max:5000',
              'visi_desa' => 'max:1000',
-             'misi_desa'=> 'max:1000', 
+             'misi_desa'=> 'max:1000',
+             'image' => 'nullable|max:10000|image|mimes:jpg,jpeg,png', 
         ]);
 
         if ($request->hasFile('image')){
@@ -51,6 +51,7 @@ class ProfilDesaController extends Controller
 
     public function  store(Request $request) {
         $validated = $request -> validate ([
+            'name'=> 'required',
             'sambutan_bendesa'=> 'required',
             'sejarah_desa'=> 'required',
             'visi_desa'=> 'required',

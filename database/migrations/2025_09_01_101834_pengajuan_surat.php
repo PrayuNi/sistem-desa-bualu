@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nik');
             $table->string('jenis_surat');
             $table->string('no_whatsapp');
-            $table->date('tanggal_pengajuan');
+            $table->string('tanggal_pengajuan');
             $table->string('image');
             $table->timestamps();
           });

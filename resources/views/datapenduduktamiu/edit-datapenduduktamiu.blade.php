@@ -1,6 +1,6 @@
 <x-layout>
 <x-slot:title>
-    Edit Data Penduduk Desa Adat Bualu
+    Edit Data Penduduk Tamiu Desa Adat Bualu
 </x-slot>
 <style>
     body {
@@ -50,16 +50,16 @@
     }
 
 </style>
-<form class="form-card" action="{{route('datapenduduktamiu.update', $datapenduduk->id)}}" method="POST" enctype="multipart/form-data">
+<form class="form-card" action="{{route('datapenduduktamiu.update', $datapenduduktamiu->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1>
-        Edit Jumlah Data Penduduk Desa Adat Bualu
+        Edit Jumlah Data Penduduk Tamiu Desa Adat Bualu
     </h1>
     <label>Jumlah Penduduk Keseluruhan:</label>
     <input type="text" name="penduduk" id="penduduk" placeholder="Isi Jumlah" value=""> <br>
 
     <label>Jumlah Penduduk Laki-Laki:</label>
-    <input type="text" name="laki-laki" id="laki-laki" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="laki_laki" id="laki_laki" placeholder="Isi Jumlah" value=""> <br>
 
     <label>Jumlah Penduduk Perempuan:</label>
     <input type="text" name="perempuan" id="perempuan" placeholder="Isi Jumlah" value=""> <br>

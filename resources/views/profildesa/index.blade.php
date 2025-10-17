@@ -37,7 +37,7 @@
         >
           <img class="w-60 mx-auto" src="{{asset('storage/' . ($p->image ?: 'profil_images/default.png'))}}" alt="" />
           <h4 class="font-bold text-balance mt-2 text-lg">
-            I Wayan Mudita, SH.
+            I Wayan Mudita.SH
           </h4>
           <p class="text-sm mt-2">BENDESA ADAT BUALU</p>
         </div>
@@ -100,25 +100,11 @@
       <!-- Sejarah Desa -->
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
         >
           Sejarah Desa Adat Bualu
         </h2>
       </div>
-
-      <!-- Btn Edit -->
-      <div class="row">
-        <div class="md:ml-auto mx-auto w-fit my-10">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
-        </div>
-      </div>
-      <!-- End Btn Edit -->
 
       <div class="text-justify px-5">
         <p class="text-lg font-thin">
@@ -190,7 +176,7 @@
       <!-- Informasi Geografis -->
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
         >
           Letak Geografis
         </h2>
@@ -235,7 +221,7 @@
             <div class="flex items-start space-x-3">
               <i class="fa-solid fa-house-chimney"></i>
               <a
-                href="https://maps.app.goo.gl/YQ3CjiSrTitZvUEv8?g_st=com.google.maps.preview.copy"
+                href="https://maps.app.goo.gl/zSBWSgVUPec7Xevs8"
               >
                 <span>Banjar Penyarikan</span>
               </a>
@@ -246,19 +232,31 @@
           <div class="space-y-4 text-2xl w-full md:w-auto">
             <div class="flex items-start space-x-3">
               <i class="fa-solid fa-house-chimney"></i>
+               <a
+                href="https://maps.app.goo.gl/EhbGEKFDHRdrJU1M6"
+              >
               <span>Banjar Pande</span>
             </div>
             <div class="flex items-start space-x-3">
               <i class="fa-solid fa-house-chimney"></i>
+               <a
+                href="https://maps.app.goo.gl/PYfg4U3vG1bJyUi78"
+              >
+              <span>Banjar Balekembar</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fa-solid fa-house-chimney"></i>
+               <a
+                href="https://maps.app.goo.gl/Yvqp1uqoLYgot1mK8"
+              >
               <span>Banjar Bualu</span>
             </div>
             <div class="flex items-start space-x-3">
               <i class="fa-solid fa-house-chimney"></i>
-              <span>Banjar Bale Kembar</span>
-            </div>
-            <div class="flex items-start space-x-3">
-              <i class="fa-solid fa-house-chimney"></i>
-              <span>Banjar Celuk</span>
+               <a
+                href="https://maps.app.goo.gl/k4qZbMkoD4ZZgcZeA"
+              >
+              <span>Banjar Mumbul</span>
             </div>
           </div>
         </div>

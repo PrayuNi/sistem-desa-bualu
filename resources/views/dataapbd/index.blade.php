@@ -15,7 +15,23 @@
       </div>
       <!-- End Title -->
 
-       <!-- Row 1 -->
+    <!-- Btn Edit -->
+      <div class="row">
+        <div class="ml-auto w-fit my-10">
+           <a href="/financials">
+          <button
+            type="button"
+            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
+          >
+            <i class="fa-solid fa-edit"></i>
+            Edit Data
+          </button>
+            </a>
+        </div>
+      </div>
+    <!-- End Btn Edit -->
+
+      <!-- Row 1 -->
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6"
         >
@@ -25,7 +41,7 @@
           >
             <div>
               <p class="text-lg font-medium">Pendapatan</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearinc->income}}</p>
             </div>
             <img src="{{asset('storage/assets/income.png')}}" alt="pendapatan" class="w-25 h-25" />
           </div>
@@ -35,7 +51,7 @@
           >
             <div>
               <p class="text-lg font-medium">Belanja</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
             </div>
             <img src="{{asset('storage/assets/shopping-bag.png')}}" alt="belanja" class="w-25 h-25" />
           </div>
@@ -52,7 +68,7 @@
           >
             <div>
               <p class="text-lg font-medium">Surplus/Defisit</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{ $surplus }}</p>
             </div>
             <img
               src="{{asset('storage/assets/surplus-def.png')}}"
@@ -66,13 +82,14 @@
           >
             <div>
               <p class="text-lg font-medium">Pengeluaran</p>
-              <p class="text-3xl font-bold">200RB</p>
+              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
             </div>
             <img src="{{asset('storage/assets/expenses.png')}}" alt="pengeluaran" class="w-25 h-25" />
           </div>
         </div>
         <!-- End Row 2 -->
       </div>
+    </section>
 
       <div class="row flex">
         <a class="btn bg-green-700 rounded-full mx-auto w-fit px-4 py-2 mb-3 text-white font-semibold" target="_blank" href="https://drive.google.com/drive/folders/1BIdNDWKkNAq9zH1Li2bcc9DcvHZ8kHBH?usp=sharing">

@@ -10,9 +10,8 @@
       <div
         class="title w-fit px-7 py-5 border-solid border-2 border-black mx-auto rounded-lg m-2 p-2 text-center shadow-lg shadow-amber-200"
       >
-        <h4 class="font-semibold text-3xl">Administrasi Penduduk Desa Adat Bualu</h4>
-        <p>Data Penduduk Gabungan Dari Penduduk Adat & Penduduk Tamiu Desa Adat
-          Bualu</p>
+        <h4 class="font-semibold text-3xl">Administrasi Penduduk Adat Desa Adat Bualu</h4>
+        <p>Merupakan jumlah penduduk adat yang ada di Desa Adat Bualu serta memiliki status berbanjar di Desa Adat Bualu</p>
       </div>
       <!-- End Title -->
       @foreach($datapenduduk as $d)
@@ -39,7 +38,7 @@
           <div
             class="card text-center shadow-lg shadow-orange-100 w-40 px-10 py-10 mx-auto mt-10"
           >
-            <i class="fa-solid fa-people-group text-6xl"></i>
+            <i class="fa-solid fa-people-group text-6xl text-amber-300"></i>
             <h4 class="font-semibold text-3xl">{{$d->penduduk}}</h4>
             <p>Penduduk</p>
           </div>

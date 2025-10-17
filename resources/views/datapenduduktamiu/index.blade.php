@@ -10,12 +10,12 @@
       <div
         class="title w-fit px-7 py-5 border-solid border-2 border-black mx-auto rounded-lg m-2 p-2 text-center shadow-lg shadow-amber-200"
       >
-        <h4 class="font-semibold text-3xl">Administrasi Penduduk Desa Adat Bualu</h4>
+        <h4 class="font-semibold text-3xl">Administrasi Penduduk Tamiu Desa Adat Bualu</h4>
         <p>Data Penduduk Gabungan Dari Penduduk Adat & Penduduk Tamiu Desa Adat
           Bualu</p>
       </div>
       <!-- End Title -->
-      @foreach($datapenduduk as $d)
+      @foreach($datapenduduktamiu as $d)
       <!-- Btn Edit -->
       <div class="row">
         <div class="ml-auto w-fit my-10">

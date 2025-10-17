@@ -1,6 +1,6 @@
 <x-layout>
 <x-slot:title>
-    Edit Struktur Staff Kantor Desa
+    Edit Profil Desa Adat Bualu
 </x-slot>
 <style>
     body {

@@ -36,17 +36,17 @@
         </style>
         <table>
             <tr>
-                <th>Jenis</th>
                 <th>Tahun</th>
-                <th>Nominal</th>
+                <th>Pendapatan</th>
+                <th>Pengeluaran</th>
                 <th>Aksi</th>
             </tr>
 
             @foreach($datafinancials as $item)
             <tr>
-                <td>{{$item->type}}</td>
                 <td>{{$item->years}}</td>
-                <td>{{$item->nominal}}</td>
+                <td>{{$item->income}}</td>
+                <td>{{$item->spending}}</td>
                 <td>
                     <a href="{{route('financial.edit', $item->id)}}">
                         <button

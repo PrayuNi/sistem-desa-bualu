@@ -86,7 +86,7 @@
                 <div class="py-1 text-left" role="none">
                   <!-- Active: "bg-gray-100 text-gray-900 outline-hidden", Not Active: "text-gray-700" -->
                   <a
-                    href="#"
+                    href="/datapenduduk"
                     class="block px-4 py-2 text-sm text-gray-700"
                     role="menuitem"
                     tabindex="-1"
@@ -94,7 +94,7 @@
                     >Penduduk Adat</a
                   >
                   <a
-                    href="#"
+                    href="/datapenduduktamiu"
                     class="block px-4 py-2 text-sm text-gray-700"
                     role="menuitem"
                     tabindex="-1"

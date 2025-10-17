@@ -74,17 +74,18 @@ class DashboardController extends Controller
 
     public function editfinancial($id){
         $item = Financial::findOrFail($id);
-        return view('financial.edit', compact('item'));
+        return view('financial.edit-financial', compact('item'));
     }
 
     public function updatefinancial(Request $request, $id){
         $item = Financial::findOrFail($id);
         $validated = $request->validate([
-            'type'=>'required|max:20',
             'years'=>'required|max:20',
-            'nominal'=>'required|max:20',
+            'income'=>'required|max:20',
+            'spending'=>'required|max:20',
         
         ]);
+        // dd($validated);
         $item->update($validated);
         return redirect()->route('financial.index');
     }

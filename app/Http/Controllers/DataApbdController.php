@@ -2,17 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataApbd;
+use App\Models\Financial;
+use App\Models\Population;
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\Storage;
 
 class DataApbdController extends Controller
 {
     public function index() {
-        $dataapbd = DataApbd::all(); //1.1 untuk baca semua data
-        return view('dataapbd.index', compact('dataapbd')); // 1.2 untuk menampilkan halaman dari data
+        $pendapatan = Financial::all() //1.1 untuk baca semua data
+        ->pluck('income');
+
+        $belanja = Financial::all() //1.1 untuk baca semua data
+        ->pluck('spending');
+
+        $year = Financial::all() //1.1 untuk baca semua data
+        ->pluck('years');
+
+        $yearinc = Financial::where('years', '2024')
+        ->first();
+
+        $yearspend = Financial::where( 'years', '2024')
+        ->first();
+
+
+        $yearincome = $yearinc->income;
+
+        $yearspending = $yearspend->spending;
+
+        $surplus = ($yearincome - $yearspending);
+
+
+        $adat = Population::where('type', 'adat') //1.1 untuk baca semua data
+        ->orderBy('years', 'asc')
+        ->pluck('total');
+
+        $pendatang = Population::where('type', 'pendatang') //1.1 untuk baca semua data
+        ->orderBy('years', 'asc')
+        ->pluck('total');
+
+
+        return view('dataapbd.index', compact('pendapatan', 'belanja', 'year', 'adat', 'pendatang', 'yearinc', 'yearspend', 'surplus')); // 1.2 untuk menampilkan halaman dari data
     }
-     public function create(){
+    public function create(){
         return view('dataapbd.create-dataapbd');
     }
 

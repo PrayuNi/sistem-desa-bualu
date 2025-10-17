@@ -78,8 +78,8 @@
           <div class="swiper-wrapper mb-7">
             <!-- Slide 1 -->
             <div class="swiper-slide">
-              <div
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
+              <div style="height: 580px"
+                class="bg-white rounded-lg shadow-md overflow-hidden"
               >
                 <img
                 src="{{asset('storage/berita_images/image.png')}}"
@@ -89,7 +89,7 @@
                 <div class="p-4">
                   <span
                     class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >tanggal pemasangnnya"</span
+                    >Rabu, 14 Agustus 2024</span
                   >
                   <h3 class="font-semibold text-lg px-5">
                     Pemasangan Letter Box Tulisan "Desa Adat Bualu"
@@ -105,18 +105,18 @@
 
             <!-- Slide 2 -->
             <div class="swiper-slide">
-              <div
+              <div style="height: 580px"
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
-                  src="{{asset('storage/berita_images/bersih_pantai.jpg')}}"
+                  src="{{asset('storage/berita_images/dlds.png')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
                    <span
                     class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Acara Tahunan Desa</span
+                    >Acara Tahunan Desa Adat Bualu</span
                   >
                   <h3 class="font-semibold text-lg px-5">
                     Dresta Lango & Dharma Shanti Desa Adat Bualu
@@ -131,7 +131,7 @@
 
             <!-- Slide 3 -->
             <div class="swiper-slide">
-              <div
+              <div style="height: 580px"
                 class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
               >
                 <img
@@ -156,8 +156,9 @@
 
             <!-- Slide 4 -->
             <div class="swiper-slide">
-              <div
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
+              <div style="height: 580px"
+                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+
                 <img
                   src="{{asset('storage/berita_images/bersih_pantai.jpg')}}"
                   alt=""
@@ -166,7 +167,7 @@
                 <div class="p-4">
                    <span
                     class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Kegiatan Rutinan Desa</span
+                    >Kegiatan Rutinan Desa Adat Bualu</span
                   >
                   <h3 class="font-semibold text-lg px-5">
                     Bersih-Bersih Area Pantai
@@ -180,27 +181,24 @@
 
             <!-- Slide 5 -->
             <div class="swiper-slide">
-              <div
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
+              <div style="height: 580px"
+                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+
                 <img
-                  src="{{asset('storage/assets/jumbotron 1.png')}}"
+                  src="{{asset('storage/berita_images/bulan_bhs_bali.jpg')}}"
                   alt=""
                   class="w-full h-48 object-cover"
                 />
                 <div class="p-4">
                   <span
-                    class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full mb-2"
-                    >Nutrition</span
+                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
+                    >Selasa, 20 Februari 2024</span
                   >
-                  <h3 class="font-semibold text-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ipsa, ea!
+                  <h3 class="font-semibold text-lg px-5">
+                    Perlombaan Dalam Ajang Bulan Bahasa Bali VI Warsa 2024
                   </h3>
-                  <p class="text-sm text-gray-600 mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Harum assumenda labore necessitatibus ipsam velit fugiat
-                    neque, dolore numquam vel omnis animi saepe cumque! Sint
-                    incidunt accusamus, odit laudantium vero minus.
+                  <p class="text-sm text-gray-600 mt-2 px-5">
+                    Desa Adat Bualu secara rutin melaksanakan perlombaan dalam ajang Bulan Bahasa Bali, yang dimana sesuai dengan Surat Edaran Gubernur Bali Nomor 9393 tanggal 19 Oktober 2019 yang menetapkan bulan februari sebagai Bulan Bahasa Bali. Maka dari itu seluruh desa diBali melestarikan bahasa dan sastra Bali sesuai peraturan gubernur Bali yang telah ditetapkan. Dan Desa Adat Bualu rutin melaksanakan program tersebut setiap tahunnya.
                   </p>
                 </div>
               </div>
@@ -430,26 +428,11 @@
       <div class="container max-w-6xl mx-auto">
         <div class="text-center mt-10 mb-5">
           <h2
-            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:w-[80%] after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
           >
             Data APBD Desa Adat Bualu
           </h2>
         </div>
-
-        <!-- Btn Edit -->
-        <div class="row">
-          <div class="md:ml-auto mx-auto w-fit my-10">
-            <button
-              id="openmodalsummary"
-              type="button"
-              class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
-            >
-              <i class="fa-solid fa-edit"></i>
-              Edit Data
-            </button>
-          </div>
-        </div>
-        <!-- End Btn Edit -->
 
         <!-- Javascript -->
         <script>

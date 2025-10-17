@@ -55,14 +55,16 @@
     <h1>
         Edit Grafik Data Pendapatan dan Pengeluaran Desa
     </h1>
-    <label>Jenis:</label>
-    <input type="text" name="type" id="type" placeholder="Isi Jenis Penduduk" value="{{old('type', $item->type)}}"> <br>
 
     <label>Tahun:</label>
     <input type="number" name="years" id="years" placeholder="Isi Tahun" value="{{old('years', $item->years)}}"> <br>
 
-    <label>Nominal:</label>
-    <input type="number" name="nominal" id="nominal" placeholder="Isi Jumlah" value="{{old('nominal', $item->total)}}"> <br>
+    <label>Pendapatan:</label>
+    <input type="number" name="income" id="income" placeholder="Isi Jumlah" value="{{old('income', $item->income)}}"> <br>
+
+    <label>Pengeluaran:</label>
+    <input type="number" name="spending" id="spending" placeholder="Isi Jumlah" value="{{old('spending', $item->spending)}}"> <br>
+
     <button class="btn" type="submit">Update</button>
 </form>
 </x-layout>
