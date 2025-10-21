@@ -302,6 +302,8 @@
       <h2>Grafik Pertumbuhan Penduduk</h2>
       <div id="chartpenduduk"></div>
       
+      @auth
+      @if(Auth::user()->role == 0)
       <a href="{{route('population.index')}}">
           <button
             type="button"
@@ -311,6 +313,9 @@
             Edit Data
           </button>
       </a>
+      @endif
+
+      @endauth
     </div>
 
     <script>
@@ -371,6 +376,9 @@
       <h2>Grafik Pendapatan dan Pengeluaran</h2>
       <div id="chartpendapatan"></div>
         <a href="{{route('financial.index')}}">
+
+        @auth
+        @if (Auth::user()->role == 0)
           <button
             type="button"
             class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
@@ -379,6 +387,8 @@
             Edit Data
           </button>
         </a>
+        @endif
+        @endauth
     </div>
 
     <script>

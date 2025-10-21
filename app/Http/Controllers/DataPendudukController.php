@@ -10,7 +10,6 @@ class DataPendudukController extends Controller
 {
     public function index() {
         $datapenduduk = DataPenduduk::all(); //1.1 untuk baca semua data
-        // dd($datapenduduk);
         return view('datapenduduk.index', compact('datapenduduk')); // 1.2 untuk menampilkan halaman dari data
     }
 
@@ -22,7 +21,7 @@ class DataPendudukController extends Controller
     public function update(Request $request, $id){
         $datapenduduk = DataPenduduk::findOrFail($id);
         $validated = $request->validate([
-             'penduduk'=> 'required',
+            'penduduk'=> 'required',
             'laki_laki'=> 'required',
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
@@ -40,7 +39,7 @@ class DataPendudukController extends Controller
     public function  store(Request $request) {
         $validated = $request -> validate ([
             'penduduk'=> 'required',
-            'laki-laki'=> 'required',
+            'laki_laki'=> 'required',
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
         ]);

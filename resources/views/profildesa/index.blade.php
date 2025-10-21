@@ -19,6 +19,9 @@
       <div class="row">
         <div class="md:ml-auto mx-auto w-fit my-10">
           <a href="{{route('profildesa.edit-profildesa', $p->id)}}">
+
+          @auth
+          @if (Auth::user()-> role == 0)
           <button
             type="button"
             class="btn bg-green-900 rounded-full w-fit px-4 py-2 text-white font-semibold"
@@ -26,6 +29,8 @@
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
+          @endif
+          @endauth
         </div>
       </div>
       <!-- End Btn Edit -->

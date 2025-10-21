@@ -11,6 +11,7 @@
         text-align: center;
         color: #F99C0F;
         font-weight: bold;
+        font-size: large;
     }
     .form-card {
         margin: 10px auto;
@@ -56,17 +57,16 @@
         Edit Jumlah Data Penduduk Tamiu Desa Adat Bualu
     </h1>
     <label>Jumlah Penduduk Keseluruhan:</label>
-    <input type="text" name="penduduk" id="penduduk" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="penduduk" id="penduduk" placeholder="Isi Jumlah" value="{{old('penduduk', $datapenduduktamiu->penduduk)}}"> <br>
 
     <label>Jumlah Penduduk Laki-Laki:</label>
-    <input type="text" name="laki_laki" id="laki_laki" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="laki_laki" id="laki_laki" placeholder="Isi Jumlah" value="{{old('laki_laki', $datapenduduktamiu->laki_laki)}}"> <br>
 
     <label>Jumlah Penduduk Perempuan:</label>
-    <input type="text" name="perempuan" id="perempuan" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="perempuan" id="perempuan" placeholder="Isi Jumlah" value="{{old('perempuan', $datapenduduktamiu->perempuan)}}"> <br>
 
     <label>Jumlah Mutasi Penduduk:</label>
-    <input type="text" name="mutasi_penduduk" id="mutasi_penduduk" placeholder="Isi Jumlah" value=""> <br>
-
+    <input type="text" name="mutasi_penduduk" id="mutasi_penduduk" placeholder="Isi Jumlah" value="{{old('mutasi_penduduk', $datapenduduktamiu->mutasi_penduduk)}}"> <br>
     <button type="submit">Update</button>
 </form>
 </x-layout>

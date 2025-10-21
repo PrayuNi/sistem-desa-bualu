@@ -1,6 +1,6 @@
 <x-layout>
 <x-slot:title>
-    Edit Data Penduduk Desa Adat Bualu
+    Edit Data Penduduk Gegem Desa Adat Bualu
 </x-slot>
 <style>
     body {
@@ -11,6 +11,7 @@
         text-align: center;
         color: #F99C0F;
         font-weight: bold;
+        font-size: large;
     }
     .form-card {
         margin: 10px auto;
@@ -53,19 +54,20 @@
 <form class="form-card" action="{{route('datapenduduk.update', $datapenduduk->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1>
-        Edit Jumlah Data Penduduk Desa Adat Bualu
+        Edit Jumlah Data Penduduk Gegem Desa Adat Bualu
     </h1>
+    <br>
     <label>Jumlah Penduduk Keseluruhan:</label>
-    <input type="text" name="penduduk" id="penduduk" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="penduduk" id="penduduk" placeholder="Isi Jumlah" value="{{old('penduduk', $datapenduduk->penduduk)}}"> <br>
 
     <label>Jumlah Penduduk Laki-Laki:</label>
-    <input type="text" name="laki-laki" id="laki-laki" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="laki_laki" id="laki_laki" placeholder="Isi Jumlah" value="{{old('laki_laki', $datapenduduk->laki_laki)}}"> <br>
 
     <label>Jumlah Penduduk Perempuan:</label>
-    <input type="text" name="perempuan" id="perempuan" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="perempuan" id="perempuan" placeholder="Isi Jumlah" value="{{old('perempuan', $datapenduduk->perempuan)}}"> <br>
 
     <label>Jumlah Mutasi Penduduk:</label>
-    <input type="text" name="mutasi_penduduk" id="mutasi_penduduk" placeholder="Isi Jumlah" value=""> <br>
+    <input type="text" name="mutasi_penduduk" id="mutasi_penduduk" placeholder="Isi Jumlah" value="{{old('mutasi_penduduk', $datapenduduk->mutasi_penduduk)}}"> <br>
 
     <button type="submit">Update</button>
 </form>

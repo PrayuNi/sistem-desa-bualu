@@ -11,8 +11,21 @@ use App\Http\Controllers\PengajuanSuratController;
 use App\Http\Controllers\JenisSuratController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\DataPendudukTamiuController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+Route::middleware(['auth'])->group(function () {
+    // Halaman Login
+    Route::get('/profile', [ProfilDesaController::class, 'show'])->name('profile.show');
+
+    // Halaman Logout
+    Route::post('/logout', function () {
+        Auth::logout();
+
+        return redirect('/login');
+    })->name('logout');
+});
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);

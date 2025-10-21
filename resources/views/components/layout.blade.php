@@ -106,9 +106,44 @@
             </div>
             <a href="/dataapbd">Data APBD</a>
             <a href="/pengajuansurats">Pengajuan Surat</a>
+
+            @auth
+            @if(Auth::user()->role !== 2)
             <a href="/jenissurats">Jenis Surat</a>
-          </div>
+            @endif
+            @endauth
+
+        @auth 
+        <!-- Buat menu dropdown dan user sudah login -->
+            <div class="relative ml-4">
+              <button id="user-menu-btn" class="flex items-center space-x-2 focus:outline-none">
+                <img src="{{ asset('storage/structure_images/default.png') }}" alt="User" class="w-8 h-8 rounded-full border-2 border-white"/>
+                <span class="hidden md:inline font-semibold">{{ Auth::user()->name ?? 'Umum' }}</span>
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+          
+
+      <!--  Dropdown Menu -->
+        <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-700 rounded-lg shadow-lg overflow-hidden z-50">
+        
+            <a href="{{ route('profile.show') }}" class="block px-4 py-2 hover:bg-gray-100">
+              <i class="fa-solid fa-user mr-2"></i>Profil Saya
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                Logout
+                <i class="fa-solid fa-right-form-bracket mr-2"></i>
+              </button>
+            </form>
         </div>
+        @else
+            <a href="{{ route('login') }}" class="btn inline-flex rounded-lg bg-blue-600 px-4 pt-2 pb-0">
+              <span><i class="fa-solid fa-right-to-bracket mr-2"></i></span>
+              <p>Login</p>
+            </a>
+        @endauth
 
         <!-- Menu Mobile (DITAMBAHKAN) -->
         <!-- Menu ini hanya muncul di layar kecil saat tombol ditekan -->
@@ -168,6 +203,24 @@
       </nav>
     </section>
     <!-- End Navbar -->
+
+    <!-- JavaScript Dropdown Profil -->
+    <script>
+      const userMenuBtn = document.getElementById("user-menu-btn");
+      const userMenuDropdown = document.getElementById("user-menu-dropdown");
+
+      userMenuBtn.addEventListener("click", () => {
+        userMenuDropdown.classList.toggle("hidden");
+      });
+
+      //Klik diluar dropdown untuk menutup
+      window.addEventListener("click", (e) => {
+        if (!userMenuBtn.contains(e.target) && !userMenuDropdown.contains(e.target)) {
+          userMenuDropdown.classList.add("hidden");
+        }
+      });
+    </script>
+    <!-- End JavaScript Dropdown Profil-->
 
     <!-- JavaScript untuk Toggle Menu (DITAMBAHKAN) -->
     <script>
