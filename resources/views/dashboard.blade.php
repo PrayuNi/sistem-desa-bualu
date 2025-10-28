@@ -17,7 +17,7 @@
     <!-- jumbotron -->
     <section
       class="jumbotron relative min-h-screen bg-cover bg-center"
-      style="background-image: url('{{asset('storage/assets/jumbotron 1.png')}}')"
+      style="background-image: url('{{asset('storage/assets/jumbotron 1.png') }}')"
     >
       <!-- Overlay Hitam Transparan -->
       <div
@@ -40,13 +40,6 @@
           <p class="text-white text-lg sm:text-xl font-semibold mb-5">
             Kecamatan Kuta Selatan, Kabupaten Badung, Provinsi Bali
           </p>
-
-          <!-- Button Video Profil Desa -->
-          <button
-            class="bg-green-600 hover:bg-green-700 transition rounded-3xl py-2 px-6 text-white font-semibold"
-          >
-            Video Profil Desa
-          </button>
         </div>
 
         <!-- Gambar -->
@@ -76,21 +69,15 @@
         <!-- Swiper -->
         <div class="swiper mySwiper">
           <div class="swiper-wrapper mb-7">
+
             <!-- Slide 1 -->
             <div class="swiper-slide">
-              <div style="height: 580px"
-                class="bg-white rounded-lg shadow-md overflow-hidden"
-              >
-                <img
-                src="{{asset('storage/berita_images/image.png')}}"
-                  alt=""
-                  class="w-full h-48 object-cover"
-                />
+              <div style="height: 580px" class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="{{asset('storage/berita_images/image.png')}}" alt="" class="w-full h-48 object-cover"/>
                 <div class="p-4">
-                  <span
-                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Rabu, 14 Agustus 2024</span
-                  >
+                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
+                    Rabu, 14 Agustus 2024
+                  </span>
                   <h3 class="font-semibold text-lg px-5">
                     Pemasangan Letter Box Tulisan "Desa Adat Bualu"
                   </h3>
@@ -105,19 +92,12 @@
 
             <!-- Slide 2 -->
             <div class="swiper-slide">
-              <div style="height: 580px"
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
-              >
-                <img
-                  src="{{asset('storage/berita_images/dlds.png')}}"
-                  alt=""
-                  class="w-full h-48 object-cover"
-                />
+              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+                <img src="{{asset('storage/berita_images/dlds.png')}}" alt="" class="w-full h-48 object-cover"/>
                 <div class="p-4">
-                   <span
-                    class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Acara Tahunan Desa Adat Bualu</span
-                  >
+                  <span class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2">
+                    Acara Tahunan Desa Adat Bualu
+                  </span>
                   <h3 class="font-semibold text-lg px-5">
                     Dresta Lango & Dharma Shanti Desa Adat Bualu
                   </h3>
@@ -131,19 +111,12 @@
 
             <!-- Slide 3 -->
             <div class="swiper-slide">
-              <div style="height: 580px"
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden"
-              >
-                <img
-                  src="{{asset('storage/berita_images/maskot_desa.jpg')}}"
-                  alt=""
-                  class="w-full h-48 object-cover"
-                />
+              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+                <img src="{{asset('storage/berita_images/maskot_desa.jpg')}}" alt="" class="w-full h-48 object-cover"/>
                 <div class="p-4">
-                  <span
-                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Minggu, 10 April 2022</span
-                  >
+                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
+                    Minggu, 10 April 2022
+                  </span>
                   <h3 class="font-semibold text-lg px-5">
                     Launching Maskot Desa Adat Bualu "Padma Kesara"
                   </h3>
@@ -156,19 +129,12 @@
 
             <!-- Slide 4 -->
             <div class="swiper-slide">
-              <div style="height: 580px"
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-
-                <img
-                  src="{{asset('storage/berita_images/bersih_pantai.jpg')}}"
-                  alt=""
-                  class="w-full h-48 object-cover"
-                />
+              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+                <img src="{{asset('storage/berita_images/bersih_pantai.jpg')}}" alt="" class="w-full h-48 object-cover"/>
                 <div class="p-4">
-                   <span
-                    class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Kegiatan Rutinan Desa Adat Bualu</span
-                  >
+                  <span class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2">
+                    Kegiatan Rutinan Desa Adat Bualu
+                  </span>
                   <h3 class="font-semibold text-lg px-5">
                     Bersih-Bersih Area Pantai
                   </h3>
@@ -181,19 +147,12 @@
 
             <!-- Slide 5 -->
             <div class="swiper-slide">
-              <div style="height: 580px"
-                class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-
-                <img
-                  src="{{asset('storage/berita_images/bulan_bhs_bali.jpg')}}"
-                  alt=""
-                  class="w-full h-48 object-cover"
-                />
+              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
+                <img src="{{asset('storage/berita_images/bulan_bhs_bali.jpg')}}" alt="" class="w-full h-48 object-cover"/>
                 <div class="p-4">
-                  <span
-                    class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2"
-                    >Selasa, 20 Februari 2024</span
-                  >
+                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
+                    Selasa, 20 Februari 2024
+                  </span>
                   <h3 class="font-semibold text-lg px-5">
                     Perlombaan Dalam Ajang Bulan Bahasa Bali VI Warsa 2024
                   </h3>
@@ -216,6 +175,7 @@
           </div>
         </div>
       </div>
+
       <!-- Tools untu Slider News -->
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script>
@@ -246,14 +206,10 @@
     <!-- End News -->
 
     <!-- Summary -->
-    <section
-      class="summary my-5 px-4 py-10 bg-gradient-to-r from-amber-500 to-amber-700"
-    >
+    <section class="summary my-5 px-4 py-10 bg-gradient-to-r from-amber-500 to-amber-700">
       <div class="container mx-auto text-center">
         <!-- Gunakan grid yang responsive -->
-        <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-around"
-        >
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-around">
           <!-- Item 1 -->
           <div class="text-white">
             <h4 class="font-bold text-2xl">120RB</h4>
@@ -289,32 +245,25 @@
     <!-- End Summary -->
 
     <!-- Chart Warga -->
-    <div class="container max-w-6xl mx-auto">
-      <div class="text-center mt-10 mb-5">
-        <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
-        >
-          Grafik Pertumbuhan Penduduk Desa
-        </h2>
-      </div>
+    <div class="container max-w-6xl mx-auto text-center mt-10 mb-5">
+      <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl">
+        Grafik Penduduk Desa Adat Bualu
+      </h2>
     </div>
+ 
     <div class="card">
-      <h2>Grafik Pertumbuhan Penduduk</h2>
+      <h2>Grafik Penduduk Desa Adat Bualu</h2>
       <div id="chartpenduduk"></div>
       
       @auth
       @if(Auth::user()->role == 0)
-      <a href="{{route('population.index')}}">
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
-          >
+        <a href="{{ route('population.index') }}">
+          <button type="button" class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold">
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
-      </a>
+        </a>
       @endif
-
       @endauth
     </div>
 
@@ -330,21 +279,25 @@
             name: "Pertumbuhan Penduduk Pendatang",
             data: {{$pendatang}},
           },
-
         ],
+
         chart: {
           height: 350,
           type: "area",
         },
+
         dataLabels: {
           enabled: false,
         },
+
         stroke: {
           curve: "smooth",
         },
+
         xaxis: {
           categories: {{$year}},
         },
+
         tooltip: {
           y: {
             formatter: function (val) {
@@ -363,32 +316,26 @@
     <!-- End Chart Warga -->
 
     <!-- Chart Pendapatan -->
-    <div class="container max-w-6xl mx-auto">
-      <div class="text-center mt-10 mb-5">
-        <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
-        >
+    <div class="container max-w-6xl mx-auto text-center mt-10 mb-5">
+        <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl">
           Grafik Pendapatan dan Pengeluaran Desa
         </h2>
-      </div>
     </div>
+
     <div class="card">
       <h2>Grafik Pendapatan dan Pengeluaran</h2>
       <div id="chartpendapatan"></div>
-        <a href="{{route('financial.index')}}">
 
-        @auth
-        @if (Auth::user()->role == 0)
-          <button
-            type="button"
-            class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold"
-          >
+      @auth
+      @if (Auth::user()->role == 0)
+        <a href="{{route('financial.index')}}">
+          <button type="button" class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold">
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
         </a>
-        @endif
-        @endauth
+      @endif
+      @endauth
     </div>
 
     <script>
@@ -403,19 +350,24 @@
             data: {{$belanja}},
           },
         ],
+
         chart: {
           height: 350,
           type: "area",
         },
+
         dataLabels: {
           enabled: false,
         },
+
         stroke: {
           curve: "smooth",
         },
+
         xaxis: {
           categories: {{$year}},
         },
+        
         tooltip: {
           y: {
             formatter: function (val) {
@@ -467,6 +419,7 @@
               modalsummary.classList.remove("flex");
             }
           });
+
         </script>
         <!-- End Javascript -->
 
