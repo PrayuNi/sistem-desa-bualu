@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('datapenduduk', function (Blueprint $table) {
+        if (!Schema::hasTable('datapenduduk')) {
+        Schema::create('datapenduduk', function (Blueprint $table) {
             $table->id();
             $table->integer('penduduk');
             $table->integer('laki_laki');
             $table->integer('perempuan');
             $table->integer('mutasi_penduduk');
             $table->timestamps();
-    });
+        });
+    }
 }
 
     /**

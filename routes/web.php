@@ -33,9 +33,9 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post ('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 Route::get('/', [DashboardController::class, 'index']);
 
 Route::get('/populations', [DashboardController::class, 'listpopulation'])->name('population.index');
@@ -73,7 +73,7 @@ Route::get('/profildesa/create', [ProfilDesaController::class, 'create'])->name(
 Route::post('/profildesa/store', [ProfilDesaController::class, 'store'])->name('profildesa.store');
 Route::delete('/profildesa/delete/{id}', [ProfilDesaController::class, 'delete'])->name('profildesa.delete');
 Route::get('/profildesa/edit/{id}', [ProfilDesaController::class, 'edit'])->name('profildesa.edit-profildesa');
-Route::post('/profildesa/update/{id}', [ProfilDesaController::class, 'update'])->name('profildesa.update');
+Route::put('/profildesa/update/{id}', [ProfilDesaController::class, 'update'])->name('profildesa.update');
 Route::get ('/profildesa', [ProfilDesaController::class, 'index'])->name('profil.index');
 
 Route::get('/dataapbd/create', [DataApbdController::class, 'create'])->name('dataapbd.create-dataapbd');

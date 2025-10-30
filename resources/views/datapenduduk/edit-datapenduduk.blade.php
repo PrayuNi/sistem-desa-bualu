@@ -4,7 +4,6 @@
 </x-slot>
 <style>
     body {
-        font-family: Arial, sans-serif;
         background-color: #f4f4f4;
     }
     h1 {
@@ -49,8 +48,8 @@
     button:hover {
         background-color: #218838;
     }
-
 </style>
+
 <form class="form-card" action="{{route('datapenduduk.update', $datapenduduk->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1>

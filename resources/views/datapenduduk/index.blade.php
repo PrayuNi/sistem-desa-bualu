@@ -80,5 +80,4 @@
     </section>
     <!-- End Konten -->
            @endforeach
-
     </x-layout> 

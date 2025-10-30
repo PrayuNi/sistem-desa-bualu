@@ -41,7 +41,8 @@
           >
             <div>
               <p class="text-lg font-medium">Pendapatan</p>
-              <p class="text-3xl font-bold">{{$yearinc->income}}</p>
+              <p class="text-3xl font-bold">
+                Rp{{ number_format ($yearinc->income, 0, ',', '.') }}</p>
             </div>
             <img src="{{asset('storage/assets/income.png')}}" alt="pendapatan" class="w-25 h-25" />
           </div>
@@ -51,7 +52,8 @@
           >
             <div>
               <p class="text-lg font-medium">Belanja</p>
-              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
+              <p class="text-3xl font-bold">
+                Rp{{ number_format($yearspend->spending, 0, ',', '.') }}</p>
             </div>
             <img src="{{asset('storage/assets/shopping-bag.png')}}" alt="belanja" class="w-25 h-25" />
           </div>
@@ -68,7 +70,8 @@
           >
             <div>
               <p class="text-lg font-medium">Surplus/Defisit</p>
-              <p class="text-3xl font-bold">{{ $surplus }}</p>
+              <p class="text-3xl font-bold">
+                Rp{{ number_format($surplus, 0, ',', '.') }}</p>
             </div>
             <img
               src="{{asset('storage/assets/surplus-def.png')}}"
@@ -82,7 +85,8 @@
           >
             <div>
               <p class="text-lg font-medium">Pengeluaran</p>
-              <p class="text-3xl font-bold">{{$yearspend->spending}}</p>
+              <p class="text-3xl font-bold">
+                Rp {{ number_format ($yearspend->spending, 0, ',', '.') }}</p>
             </div>
             <img src="{{asset('storage/assets/expenses.png')}}" alt="pengeluaran" class="w-25 h-25" />
           </div>

@@ -21,11 +21,11 @@ class ProfilDesaController extends Controller
      public function update(Request $request, $id){
         $profilsdesa = ProfilDesa::findOrFail($id);
         $validated = $request->validate([
-             'name' => 'max:100',
-             'sambutan_bendesa' => 'max:200',
-             'sejarah_desa'=> 'max:5000',
-             'visi_desa' => 'max:1000',
-             'misi_desa'=> 'max:1000',
+             'name' => 'sometimes|max:100',
+             'sambutan_bendesa' => 'sometimes|max:5000',
+             'sejarah_desa'=> 'sometimes|max:5000',
+             'visi_desa' => 'sometimes|max:1000',
+             'misi_desa'=> 'sometimes|max:1000',
              'image' => 'nullable|max:10000|image|mimes:jpg,jpeg,png', 
         ]);
 
@@ -43,8 +43,9 @@ class ProfilDesaController extends Controller
 
         $profilsdesa->update($validated);
 
-        return redirect()->route('profil.index');
+        return redirect()->route('profil.index')->with('success', 'Data Berhasil Disimpan!');
     }
+
      public function create(){
         return view('profildesa.create-profildesa');
     }

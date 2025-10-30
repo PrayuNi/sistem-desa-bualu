@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data APBD</title>
-</head>
+<x-layout>
+<x-slot:title>
+    Edit Data APBDesa Adat Bualu
+</x-slot>
 <body>
      <!-- 2.1 tempat untuk menambahkan data enctype-->
     <form action="{{ route('dataapbd.store') }}" method="POST" enctype="multipart/form-data">
@@ -28,3 +25,4 @@
 </form>
 </body>
 </html>
+</x-layout>

@@ -90,7 +90,7 @@
                 tabindex="-1"
               >
                 <div class="py-1 text-left" role="none">
-                  <!-- Active: "bg-gray-100 text-gray-900 outline-hidden", Not Active: "text-gray-700" -->
+                  
                   
                     <a
                       href="/datapenduduk"

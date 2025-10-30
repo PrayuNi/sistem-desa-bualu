@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('datapenduduktamiu')) {
         Schema::create('datapenduduktamiu', function (Blueprint $table) {
             $table->id();
             $table->integer('penduduk');    
@@ -18,7 +19,8 @@ return new class extends Migration
             $table->integer('perempuan');
             $table->integer('mutasi_penduduk');
             $table->timestamps();
-        });
+            });
+        }
     }
 
     /**

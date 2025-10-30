@@ -2,15 +2,18 @@
 <x-slot:title>
     Edit Profil Desa Adat Bualu
 </x-slot>
+
 <style>
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
     }
-    h1 {
-        text-align: center;
-        color: #F99C0F;
-        font-weight: bold;
+    h2{
+        text-align:center; 
+        margin-top:20px; 
+        font-size:26px; 
+        color:#F99C0F; 
+        font-weight:bold;
     }
     .form-card {
         margin: 10px auto;
@@ -21,66 +24,127 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     label {
-        width: 93%;
-        margin: 0 auto;
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         font-weight: bold;
+        margin-left: 5%;
     }
-    input[type="text"],
-    input[type="file"] {
-        margin: 0 auto;
-        display: block;
+    input[type="text"], input[type="file"], textarea {
         width: 90%;
+        display: block;
+        margin: 0 auto 15px auto;
         padding: 10px;
-        margin-bottom: 15px;
         border-radius: 4px;
         border: 1px solid #ccc;
     }
-    button {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 15px;
+    .btn-wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .btn-kembali, .btn-simpan {
+        width: 48%;
+        padding: 12px;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
         border: none;
-        border-radius: 4px;
         cursor: pointer;
     }
-    button:hover {
+    .btn-kembali {
+        background-color: #6c757d;
+        color: white;
+    }
+    .btn-kembali:hover {
+    background-color: #5a6268;
+    }
+    .btn-simpan {
+        background-color: #28a745;
+        color: white;
+    
+    }
+    .btn-simpan:hover {
         background-color: #218838;
+    }
+    #previewImage {
+        width: 200px;
+        display: block;
+        margin: 10px auto 15px auto;
+        border-radius: 6px;
+        border: 1px solid #ddd;
     }
 </style>
 
 <body>
-     <!-- 2.1 tempat untuk menambahkan data enctype-->
+    <!-- ALERT -->
+    @if($errors->any())
+        <div style="background:#f8d7da; border-left: 5px solid #dc3545; padding:10px; margin:15px auto; width:600px; border-radius:6px;">
+            <strong>Periksa kembali inputan Anda:</strong>
+            <ul style="margin-top:8px; margin-left:20px;">
+                @foreach($errors->all() as $err)
+                <li>{{ $err }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
     <form class="form-card" action="{{ route('profildesa.update', $profilsdesa->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
-        <h1>
-            Edit Profil Desa
-        </h1>
+        <h2>Edit Profil Desa</h2>
 
         <label>Nama Bendesa:</label>
-        <input type="text" name="name" id="name" placeholder="Isi nama lengkap" value="{{old('name', $profilsdesa->name)}}"> <br>
+        <input type="text" name="name" value="{{ old('name', $profilsdesa->name) }}">
 
         <label>Sambutan Bendesa:</label>
-        <input type="text" name="sambutan_bendesa" id="sambutan_bendesa" placeholder="Isi sambutan" value="{{old('sambutan_bendesa', $profilsdesa->sambutan_bendesa)}}"> <br>
+        <textarea type="text" name="sambutan_bendesa" rows="4">{{ old('sambutan_bendesa', $profilsdesa->sambutan_bendesa) }}</textarea>
 
         <label>Sejarah Desa:</label>
-        <input type="text" name="sejarah_desa" id="sejarah_desa" placeholder="Isi sejarah" value="{{old('sejarah_desa', $profilsdesa->sejarah_desa)}}"> <br>
+        <textarea type="text" name="sejarah_desa" rows="4">{{ old('sejarah_desa', $profilsdesa->sejarah_desa) }}</textarea>
 
         <label>Visi Desa:</label>
-        <input type="text" name="visi_desa" id="visi_desa" placeholder="Isi visi" value="{{old('visi_desa', $profilsdesa->visi_desa)}}"> <br>
+        <textarea type="text" name="visi_desa" rows="4">{{ old('visi_desa', $profilsdesa->visi_desa) }}"></textarea>
 
         <label>Misi Desa:</label>
-        <input type="text" name="misi_desa" id="misi_desa" placeholder="Isi misi" value="{{old('misi_desa', $profilsdesa->misi_desa)}}"> <br>
+        <textarea type="text" name="misi_desa" rows="4">{{ old('misi_desa', $profilsdesa->misi_desa) }}"></textarea>
 
-        <!-- 2.2 untuk ubah tipe data input ke file >> 2.3 Di Structure Controller -->
         <label>Gambar Sebelumnya:</label>
-        <img src="{{asset('storage/'.  $profilsdesa->image)}}" alt=""> 
-        
-        <label>Gambar:</label>
-        <input type="file" name="image" id="image" value="{{old('image', $profilsdesa->image)}}">
-        <button type="submit">Simpan</button>
+        <img id="oldImage" src="{{ asset('storage/' . $profilsdesa->image) }}" style="width:200px; display:block; margin:10px auto; border-radius:6px; border:1px solid #ddd;">
+
+        <label>Ganti Gambar:</label>
+        <input type="file" name="image" id="imageInput">
+
+        <!-- Preview untuk gambar baru -->
+        <img id="newImagePreview" style="width:200px; display:none; margin:10px auto; border-radius:6px; border:1px solid #ddd;">
+
+        <div class="btn-wrap">
+            <a href="{{ route('profil.index') }}" class="btn-kembali">Kembali</a>
+            <button type="submit" class="btn-simpan">Simpan</button>
+        </div>
+
     </form>
+
+
+    <!-- Preview gambar baru -->
+    <script>
+    document.getElementById('imageInput').addEventListener('change', function(event){
+        const file = event.target.files[0];
+        const newPreview = document.getElementById('newImagePreview');
+
+        if(file){
+            const reader = new FileReader();
+            reader.onload = e => {
+                newPreview.src = e.target.result;
+                newPreview.style.display = "block"; // Tampilkan preview baru
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    </script>
+
+
 </body>
 </x-layout>
