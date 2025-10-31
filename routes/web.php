@@ -66,7 +66,7 @@ Route::get('/structurestaff/create', [StructureStaffController::class, 'create']
 Route::post('/structurestaff/store', [StructureStaffController::class, 'store'])->name('structurestaff.store');
 Route::delete('/structurestaff/delete/{id}', [StructureStaffController::class, 'delete'])->name('structurestaff.delete');
 Route::get('/structurestaff/edit/{id}', [StructureStaffController::class, 'edit'])->name('structurestaff.edit-structurestaff');
-Route::post('/structurestaff/update/{id}', [StructureStaffController::class, 'update'])->name('structurestaff.update');
+Route::put('/structurestaff/update/{id}', [StructureStaffController::class, 'update'])->name('structurestaff.update');
 Route::get ('/structurestaff', [StructureStaffController::class, 'index'])->name('staff.index');
 
 Route::get('/profildesa/create', [ProfilDesaController::class, 'create'])->name('profildesa.create-profildesa');

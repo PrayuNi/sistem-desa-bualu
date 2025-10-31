@@ -21,7 +21,7 @@ class StructureStaffController extends Controller
     public function update(Request $request, $id){
         $structuresstaff = StructureStaff::findOrFail($id);
         $validated = $request->validate([
-            'name'=>'required|max:20',
+            'name'=>'required|max:200',
             'position'=>'required|max:20',
             'image'=>'nullable|max:10000|image|mimes:jpg,jpeg,png',
         ]);
@@ -40,9 +40,9 @@ class StructureStaffController extends Controller
 
         $structuresstaff->update($validated);
 
-        return redirect()->route('staff.index');
+        return redirect()->route('staff.index')->with('success', 'Data Berhasil Disimpan!');
     }
-
+    
      public function create(){
         return view('structurestaff.create-structurestaff');
     }
@@ -66,7 +66,7 @@ class StructureStaffController extends Controller
 
         // 2.4 ada di stucture.index
         StructureStaff::create($validated);
-        return redirect()->route('staff.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
+        return redirect()->route('staff.index')->with('success', 'Data Berhasil Ditambah!'); //1.3 
     }
     public function delete ($id) {
         $staff = StructureStaff::findOrFail ($id);

@@ -1,17 +1,17 @@
- <!-- Ex-Layout -->
-     <x-layout>
-      <x-slot:title>
-        Profil Desa Adat Bualu
-      </x-slot>
+  <!-- Ex-Layout -->
+  <x-layout>
+    <x-slot:title>
+      Profil Desa Adat Bualu
+    </x-slot>
 
-       <!-- Notifikasi berhasil disimpan -->
-      @if(session('success'))
-      <div id="toastSuccess" class="fixed top-5 right-5 flex items-center p-4 rounded-lg shadow-lg bg-green-600 text-white animate-slide-in">
-          <i class="fa-solid fa-circle-check text-2xl mr-3"></i>
-          <span class="text-lg font-semibold">{{ session('success') }}</span>
-      </div>
+    <!--Notifikasi berhasil disimpan  -->
+    @if(session('success'))
+    <div id="toastSuccess" class="fixed top-5 right-5 flex items-center p-4 rounded-lg shadow-lg bg-green-600 text-white animate-slide-in">
+      <i class="fa-solid fa-circle-check text-2xl mr-3"></i>
+      <span class="text-lg font-semibold">{{ session('success') }}</span>
+    </div>
 
-      <style>
+    <style>
       @keyframes slideIn {
         from { opacity: 0; transform: translateX(100%); }
         to { opacity: 1; transform: translateX(0); }
@@ -21,36 +21,25 @@
         to { opacity: 0; transform: translateX(100%); }
       }
       .animate-slide-in{
-        animation: slideIn 0.4s ease-out forwards;
+        animation: slideIn 0.10s ease-out forwards;
       }
-      </style>
+    </style>
 
-      <script>
+    <script>
       setTimeout(() => {
         const toast = document.getElementById('toastSuccess');
         toast.style.animation = "slideOut 0.5s ease-in forwards";
         setTimeout(() => toast.remove(), 600);
       }, 3000);
-      </script>
-      @endif
-
-
-      <script>
-      setTimeout(() => {
-          const msg = document.getElementById('successMessage');
-          if(msg){
-              msg.style.opacity = '0';
-              setTimeout(() => msg.remove(), 1000);
-          }
-      }, 3000);
-      </script>
-      <!-- End Notifikasi berhasil disimpan -->
+    </script>
+    @endif
+    <!-- End Notifikasi berhasil disimpan -->
 
     <!-- Content -->
     <section class="min-h-screen mx-auto container">
       <div class="text-center mt-10 mb-5">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-1 text-amber-600 text-3xl"
         >
           Sambutan Kepala Desa
         </h2>
@@ -59,7 +48,7 @@
       <!-- Btn Edit -->
       @foreach ($profilsdesa as $p)
       <div class="row">
-        <div class="md:ml-auto mx-auto w-fit my-10">
+        <div class="md:ml-auto mx-auto w-fit my-1">
           <a href="{{route('profildesa.edit-profildesa', $p->id)}}">
 
           @auth
@@ -125,15 +114,15 @@
       <!-- End Visi Misi -->
 
       <!-- Sejarah Desa -->
-      <div class="text-center mt-10">
+      <div class="text-center mt-1">
         <h2
-          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+          class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-2 text-amber-600 text-3xl"
         >
           Sejarah Desa Adat Bualu
         </h2>
       </div>
 
-      <div class="flex-wrap m-5 p-5 text-justify px-5">
+      <div class="m-4 p-4">
         <p class="text-lg font-thin text-justify">
           {{$p->sejarah_desa}}
         </p>
