@@ -100,6 +100,13 @@
             background: #fff3cd;
         }
 
+        .error-message {
+            color: #E4080A;
+            padding: 10px 14px;
+            font-size: 14px;
+            text-align: left;
+        }
+
         button {
             width: 100%;
             padding: 12px;
@@ -115,6 +122,25 @@
         }
 
         button:hover {
+            background: linear-gradient(90deg, #ff9800, #ff6f00);
+            transform: scale(1.02);
+        }
+
+        .btn-kembali {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ffb300, #ff6f00);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(255, 111, 0, 0.3);
+        }
+
+        .btn-kembali:hover {
             background: linear-gradient(90deg, #ff9800, #ff6f00);
             transform: scale(1.02);
         }
@@ -176,11 +202,17 @@
             @csrf
             <h2>Login</h2>
 
-            <input type="email" name="email" placeholder="Masukkan Email" required>
+            <input type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}" required>
+            <!-- <input type="nik" name="nik" placeholder="Masukkan NIK KTP" value="{{ old('nik') }}" required> -->
             <input type="password" name="password" placeholder="Masukkan Password" required>
 
             <button type="submit">Masuk</button>
-
+             @if ($errors->any())
+                <div class="error-message">
+                    {{ $errors->first() }}
+                </div>
+            @endif
+            
             <p>Belum punya akun? <a href="/register">Daftar Sekarang</a></p>
         </form>
     </div>

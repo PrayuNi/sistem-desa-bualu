@@ -11,43 +11,43 @@ Use Illuminate\Support\Facades\Storage;
 class DataApbdController extends Controller
 {
     public function index() {
-        $pendapatan = Financial::all() //1.1 untuk baca semua data
-        ->pluck('income');
+        $datafinancials = Financial::all();
 
-        $belanja = Financial::all() //1.1 untuk baca semua data
-        ->pluck('spending');
+        $pendapatan = $datafinancials->pluck('income')->toArray(); //1.1 untuk baca semua data
+        $belanja = $datafinancials ->pluck('spending')->toArray(); //1.1 untuk baca semua data
+        $year =  $datafinancials ->pluck('years')->toArray(); //1.1 untuk baca semua data
+        
+        $financial2024 = $datafinancials->firstwhere('years', '2024');
 
-        $year = Financial::all() //1.1 untuk baca semua data
-        ->pluck('years');
+        $yearincome = $financial2024 ?->income ?? 0; 
+        $yearspending = $financial2024 ?->spending ?? 0;
 
-        $yearinc = Financial::where('years', '2024')
-        ->first();
+        $surplus = $yearincome - $yearspending;
+        // $pendapatan = Financial::all() //1.1 untuk baca semua data
+        // ->pluck('income');
 
-        $yearspend = Financial::where( 'years', '2024')
-        ->first();
+        // $belanja = Financial::all() //1.1 untuk baca semua data
+        // ->pluck('spending');
 
+        // $year = Financial::all() //1.1 untuk baca semua data
+        // ->pluck('years');
 
-        $yearincome = $yearinc->income;
+        // $yearinc = Financial::where('years', '2024')
+        // ->first();
 
-        $yearspending = $yearspend->spending;
-
-        $surplus = ($yearincome - $yearspending);
-
-
-        $adat = Population::where('type', 'adat') //1.1 untuk baca semua data
-        ->orderBy('years', 'asc')
-        ->pluck('total');
-
-        $pendatang = Population::where('type', 'pendatang') //1.1 untuk baca semua data
-        ->orderBy('years', 'asc')
-        ->pluck('total');
+        // $yearspend = Financial::where( 'years', '2024')
+        // ->first();
 
 
-        return view('dataapbd.index', compact('pendapatan', 'belanja', 'year', 'adat', 'pendatang', 'yearinc', 'yearspend', 'surplus')); // 1.2 untuk menampilkan halaman dari data
+        // $yearincome = $yearinc->income;
+
+        // $yearspending = $yearspend->spending;
+
+        // $surplus = ($yearincome - $yearspending);
+
+        return view('dataapbd.index', compact('pendapatan', 'belanja', 'year', 'yearincome', 'yearspending', 'surplus')); // 1.2 untuk menampilkan halaman dari data
     }
-    public function create(){
-        return view('dataapbd.create-dataapbd');
-    }
+
 
     public function  store(Request $request) {
         $validated = $request -> validate ([
@@ -62,7 +62,6 @@ class DataApbdController extends Controller
             $pathPdf = $request->file('pdf')->storeAs('file_apbd', $pdfName, 'public');
             $validated['pdf'] = $pathPdf;
         }
-
 
         // 2.4 ada di profil.index
         DataApbd::create($validated); 

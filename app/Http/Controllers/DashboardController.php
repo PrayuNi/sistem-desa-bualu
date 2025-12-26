@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Financial;
 use App\Models\Population;
+use App\Models\News;
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +33,19 @@ class DashboardController extends Controller
 
         $surplus = ($yearincome - $yearspending);
 
+        // $datafinancials = Financial::all();
 
+        // $pendapatan = $datafinancials->pluck('income')->map(fn($i) => (float)$i)->toArray(); //1.1 untuk baca semua data
+        // $belanja = $datafinancials ->pluck('spending')->map(fn($s) => (float)$s)->toArray(); //1.1 untuk baca semua data
+        // $year =  $datafinancials ->pluck('years')->map(fn($y) => (string)$y)->toArray(); //1.1 untuk baca semua data
+        
+        // $financial2024 = $datafinancials->firstwhere('years', '2024');
+
+        // $yearincome = $financial2024 ?->income ?? 0; 
+        // $yearspending = $financial2024 ?->spending ?? 0;
+
+        // $surplus = $yearincome - $yearspending;
+        
         $adat = Population::where('type', 'adat') //1.1 untuk baca semua data
         ->orderBy('years', 'asc')
         ->pluck('total');
@@ -41,9 +54,11 @@ class DashboardController extends Controller
         ->orderBy('years', 'asc')
         ->pluck('total');
 
-
-        return view('dashboard', compact('pendapatan', 'belanja', 'year', 'adat', 'pendatang', 'yearinc', 'yearspend', 'surplus')); // 1.2 untuk menampilkan halaman dari data
+        $news = News::all();
+        
+        return view('dashboard', compact('pendapatan', 'belanja', 'year', 'adat', 'pendatang', 'yearinc', 'yearspend', 'surplus', 'news')); // 1.2 untuk menampilkan halaman dari data
     }
+
     public function listpopulation(){
         $datapopulations = Population::all();
         return view('population.index', compact('datapopulations'));
@@ -63,7 +78,7 @@ class DashboardController extends Controller
         
         ]);
         $item->update($validated);
-        return redirect()->route('population.index');
+        return redirect()->route('population.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
     // Data Financial
@@ -87,7 +102,6 @@ class DashboardController extends Controller
         ]);
         // dd($validated);
         $item->update($validated);
-        return redirect()->route('financial.index');
+        return redirect()->route('financial.index')->with('success', 'Data Berhasil Disimpan!');
     }
 }
-   

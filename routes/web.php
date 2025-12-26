@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DataApbdController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\StructureStaffController;
@@ -36,7 +38,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/', function () {
 //     return view('dashboard');
 // });
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])-> name('dashboard');
 
 Route::get('/populations', [DashboardController::class, 'listpopulation'])->name('population.index');
 Route::get('/populations/edit/{id}', [DashboardController::class, 'editpopulation'])->name('population.edit');
@@ -49,18 +51,34 @@ Route::post('/financials/update/{id}', [DashboardController::class, 'updatefinan
 
 // Route::get('/', [PopulationController::class, 'index']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create-user');
+Route::put('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit-user');
 Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 Route::get ('/user', [UserController::class, 'index'])->name('user.index');
+
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create-news');
+Route::post('/news/store', [NewsController::class, 'store'])->name('news.store');
+Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('news.edit-news');
+Route::put('/news/update/{id}', [NewsController::class, 'update'])->name('news.update');
+Route::delete('/news/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
+Route::get ('/news', [NewsController::class, 'index'])->name('news.index');
 
 Route::get('/structure/create', [StructureController::class, 'create'])->name('structure.create-structure');
 Route::post('/structure/store', [StructureController::class, 'store'])->name('structure.store');
 Route::delete('/structure/delete/{id}', [StructureController::class, 'delete'])->name('structure.delete');
 Route::get('/structure/edit/{id}', [StructureController::class, 'edit'])->name('structure.edit-structure');
-Route::post('/structure/update/{id}', [StructureController::class, 'update'])->name('structure.update');
+Route::put('/structure/update/{id}', [StructureController::class, 'update'])->name('structure.update');
 Route::get('/structures', [StructureController::class, 'index'])->name('structure.index');
+Route::get('/tabel-structure', [StructureController::class, 'tabelStructure'])->name('structure.tabel-structure');
+
 
 Route::get('/structurestaff/create', [StructureStaffController::class, 'create'])->name('structurestaff.create-structurestaff');
 Route::post('/structurestaff/store', [StructureStaffController::class, 'store'])->name('structurestaff.store');
@@ -96,13 +114,14 @@ Route::post('/pengajuansurat/store', [PengajuanSuratController::class, 'store'])
 Route::delete('/pengajuansurat/delete/{id}', [PengajuanSuratController::class, 'delete'])->name('pengajuansurat.delete');
 Route::get('/pengajuansurat/edit/{id}', [PengajuanSuratController::class, 'edit'])->name('pengajuansurat.edit');
 Route::post('/pengajuansurat/update/{id}', [PengajuanSuratController::class, 'update'])->name('pengajuansurat.update');
+Route::get('/pengajuansurat/print/{id}', [PengajuanSuratController::class, 'print'])->name('pengajuansurat.print');
 Route::get('/pengajuansurats', [PengajuanSuratController::class, 'index'])->name('pengajuansurat.index');
 
 Route::get('/jenissurat/create', [JenisSuratController::class, 'create'])->name('jenissurat.create-jenissurat');
 Route::post('/jenissurat/store', [JenisSuratController::class, 'store'])->name('jenissurat.store');
 Route::delete('/jenissurat/delete/{id}', [JenisSuratController::class, 'delete'])->name('jenissurat.delete');
 Route::get('/jenissurat/edit/{id}', [JenisSuratController::class, 'edit'])->name('jenissurat.edit');
-Route::post('/jenissurat/update/{id}', [JenisSuratController::class, 'update'])->name('jenissurat.update');
+Route::put('/jenissurat/update/{id}', [JenisSuratController::class, 'update'])->name('jenissurat.update');
 Route::get('/jenissurats', [JenisSuratController::class, 'index'])->name('jenissurat.index');
 
 

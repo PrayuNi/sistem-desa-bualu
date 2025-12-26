@@ -1,7 +1,7 @@
-<x-layout>
-    <x-slot:title>
-        Tabel Jenis Surat
-    </x-slot>
+    <x-layout>
+        <x-slot:title>
+            Edit Data News 
+        </x-slot>
 
     <!--Notifikasi berhasil disimpan  -->
         @if(session('success'))
@@ -12,62 +12,28 @@
 
         <style>
             @keyframes slideIn {
-            from { opacity: 0; transform: translateX(100%); }
-            to { opacity: 1; transform: translateX(0); }
+                from { opacity: 0; transform: translateX(100%); }
+                to { opacity: 1; transform: translateX(0); }
             }
             @keyframes slideOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(100%); }
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(100%); }
             }
             .animate-slide-in{
-            animation: slideIn 0.10s ease-out forwards;
+                animation: slideIn 0.10s ease-out forwards;
             }
         </style>
 
         <script>
-            setTimeout(() => {
+        setTimeout(() => {
             const toast = document.getElementById('toastSuccess');
             toast.style.animation = "slideOut 0.5s ease-in forwards";
             setTimeout(() => toast.remove(), 600);
-            }, 3000);
+        }, 3000);
         </script>
         @endif
     <!-- End Notifikasi berhasil disimpan -->
-
-    <!-- Notifikasi berhasil dihapus -->
-        @if(session('delete'))
-        <div id="toastDelete" class="fixed inset-0 flex items-center justify-center z-50">
-            <div class="flex items-center p-4 rounded-xl shadow-xl bg-red-600 text-white animate-fade-in">
-            <i class="fa-solid fa-trash-can text-2xl mr-3"></i>
-            <span class="text-lg font-semibold">{{ session('delete') }}</span>
-            </div>
-        </div>
-
-        <style>
-            @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-            }
-            @keyframes fadeOut {
-            from { opacity: 1; transform: scale(1); }
-            to { opacity: 0; transform: scale(0.9); }
-            }
-            .animate-fade-in {
-            animation: fadeIn 0.25s ease-out forwards;
-            }
-        </style>
-
-        <script>
-            setTimeout(() => {
-            const toast = document.getElementById('toastDelete');
-            const card = toast.querySelector('div');
-            card.style.animation = "fadeOut 0.4s ease-in forwards";
-            setTimeout(() => toast.remove(), 500);
-            }, 2500);
-        </script>
-        @endif  
-    <!-- End Notifikasi berhasil dihapus -->
-
+      
     <style>
         .row-card {
             margin: 10px auto;
@@ -78,7 +44,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         h2{
-            text-align:center;
+            text-align:center; 
             margin-top:20px; 
             margin-bottom:10px; 
             font-size: xx-large; 
@@ -158,19 +124,6 @@
         .btn-edit:hover {
             background: #1e3a8a;
         }
-        .btn-delete {
-            background: #c53030;
-            padding: 8px 16px;
-            border-radius: 20px;
-            color: white;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn-delete:hover {
-            background: #e53e3e;
-        }
         .btn-kembali {
             padding: 12px;
             border-radius: 6px;
@@ -198,23 +151,15 @@
         .btn-tambah button:hover {
             background-color: #718096;
         }
-        .aksi-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px; /* jarak antar tombol */
-        }
-        .aksi-btn form {
-            margin: 0;
-        }
     </style>
 
-    <h2>Tabel Jenis Surat</h2>
+    <h2>Edit Data News</h2>
+
     <!-- Button Tambah -->
     @Auth
         @if (Auth::user()->role == 0)
         <div class="btn-tambah">
-            <a href="{{route('jenissurat.create-jenissurat')}}">
+            <a href="{{route('news.create-news')}}">
             <button
                 type="button"
                 class="btn bg-gray-400 rounded-full w-fit px-4 py-2 m-5 text-black font-semibold"
@@ -226,7 +171,6 @@
         @endif
     @endauth
     <!-- End Button Tambah -->
-
 
     <div class="table-container">
     <!-- ALERT -->
@@ -240,46 +184,35 @@
             </ul>
         </div>
     @endif
-
+        
         <table class="modern-table">
             <tr>
-                <th>No</th>  
-                <th>Jenis Surat</th>
-                <th>Boleh Di Print</th>
-                <th style="width: 20%;">Judul</th>
-                <th style="width: 20%;">Pendahuluan</th>
-                <th style="width: 20%;">Penutup</th>
+                <th>Judul</th>
+                <th>Deskripsi</th>
+                <th>Tanggal</th>
+                <th>Gambar</th>
                 <th>Aksi</th>
             </tr>
 
-            @foreach($jenissurats as $item)
+            @foreach($news as $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $item->jenis }}</td>
-                <td>{{ $item->print_able }}</td>
-                <td style="width: 20%;">{{ $item->judul }}</td>
-                <td style="width: 20%;">{{ $item->pendahuluan }}</td>
-                <td style="width: 20%;">{{ $item->penutup }}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->description}}</td>
+                <td>{{$item->date}}</td>
+                <td> 
+                    <div class="justify-center"> <img class="w-20" src="{{asset('storage/' . ($item->image ?? 'news_images/default.png'))}}" alt=""></div>
+                </td>
 
                 <!-- Button -->
                 <td>
-                <div class="aksi-btn">
-                    <a href="{{route('jenissurat.edit', $item->id)}}">
-                    <button type="button" class="btn-edit">
-                        <i class="fa-solid fa-edit"></i>
-                    </button>
-                    </a>
-
-                    <form action="{{route('jenissurat.delete', $item->id)}}" 
-                        method="POST" 
-                        onsubmit="return confirm('Yakin Mau Dihapus?')">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn-delete" type="submit">
-                            <i class="fa-solid fa-trash"></i>
+                    <a href="{{route('news.edit-news', $item->id)}}">
+                        <button
+                            type="button"
+                            class="btn-edit"
+                        >
+                            <i class="fa-solid fa-edit"></i>
                         </button>
-                    </form>
-                </div>
+                    </a>
                 </td>
                 <!-- End Button -->
             </tr>
@@ -294,6 +227,6 @@
         </a>
     </div>
 
-</x-layout> 
+    </x-layout> 
 
         

@@ -29,11 +29,7 @@ class DataPendudukTamiuController extends Controller
 
         $datapenduduktamiu->update($validated);
 
-        return redirect()->route('datapenduduktamiu.index');
-    }
-
-     public function create(){
-        return view('datapenduduktamiu.create-datapenduduktamiu');
+        return redirect()->route('datapenduduktamiu.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
     public function  store(Request $request) {
@@ -43,10 +39,5 @@ class DataPendudukTamiuController extends Controller
             'perempuan'=> 'required',
             'mutasi_penduduk'=> 'required', 
         ]);
-
-
-        // 2.4 ada di datapenduduk.index
-        DataPendudukTamiu::create($validated); 
-        return redirect()->route('datapenduduktamiu.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
     }
 }

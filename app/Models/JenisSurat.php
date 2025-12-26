@@ -13,5 +13,9 @@ class JenisSurat extends Model
     protected $table='jenis_surat';
     protected $fillable = [
         'jenis',
+        'print_able',
+        'judul',
+        'pendahuluan',
+        'penutup',
     ];
 }

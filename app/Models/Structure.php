@@ -9,13 +9,13 @@ use Illuminate\Notifications\Notifiable;
 
 class Structure extends Model
 {
+
     use HasFactory, Notifiable;
     protected $table='structure';
     protected $fillable = [
         'name',
         'position',
+        'position_id',
         'image',
     ];
 }
-
-

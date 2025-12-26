@@ -1,0 +1,138 @@
+<x-layout>
+<x-slot:title>
+    Edit Profil Saya
+</x-slot>
+
+<style>
+   body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    h2{
+        text-align:center; 
+        margin-top:20px; 
+        font-size:26px; 
+        color:#F99C0F; 
+        font-weight:bold;
+    }
+    .form-card {
+        margin: 10px auto;
+        max-width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        margin-left: 5%;
+    }
+    input[type="text"], input[type="file"], input[type="email"] {
+        width: 90%;
+        display: block;
+        margin: 0 auto 15px auto;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    .btn-wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .btn-kembali, .btn-simpan {
+        width: 48%;
+        padding: 12px;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+    .btn-kembali {
+        background-color: #6c757d;
+        color: white;
+    }
+    .btn-kembali:hover {
+    background-color: #5a6268;
+    }
+    .btn-simpan {
+        background-color: #28a745;
+        color: white;
+    
+    }
+    .btn-simpan:hover {
+        background-color: #218838;
+    }
+    #previewImage {
+        width: 200px;
+        display: block;
+        margin: 10px auto 15px auto;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<body>
+    <!-- ALERT -->
+    @if($errors->any())
+        <div style="background:#f8d7da; border-left: 5px solid #dc3545; padding:10px; margin:15px auto; width:600px; border-radius:6px;">
+            <strong>Periksa kembali inputan Anda:</strong>
+            <ul style="margin-top:8px; margin-left:20px;">
+                @foreach($errors->all() as $err)
+                <li>{{ $err }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form class="form-card" action="{{ route('profile.update')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+
+    <h2>Edit Profil Saya</h2>
+
+    <label>Nama:</label>
+    <input type="text" name="name" id="name" placeholder="Isi name" value="{{ old('name', Auth::user()->name) }}"> <br>
+
+    <label>Email:</label>
+    <input type="email" name="email" id="email" placeholder="Isi email" value="{{ old('email', Auth::user()->email) }}"> <br>
+
+    <label>Gambar Sebelumnya:</label>
+        <img id="oldImage" src="{{  asset('storage/' . Auth::user()->profile_photo) }}" style="width:200px; display:block; margin:10px auto; border-radius:6px; border:1px solid #ddd;">
+
+        <label>Ganti Gambar:</label>
+        <input type="file" name="profile_photo" id="profile_photo">
+
+        <!-- Preview untuk gambar baru -->
+        <img id="newImagePreview" style="width:200px; display:none; margin:10px auto; border-radius:6px; border:1px solid #ddd;">
+
+        <div class="btn-wrap">
+            <a href="{{ route('dashboard') }}" class="btn-kembali">Kembali</a>
+            <button type="submit" class="btn-simpan">Simpan</button>
+        </div>
+    </form>
+
+    <!-- Preview gambar baru -->
+   <script>
+        document.getElementById('profile_photo').addEventListener('change', function(event){
+            const file = event.target.files[0];
+            const newPreview = document.getElementById('newImagePreview');
+
+            if(file){
+                const reader = new FileReader();
+                reader.onload = e => {
+                    newPreview.src = e.target.result;
+                    newPreview.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+</x-layout>
+

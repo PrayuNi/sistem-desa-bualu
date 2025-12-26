@@ -14,11 +14,15 @@ return new class extends Migration
            Schema::create('pengajuansurat', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('tanggal_lahir');
+            $table->string('jenis_kelamin');
+            $table->string('alamat');
             $table->string('nik');
             $table->string('jenis_surat');
             $table->string('no_whatsapp');
             $table->string('tanggal_pengajuan');
             $table->string('image');
+            $table->integer('print_able');
             $table->timestamps();
           });
     }

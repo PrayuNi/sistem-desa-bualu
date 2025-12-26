@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Edit Data APBD
+        Edit Berita Desa
     </x-slot>
 
     <style>
@@ -12,13 +12,12 @@
             justify-content: center;
             align-items: flex-start;
         }
-        h2{
-            text-align:center; 
-            margin-top:20px; 
-            margin-bottom: 10px;
-            font-size:1.6rem; 
-            color:#F99C0F; 
-            font-weight:bold;
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: #F99C0F;
+            font-weight: bold;
         }
         .form-card {
             width: 100%;
@@ -35,7 +34,7 @@
             margin-left: 5%;
             font-size: 0.9rem;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="file"], textarea {
             width: 90%;
             display: block;
             margin: 0 auto 1px auto;
@@ -44,18 +43,24 @@
             border: 1px solid #ccc;
             font-size: 0.9rem;
         }
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
         .btn-wrap {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-top: 20px;
         }
+
         @media(min-width: 500px){
             .btn-wrap {
                 flex-direction: row;
                 justify-content: space-between;
             }
         }
+
         .btn-kembali, .btn-simpan {
             width: 100%;
             padding: 12px;
@@ -67,6 +72,7 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
+
         @media(min-width: 500px){
             .btn-kembali, .btn-simpan {
                 width: 48%;
@@ -77,7 +83,7 @@
             color: white;
         }
         .btn-kembali:hover {
-        background-color: #5a6268;
+            background-color: #5a6268;
         }
         .btn-simpan {
             background-color: #28a745;
@@ -85,6 +91,14 @@
         }
         .btn-simpan:hover {
             background-color: #218838;
+        }
+        #oldImage, #newImagePreview {
+            width: 200px;
+            max-width: 90%;
+            display: block;
+            margin: 10px auto 19px auto;
+            border-radius: 6px;
+            border: 1px solid #ddd;
         }
         .error-alert {
             background: #f8d7da;
@@ -99,30 +113,34 @@
             margin-top: 6px;
             margin-left: 20px;
         }
-        /* Responsive font dan spacing untuk HP sangat kecil */
         @media(max-width: 350px){
             h2 { font-size: 1.3rem; }
-            input[type="text"], input[type="number"] {
+            input[type="text"], input[type="file"], textarea {
                 width: 95%;
                 font-size: 0.85rem;
                 padding: 8px;
+            }
+            #oldImage, #newImagePreview {
+                width: 150px;
             }
             .btn-kembali, .btn-simpan {
                 font-size: 0.85rem;
                 padding: 10px;
             }
         }
-        /* Tablet / iPad */
         @media(min-width: 768px) and (max-width: 1024px){
             .form-container {
-                align-items: center; /* posisikan form di tengah vertikal */
-                padding: 40px 20px;  /* beri jarak lebih */
+                align-items: center; 
+                padding: 40px 20px;  
             }
             h2 { font-size: 1.8rem; }
-            input[type="text"], input[type="number"] {
+            input[type="text"], input[type="file"], textarea {
                 width: 85%;
                 font-size: 1rem;
                 padding: 12px;
+            }
+            #oldImage, #newImagePreview {
+                width: 220px;
             }
             .btn-kembali, .btn-simpan {
                 font-size: 1rem;
@@ -132,36 +150,63 @@
     </style>
 
     <div class="form-container">
-        <form class="form-card" action="{{route('financial.update', $item->id)}}" method="POST" enctype="multipart/form-data">
+        <form class="form-card" action="{{ route('news.update', $news->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
-            <h2>Edit Data APBDesa Adat Bualu</h2>
+        <h2>Edit Berita Desa</h2>
 
-            @if($errors->any())
-                    <div class="error-alert">
-                        <strong>Periksa kembali inputan Anda:</strong>
-                        <ul>
-                            @foreach($errors->all() as $err)
-                            <li>{{ $err }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-            @endif
+        @if($errors->any())
+            <div class="error-alert">
+                <strong>Periksa kembali inputan Anda:</strong>
+                <ul>
+                    @foreach($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <label>Tahun:</label>
-            <input type="number" name="years" id="years" placeholder="Isi Tahun" value="{{old('years', $item->years)}}"> <br>
+        <label>Judul:</label>
+        <input type="text" name="title" id="title" placeholder="Isi judul" value="{{ old('title', $news->title) }}"> <br>
 
-            <label>Pendapatan:</label>
-            <input type="number" name="income" id="income" placeholder="Isi Jumlah" value="{{old('income', $item->income)}}"> <br>
+        <label>Deskripsi:</label>
+        <textarea type="text" name="description" id="description" placeholder="Isi deskipsi">{{ old('description', $news->description) }} </textarea> <br>
 
-            <label>Pengeluaran:</label>
-            <input type="number" name="spending" id="spending" placeholder="Isi Jumlah" value="{{old('spending', $item->spending)}}"> <br>
+        <label>Tanggal:</label>
+        <input type="text" name="date" id="date" placeholder="Isi tanggal" value="{{ old('date', $news->date) }}"> <br>
+
+        <label>Gambar Sebelumnya:</label>
+            <img id="oldImage" src="{{asset('storage/'.  $news->image)}}" style="display:block;">
+
+            <label>Ganti Gambar:</label>
+            <input type="file" name="image" id="imageInput">
+
+            <!-- Preview untuk gambar baru -->
+            <img id="newImagePreview">
 
             <div class="btn-wrap">
-                <a href="{{ route('financial.index') }}" class="btn-kembali">Kembali</a>
+                <a href="{{ route('news.index') }}" class="btn-kembali">Kembali</a>
                 <button type="submit" class="btn-simpan">Simpan</button>
             </div>
         </form>
+
+        <!-- Script Preview gambar baru -->
+        <script>
+            document.getElementById('imageInput').addEventListener('change', function(event){
+                const file = event.target.files[0];
+                const newPreview = document.getElementById('newImagePreview');
+
+                if(file){
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        newPreview.src = e.target.result;
+                        newPreview.style.display = "block";
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
     </div>
 
 </x-layout>

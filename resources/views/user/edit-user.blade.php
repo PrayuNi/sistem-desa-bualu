@@ -1,6 +1,7 @@
+
 <x-layout>
 <x-slot:title>
-    Form Tambah Profile User
+    Edit Profile User
 </x-slot>
 
 <style>
@@ -78,23 +79,23 @@
 
 <body>
     
-<form class="form-card" action="{{ route('user.store') }}" method="POST">
-    @csrf
-    
+<form class="form-card" action="{{ route('user.update', $user->id)}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-    <h2>Form Tambah Profile User</h2>
+    <h2>Edit Profile User</h2>
 
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" placeholder="Isi name"> <br>
+    <input type="text" name="name" id="name" placeholder="Isi name" value="{{ old('name', $user->name)}}"> <br>
 
     <label for="nik">NIK KTP</label>
-    <input type="text" name="nik" id="nik" placeholder="Isi NIK KTP"> <br>
+    <input type="text" name="nik" id="nik" placeholder="Isi NIK KTP"  value="{{ old('nik', $user->nik)}}"> <br>
 
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" placeholder="Isi password" minlength="8"> <br>
+    <input type="password" name="password" id="password" placeholder="Isi password" minlength="8"  value="{{ old('password', $user->password)}}"> <br>
 
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" placeholder="Isi email"> <br>
+    <input type="email" name="email" id="email" placeholder="Isi email"  value="{{ old('email', $user->email)}}"> <br>
 
     <div class="btn-wrap">
             <a href="{{ route('user.index') }}" class="btn-kembali">Kembali</a>

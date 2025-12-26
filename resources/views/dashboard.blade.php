@@ -1,9 +1,58 @@
 <x-layout>
-        <x-slot:title>
-            Beranda
-        </x-slot>
+    <x-slot:title>
+      Portal Digital Desa Adat Bualu
+    </x-slot>
 
-    <style>
+  <style>
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-slide {
+      animation: fadeSlideUp 1s ease-out forwards;
+    }
+    .delay-200 {
+      animation-delay: .2s;
+    }
+    .delay-400 {
+      animation-delay: .4s;
+    }
+
+    @media (max-width: 640px) {
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 1023px) {
+      .swiper-button-next,
+      .swiper-button-prev {
+        transform: scale(0.6);
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      background: rgba(0, 0, 0, 0.4);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 18px;
+      color: white;
+    }
+
+
     .card {
       margin: 0 auto;
       max-width: 700px;
@@ -14,40 +63,50 @@
     }
   </style>
 
+  @include('components.login-modal')
     <!-- jumbotron -->
     <section
       class="jumbotron relative min-h-screen bg-cover bg-center"
-      style="background-image: url('{{asset('storage/assets/jumbotron 1.png') }}')"
+      style="background-image: url('{{ asset('storage/assets/jumbotron 1.png') }}')"
     >
       <!-- Overlay Hitam Transparan -->
       <div
-        class="absolute inset-0"
-        style="background-color: rgba(90, 52, 11, 0.395)"
-      ></div>
+        class="absolute inset-0 bg-gradient-to-r from-[#6b3d00]/80 via-[#b8730d]/55 to-transparent">
+        <!-- style="background-color: rgba(90, 52, 11, 0.395)" -->
+      </div>
       <!-- End Overlay -->
 
       <!-- jumbotron konten -->
       <div
-        class="relative z-10 flex flex-col-reverse items-center container mx-auto px-6 py-20 md:flex-row justify-between min-h-screen"
+        class="relative z-10 container mx-auto px-6 min-h-screen flex flex-col items-center pt-28 sm:pt-32 md:pt-0 md:flex-row md:justify-between"
       >
-        <div class="mb-40 md:mb-0 md:w-1/2 md:text-left text-center container">
-          <h4 class="text-white text-2xl font-bold">Selamat Datang Di</h4>
+        <div class="md:w-1/2 text-center md:text-left order-2 md:order-1 mt-4 md:mt-0">
+          <h4 
+            class="text-white text-xl sm:text-2xl font-bold mb-2 drop-shadow-lg animate-fade-slide"
+            >
+            Selamat Datang Di
+          </h4>
+
           <h3
-            class="text-white text-4xl mb-5 md:text-6xl sm:text-5xl font-bold"
+            class="text-white text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4 drop-shadow-xl animate-fade-slide delay-200"
           >
-            Portal Digital Desa Adat Bualu
+            <span class="block md:inline">Portal Digital</span>
+            <span class="block md:inline">Desa Adat Bualu</span>
+            <!-- Portal Digital <br class="hidden sm:block" /> 
+            Desa Adat Bualu -->
           </h3>
-          <p class="text-white text-lg sm:text-xl font-semibold mb-5">
+
+          <p class="text-white text-base sm:text-lg font-semibold drop-shadow-md max-w-xl mx-auto md:mx-0 animate-fade-slide delay-400">
             Kecamatan Kuta Selatan, Kabupaten Badung, Provinsi Bali
           </p>
         </div>
 
         <!-- Gambar -->
-        <div class="w-full md:w-1/2 flex justify-center md:mb-0">
+        <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2 mt-6 sm:mt-8 md:mt-0 mb-6 md:mb-0">
           <img
             src="{{asset('storage/assets/logodesa.png')}}"
             alt="Logo Desa"
-            class="max-w-[250px] w-full h-auto"
+            class="max-w-[200px] sm:max-w-[230px] md:max-w-[260px] w-full h-auto drop-shadow-xl"
           />
         </div>
       </div>
@@ -56,128 +115,69 @@
     <!-- end jumbotron -->
 
     <!-- News -->
-    <section class="news py-10">
+    <section class="news">
       <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mt-10 mb-5">
-          <h2
-            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
-          >
+      <div class="text-center mt-3">
+        <h2
+            class="font-bold inline-block relative after:content-[''] after:block after:h-[3px] after:bg-amber-600 after:mx-auto after:mt-1 m-5 text-amber-600 text-3xl"
+        >
             Berita Desa
-          </h2>
-        </div>
-
-        <!-- Swiper -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper mb-7">
-
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-              <div style="height: 580px" class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="{{asset('storage/berita_images/image.png')}}" alt="" class="w-full h-48 object-cover"/>
-                <div class="p-4">
-                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
-                    Rabu, 14 Agustus 2024
-                  </span>
-                  <h3 class="font-semibold text-lg px-5">
-                    Pemasangan Letter Box Tulisan "Desa Adat Bualu"
-                  </h3>
-                  <p class=" text-gray-700 mt-2 px-5">
-                    Desa adat bualu telah melaksanakan pemasangan letter box dengan tujuan untuk memberi wates bahwa daerah tersebut sudah
-                    memasuki wilayah dari Desa Adat Bualu, dan kegiatan pemasangan ini sebagai wujud kegiatan
-                    dari Baga Palemahan Desa Adat Bualu
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-                <img src="{{asset('storage/berita_images/dlds.png')}}" alt="" class="w-full h-48 object-cover"/>
-                <div class="p-4">
-                  <span class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2">
-                    Acara Tahunan Desa Adat Bualu
-                  </span>
-                  <h3 class="font-semibold text-lg px-5">
-                    Dresta Lango & Dharma Shanti Desa Adat Bualu
-                  </h3>
-                  <p class=" text-gray-700 mt-2 px-5">
-                    Kegiatan Dresta Lango dan Dharma Shanti dilaksanakan setiap tahun sekali.
-                    Dresta Lango digelar saat hari raya Pengerupukan dengan parade ogoh-ogoh dari seluruh banjar di desa, sedangkan Dharma Shanti berlangsung sehari setelah Nyepi (Ngembak Geni) dengan pementasan seni tari dan musik untuk menghibur masyarakat. Selain itu, ogoh-ogoh dari seluruh banjar turut dipajang dalam acara Dharma Shanti.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-                <img src="{{asset('storage/berita_images/maskot_desa.jpg')}}" alt="" class="w-full h-48 object-cover"/>
-                <div class="p-4">
-                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
-                    Minggu, 10 April 2022
-                  </span>
-                  <h3 class="font-semibold text-lg px-5">
-                    Launching Maskot Desa Adat Bualu "Padma Kesara"
-                  </h3>
-                  <p class=" text-gray-700 mt-2 px-5">
-                    Launching Maskot Desa Adat Bualu "Padma Kesara" merupakan acara peresmian maskot resmi Desa Adat Bualu yang diberi nama Padma Kesara. Kegiatan ini bertujuan memperkenalkan simbol identitas dan semangat kebersamaan masyarakat Desa Adat Bualu, sekaligus memperkuat nilai budaya serta jati diri desa dalam berbagai kegiatan adat dan sosial.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="swiper-slide">
-              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-                <img src="{{asset('storage/berita_images/bersih_pantai.jpg')}}" alt="" class="w-full h-48 object-cover"/>
-                <div class="p-4">
-                  <span class="inline-block bg-amber-600 text-white text-xs px-5 py-1 rounded-full mb-2">
-                    Kegiatan Rutinan Desa Adat Bualu
-                  </span>
-                  <h3 class="font-semibold text-lg px-5">
-                    Bersih-Bersih Area Pantai
-                  </h3>
-                  <p class=" text-gray-600 mt-2 px-5">
-                    Staff dan masyarakat bekerja sama dalam menjaga kebersihan alam, yaitu dengan melaksanakan bersih-bersih di area pantai. Tujuan dari kegiatan ini untuk menjaga keseimbangan alam dengan manusia agar terhindar dari bencana yang tidak diinginkan.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 5 -->
-            <div class="swiper-slide">
-              <div style="height: 580px" class="bg-white rounded-lg min-h-96 shadow-md overflow-hidden">
-                <img src="{{asset('storage/berita_images/bulan_bhs_bali.jpg')}}" alt="" class="w-full h-48 object-cover"/>
-                <div class="p-4">
-                  <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
-                    Selasa, 20 Februari 2024
-                  </span>
-                  <h3 class="font-semibold text-lg px-5">
-                    Perlombaan Dalam Ajang Bulan Bahasa Bali VI Warsa 2024
-                  </h3>
-                  <p class="text-sm text-gray-600 mt-2 px-5">
-                    Desa Adat Bualu secara rutin melaksanakan perlombaan dalam ajang Bulan Bahasa Bali, yang dimana sesuai dengan Surat Edaran Gubernur Bali Nomor 9393 tanggal 19 Oktober 2019 yang menetapkan bulan februari sebagai Bulan Bahasa Bali. Maka dari itu seluruh desa diBali melestarikan bahasa dan sastra Bali sesuai peraturan gubernur Bali yang telah ditetapkan. Dan Desa Adat Bualu rutin melaksanakan program tersebut setiap tahunnya.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Tambahkan slide lain jika perlu -->
-          </div>
-
-          <!-- Navigasi -->
-          <div class="flex justify-between items-center mt-4">
-            <div class="swiper-pagination"></div>
-            <div class="flex gap-2">
-              <div class="swiper-button-prev text-white"></div>
-              <div class="swiper-button-next text-white"></div>
-            </div>
-          </div>
-        </div>
+        </h2>
       </div>
 
-      <!-- Tools untu Slider News -->
-      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Tombol Tambah di Tengah -->
+    <div class="w-full flex justify-center items-center mb-2">
+        @auth
+        @if (Auth::user()->role == 0)
+            <a href="{{ route('news.create-news') }}">
+                <button
+                    type="button"
+                    class="btn bg-gray-400 hover:bg-gray-500 
+                    rounded-full px-5 py-2 text-black font-semibold shadow-sm"
+                >
+                    <i class="fa-solid fa-plus"></i> Tambah Data
+                </button>
+            </a>
+        @endif
+        @endauth
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper mb-7">
+
+        @foreach ($news as $n)
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div style="height: 580px" class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="{{asset('storage/' . ($n->image ?? 'news_images/default.png'))}}" alt="" class="w-full h-48 object-cover"/>
+            <div class="p-4">
+              <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
+                {{$n->date}}
+              </span>
+              <h3 class="font-semibold text-lg px-5">
+                {{$n->title}}
+              </h3>
+              <p class=" text-gray-700 mt-2 px-5">
+                {{$n->description}}
+              </p>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between items-center mt-4">
+      <div class="swiper-pagination"></div>
+        <div class="flex gap-2 items-center">
+          <div class="swiper-button-prev text-white"></div>
+          <div class="swiper-button-next text-white"></div>
+        </div>
+    </div>     
+
+    <!-- Tools untu Slider News -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script>
         new Swiper(".mySwiper", {
           slidesPerView: 1,
@@ -201,12 +201,11 @@
           },
         });
       </script>
-      <!-- End Tools untu Slider News -->
     </section>
-    <!-- End News -->
+    <!-- End Tools untu Slider News -->
 
     <!-- Summary -->
-    <section class="summary my-5 px-4 py-10 bg-gradient-to-r from-amber-500 to-amber-700">
+    <section class="summary my-5 px-4 py-10 bg-linear-to-r from-amber-500 to-amber-700">
       <div class="container mx-auto text-center">
         <!-- Gunakan grid yang responsive -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-around">
@@ -218,25 +217,25 @@
 
           <!-- Item 2 -->
           <div class="text-white">
-            <h4 class="font-bold text-2xl">120M</h4>
+            <h4 class="font-bold text-2xl">Rp{{number_format($yearinc->income, 0, ',', '.') }}</h4>
             <p class="text-sm">Pendapatan</p>
           </div>
 
           <!-- Item 3 -->
           <div class="text-white">
-            <h4 class="font-bold text-2xl">110M</h4>
+            <h4 class="font-bold text-2xl">Rp{{number_format($yearspend->spending, 0, ',', '.') }}</h4>
             <p class="text-sm">Belanja</p>
           </div>
 
           <!-- Item 4 -->
           <div class="text-white">
-            <h4 class="font-bold text-2xl">110M</h4>
+            <h4 class="font-bold text-2xl">Rp{{number_format($yearspend->spending, 0, ',', '.') }}</h4>
             <p class="text-sm">Pengeluaran</p>
           </div>
 
           <!-- Item 5 -->
           <div class="text-white">
-            <h4 class="font-bold text-2xl">110M</h4>
+            <h4 class="font-bold text-2xl">Rp{{number_format($surplus, 0, ',', '.') }}</h4>
             <p class="text-sm">Surplus/Defisit</p>
           </div>
         </div>
@@ -244,21 +243,18 @@
     </section>
     <!-- End Summary -->
 
-    <!-- Chart Warga -->
-    <div class="container max-w-6xl mx-auto text-center mt-10 mb-5">
-      <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl">
+    <!-- Grafik Warga -->
+    <div class="container max-w-6xl mx-auto text-center mt-10">
+      <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[3px] after:bg-amber-600  after:mx-auto after:mt-1 m-5 text-amber-600 text-3xl">
         Grafik Penduduk Desa Adat Bualu
       </h2>
     </div>
- 
-    <div class="card">
-      <h2>Grafik Penduduk Desa Adat Bualu</h2>
-      <div id="chartpenduduk"></div>
-      
+
+    <div class="w-full flex justify-center items-center mb-4">
       @auth
       @if(Auth::user()->role == 0)
         <a href="{{ route('population.index') }}">
-          <button type="button" class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold">
+          <button type="button" class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-6 py-3 mb-2 text-white font-semibold">
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
@@ -267,17 +263,22 @@
       @endauth
     </div>
 
+  
+    <div class="mx-5">
+      <div class="card" id="chartpenduduk"></div>
+    </div>
+
     <script>
       var options = {
         series: [
           {
             name: "Pertumbuhan Penduduk Adat",
-            data: {{$adat}},
+            data: @json($adat),
           },
 
           {
             name: "Pertumbuhan Penduduk Pendatang",
-            data: {{$pendatang}},
+            data: @json($pendatang),
           },
         ],
 
@@ -295,7 +296,7 @@
         },
 
         xaxis: {
-          categories: {{$year}},
+          categories: @json($year),
         },
 
         tooltip: {
@@ -311,25 +312,22 @@
         document.querySelector("#chartpenduduk"),
         options
       );
-      chart.render();
+      chart.render()
     </script>
-    <!-- End Chart Warga -->
+    <!-- End Grafik Warga -->
 
-    <!-- Chart Pendapatan -->
-    <div class="container max-w-6xl mx-auto text-center mt-10 mb-5">
-        <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl">
+    <!-- Grafik Pendapatan -->
+    <div class="container max-w-6xl mx-auto text-center mt-10">
+        <h2 class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600  after:mx-auto after:mt-1 m-5 text-amber-600 text-3xl">
           Grafik Pendapatan dan Pengeluaran Desa
         </h2>
     </div>
 
-    <div class="card">
-      <h2>Grafik Pendapatan dan Pengeluaran</h2>
-      <div id="chartpendapatan"></div>
-
+    <div class="w-full flex justify-center items-center mb-4">
       @auth
       @if (Auth::user()->role == 0)
         <a href="{{route('financial.index')}}">
-          <button type="button" class="btn bg-green-900 rounded-full w-fit px-6 py-3 text-white font-semibold">
+          <button type="button" class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-6 py-3 mb-2 text-white font-semibold">
             <i class="fa-solid fa-edit"></i>
             Edit Data
           </button>
@@ -338,16 +336,47 @@
       @endauth
     </div>
 
+
+    <div class="mx-5">
+      <div class="card" id="chartpendapatan"></div>
+    </div>
+
+    <!-- <div id="chartpendapatan"
+     data-pendapatan='@json($pendapatan)'
+     data-belanja='@json($belanja)'
+     data-year='@json($year)'></div>
+
+    <script>
+      var chartDiv = document.getElementById("chartpendapatan");
+
+      var options = {
+        series: [
+          { name: "Pendapatan Desa", data: JSON.parse(chartDiv.dataset.pendapatan) },
+          { name: "Belanja Desa", data: JSON.parse(chartDiv.dataset.belanja) },
+        ],
+        chart: { height: 350, type: "area" },
+        dataLabels: { enabled: false },
+        stroke: { curve: "smooth" },
+        xaxis: { categories: JSON.parse(chartDiv.dataset.year) },
+        tooltip: {
+          y: { formatter: function (val) { return "Rp" + val.toLocaleString("id-ID"); } }
+        },
+      };
+
+      var chart = new ApexCharts(chartDiv, options);
+      chart.render();
+    </script> -->
+
     <script>
       var options = {
         series: [
           {
-            name: "Pendapatan Desa",
-            data: {{$pendapatan}},
+            name: "Pendapatan Desa", 
+            data: @json($pendapatan),
           },
           {
             name: "Belanja Desa",
-            data: {{$belanja}},
+            data: @json($belanja),
           },
         ],
 
@@ -365,7 +394,7 @@
         },
 
         xaxis: {
-          categories: {{$year}},
+          categories: @json($year),
         },
         
         tooltip: {
@@ -383,14 +412,14 @@
       );
       chart.render();
     </script>
-    <!-- End Chart Pendapatan -->
+    <!-- End Grafik Pendapatan -->
 
     <!-- Data APBD Desa -->
-    <section class="py-10">
+    <section>
       <div class="container max-w-6xl mx-auto">
-        <div class="text-center mt-10 mb-5">
+        <div class="text-center mt-10 mb-1">
           <h2
-            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 mb-5 text-amber-600 text-3xl"
+            class="font-bold inline-block relative after:content-[''] after:block after:h-[2px] after:bg-amber-600 after:mx-auto after:mt-1 m-5 text-amber-600 text-3xl"
           >
             Data APBD Desa Adat Bualu
           </h2>
@@ -434,7 +463,7 @@
             <div>
               <p class="text-lg font-medium">Pendapatan</p>
               <p class="text-3xl font-bold">
-                Rp {{number_format($yearinc->income, 0, ',', '.') }}</p>
+                Rp{{number_format($yearinc->income, 0, ',', '.') }}</p>
             </div>
             <img src="{{asset('storage/assets/income.png')}}" alt="pendapatan" class="w-25 h-25" />
           </div>
@@ -445,7 +474,7 @@
             <div>
               <p class="text-lg font-medium">Belanja</p>
               <p class="text-3xl font-bold">
-                Rp {{number_format($yearspend->spending, 0, ',', '.') }}</p>
+                Rp{{number_format($yearspend->spending, 0, ',', '.') }}</p>
             </div>
             <img src="{{asset('storage/assets/shopping-bag.png')}}" alt="belanja" class="w-25 h-25" />
           </div>
@@ -463,7 +492,7 @@
             <div>
               <p class="text-lg font-medium">Surplus/Defisit</p>
               <p class="text-3xl font-bold">
-                Rp {{number_format($surplus, 0, ',', '.') }}</p>
+                Rp{{number_format($surplus, 0, ',', '.') }}</p>
             </div>
             <img
               src="{{asset('storage/assets/surplus-def.png')}}"

@@ -14,6 +14,10 @@ return new class extends Migration
           Schema::create('jenis_surat', function (Blueprint $table) {
             $table->id();
             $table->string('jenis');
+            $table->integer('print_able')->default();
+            $table->integer('judul')->nullable();
+            $table->integer('pendahuluan')->nullable();
+            $table->integer('penutup')->nullable();
             $table->timestamps();
           });
     }

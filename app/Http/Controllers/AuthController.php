@@ -21,6 +21,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'nik' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
            
@@ -28,6 +29,7 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'nik' => $request->nik,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 2, //default role = 2
@@ -59,7 +61,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau Password Salah.',
+            'email' => 'Email atau Password Salah!',
         ]);
     }
 
