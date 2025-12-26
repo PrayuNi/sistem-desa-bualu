@@ -48,22 +48,19 @@
     @foreach ($profilsdesa as $p)
       <div class="row">
         <div class="md:ml-auto mx-auto w-fit my-4">
-          @auth
+        @auth
           @if (Auth::user()->role == 0)
           <a href="{{route('profildesa.edit-profildesa', $p->id)}}">
-
-        
-          <button
-            type="button"
-            class="btn bg-blue-900  hover:bg-blue-800 rounded-full w-fit px-4 py-2 text-white font-semibold"
-          >
-            <i class="fa-solid fa-edit"></i>
-            Edit Data
-          </button>
+            <button
+              type="button"
+              class="btn bg-blue-900  hover:bg-blue-800 rounded-full w-fit px-4 py-2 text-white font-semibold"
+            >
+              <i class="fa-solid fa-edit"></i>
+              Edit Data
+            </button>
           </a>
           @endif
-          @endauth
-
+        @endauth
         </div>
       </div>
     <!-- End Btn Edit -->
@@ -146,8 +143,8 @@
         <div class="flex items-center text-center md:text-left">
           <i class="fa-solid fa-city text-6xl md:text-9xl m-3"></i>
           <div>
-            <h4 class="font-bold text-2xl md:text-3xl">Luas Desa Adat Bualu</h4>
-            <h2 class="text-xl md:text-2xl">100.000 <span class="text-sm">m2</span></h2>
+            <h4 class="font-bold text-2xl md:text-3xl">Lokasi Banjar Adat</h4>
+            <h2 class="text-xl md:text-2xl">Desa Adat Bualu <span class="text-sm">, Nusa Dua</span></h2>
           </div>
         </div>
 

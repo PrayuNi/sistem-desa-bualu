@@ -18,7 +18,7 @@ class ProfilDesaController extends Controller
         return view('profildesa.edit-profildesa', compact('profilsdesa'));
     }
 
-     public function update(Request $request, $id){
+    public function update(Request $request, $id){
         $profilsdesa = ProfilDesa::findOrFail($id);
         $validated = $request->validate([
              'name' => 'sometimes|max:100',
@@ -33,7 +33,6 @@ class ProfilDesaController extends Controller
             if($profilsdesa->image && $profilsdesa->image !== 'profil_images/default.png'){
                 Storage::disk('public')->delete($profilsdesa->image);
             }
-
             $originalName = time(). '_' .$request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('profil_images', $originalName, 'public');
             $validated['image']=$path;
@@ -46,10 +45,6 @@ class ProfilDesaController extends Controller
         return redirect()->route('profil.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
-     public function create(){
-        return view('profildesa.create-profildesa');
-    }
-
     public function  store(Request $request) {
         $validated = $request -> validate ([
             'name'=> 'required',
@@ -59,6 +54,7 @@ class ProfilDesaController extends Controller
             'misi_desa'=> 'required',
             'image'=> 'image|mimes:jpg,jpeg,png', // 2.3 mengubah ukuran image jadi 10k
         ]);
+    
         if($request->hasFile('image')){
             $originalName = time().'_'.$request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('profil_images', $originalName, 'public');
@@ -67,16 +63,13 @@ class ProfilDesaController extends Controller
             $validated['image'] = 'profil_images/default.png';
         }
 
-        // 2.4 ada di profil.index
-        ProfilDesa::create($validated);
-        return redirect()->route('profil.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
     }
+
     public function delete ($id) {
         $profilsdesa = ProfilDesa::findOrFail ($id);
-
-        if ($profilsdesa->image && $profilsdesa->image !== 'profil_images/default.png'){
-            Storage::disk('public')->delete($profilsdesa->image);
-        }
+            if ($profilsdesa->image && $profilsdesa->image !== 'profil_images/default.png'){
+                Storage::disk('public')->delete($profilsdesa->image);
+            }
 
         $profilsdesa->delete();
         return redirect()->route('profil.index')->with('success', 'Data Berhasil Dihapus!');

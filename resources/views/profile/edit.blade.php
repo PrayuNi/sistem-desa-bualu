@@ -37,6 +37,12 @@
         border-radius: 4px;
         border: 1px solid #ccc;
     }
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+        border-color: #F99C0F;
+    }
     .btn-wrap {
         display: flex;
         justify-content: space-between;
