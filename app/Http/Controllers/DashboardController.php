@@ -26,25 +26,11 @@ class DashboardController extends Controller
         $yearspend = Financial::where( 'years', '2024')
         ->first();
 
-
         $yearincome = $yearinc->income;
 
         $yearspending = $yearspend->spending;
 
         $surplus = ($yearincome - $yearspending);
-
-        // $datafinancials = Financial::all();
-
-        // $pendapatan = $datafinancials->pluck('income')->map(fn($i) => (float)$i)->toArray(); //1.1 untuk baca semua data
-        // $belanja = $datafinancials ->pluck('spending')->map(fn($s) => (float)$s)->toArray(); //1.1 untuk baca semua data
-        // $year =  $datafinancials ->pluck('years')->map(fn($y) => (string)$y)->toArray(); //1.1 untuk baca semua data
-        
-        // $financial2024 = $datafinancials->firstwhere('years', '2024');
-
-        // $yearincome = $financial2024 ?->income ?? 0; 
-        // $yearspending = $financial2024 ?->spending ?? 0;
-
-        // $surplus = $yearincome - $yearspending;
         
         $adat = Population::where('type', 'adat') //1.1 untuk baca semua data
         ->orderBy('years', 'asc')
@@ -96,8 +82,8 @@ class DashboardController extends Controller
         $item = Financial::findOrFail($id);
         $validated = $request->validate([
             'years'=>'required|max:20',
-            'income'=>'required|max:20',
-            'spending'=>'required|max:20',
+            'income'=>'required',
+            'spending'=>'required',
         
         ]);
         // dd($validated);

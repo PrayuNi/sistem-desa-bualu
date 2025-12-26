@@ -261,44 +261,15 @@
             name: '{{$structures[3]->name}}',
             image: '{{ asset('storage/' . $structures[3]->image) }}'
           }, 
-
-          // {
-          //   id: 'Bendahara 2',
-          //   title: '{{$structures[4]->position}}',
-          //   name: '{{$structures[4]->name}}',
-          //   image: '{{ asset('storage/' . $structures[4]->image) }}'
-          // }, 
           
-          // Anggota Baga Parahyangan
+        // Anggota Baga Parahyangan
           {
           id: 'Anggota 1',
           title: '{{$structures[5]->position}}',
           name: '{{$structures[5]->name}}',
           image: '{{ asset('storage/' . $structures[5]->image) }}'
-          }, 
-
-          // {
-          // id: 'Anggota 2',
-          // title: '{{$structures[6]->position}}',
-          // name: '{{$structures[6]->name}}',
-          // image: '{{ asset('storage/' . $structures[6]->image) }}'
-          // }, 
-          
-          // {
-          // id: 'Anggota 3',
-          // title: '{{$structures[7]->position}}',
-          // name: '{{$structures[7]->name}}',
-          // image: '{{ asset('storage/' . $structures[7]->image) }}'
-          // }, 
-          
-          // {
-          // id: 'Anggota 4',
-          // title: '{{$structures[8]->position}}',
-          // name: '{{$structures[8]->name}}',
-          // image: '{{ asset('storage/' . $structures[8]->image) }}'
-          // }, 
-          
-          
+          },  
+                  
         // Anggota Baga Palemahan
           {
           id: 'Anggota 2',
@@ -313,23 +284,9 @@
           name: '{{$structures[10]->name}}',
           image: '{{ asset('storage/' . $structures[10]->image) }}'
           }, 
-          
-          // {
-          // id: 'Anggota 7',
-          // title: '{{$structures[11]->position}}',
-          // name: '{{$structures[11]->name}}',
-          // image: '{{ asset('storage/' . $structures[11]->image) }}'
-          // }, 
-          
-          // {
-          // id: 'Anggota 8',
-          // title: '{{$structures[12]->position}}',
-          // name: '{{$structures[12]->name}}',
-          // image: '{{ asset('storage/' . $structures[12]->image) }}'
-          // }, 
-          
+           
+        // Anggota Baga Pawongan
           {
-          // Anggota Baga Pawongan
           id: 'Anggota 4',
           title: '{{$structures[13]->position}}',
           name: '{{$structures[13]->name}}',
@@ -341,27 +298,7 @@
           title: '{{$structures[14]->position}}',
           name: '{{$structures[14]->name}}',
           image: '{{ asset('storage/' . $structures[14]->image) }}'
-          }, 
-          
-          // {
-          // id: 'Anggota 11',
-          // title: '{{$structures[15]->position}}',
-          // name: '{{$structures[15]->name}}',
-          // image: '{{ asset('storage/' . $structures[15]->image) }}'
-          // }, 
-          
-          // {
-          // id: 'Anggota 12',
-          // title: '{{$structures[16]->position}}',
-          // name: '{{$structures[16]->name}}',
-          // image: '{{ asset('storage/' . $structures[16]->image) }}'
-          // },  
-          //           {
-          // id: 'Anggota 13',
-          // title: '{{$structures[17]->position}}',
-          // name: '{{$structures[17]->name}}',
-          // image: '{{ asset('storage/' . $structures[17]->image) }}'
-          // },       
+          },       
         ],
 
         colorByPoint: false,

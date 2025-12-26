@@ -356,7 +356,7 @@
                 Prov. Bali <br />
               </h3>
               <p class="text-sm mt-2 text-white max-w-sm">
-                SI-DAB merupakan web resmi yang dimiliki oleh Desa Adat Bualu.
+                SI-DAB merupakan web resmi yang dimiliki oleh Desa Adat Bualu, sebagai media penyampaian informasi mengenai Desa Adat Bualu
               </p>
             </div>
           </div>

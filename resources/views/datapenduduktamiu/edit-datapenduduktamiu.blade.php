@@ -35,7 +35,7 @@
             margin-left: 5%;
             font-size: 0.9rem;
         }
-        input[type="text"], input[type="file"], textarea {
+        input[type="text"] {
             width: 90%;
             display: block;
             margin: 0 auto 1px auto;
@@ -43,6 +43,10 @@
             border-radius: 6px;
             border: 1px solid #ccc;
             font-size: 0.9rem;
+        }
+        input:focus {
+            outline: none;
+            border-color: #F99C0F;
         }
         .btn-wrap {
             display: flex;

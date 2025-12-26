@@ -15,27 +15,17 @@ class StructureController extends Controller
             '1', //Wakil Kepala Desa
             '2', //Sekretaris Desa
             '3', //Bendahara 1
-            '4', //Bendahara 2
             '5', //Baga Parahyangan
             '6', //Baga Parahyangan
-            '7', //Baga Parahyangan
-            '8', //Baga Parahyangan
             '9', //Baga Palemahan
             '10', //Baga Palemahan
-            '11', //Baga Palemahan
-            '12', //Baga Palemahan
             '13', //Baga Pawongan
             '14', //Baga Pawongan
-            '15', //Baga Pawongan
-            '16', //Baga Pawongan
-            '17', //Baga Pawongan
         ])
         ->orderByRaw ("FIELD(position_id, '0',  '1', '2', '3','4')")
         ->get()
         ->keyBy('position_id'); 
          //1.1 untuk baca semua data
-
-        //  $structures = Structure::all();
 
         foreach ($structures as $structure){
             if (!$structure->image || !Storage::disk('public')->exists($structure->image)) {
@@ -48,8 +38,8 @@ class StructureController extends Controller
     public function tabelStructure()
     {
         $structures = Structure::whereIn('position_id', [
-            '0','1','2','3','4','5','6','7','8',
-            '9','10','11','12','13','14','15','16', '17'
+            '0','1','2','3','5',
+            '9','10','13','14'
         ])
         ->orderBy('position_id')
         ->get();
@@ -94,10 +84,6 @@ class StructureController extends Controller
         return redirect()->route('structure.index')->with('success', 'Data Berhasil Disimpan!');
     }
 
-    public function create(){
-        return view('structure.create-structure');
-    }
-
     public function store(Request $request) {
         $validated = $request -> validate ([
             'name'=> 'required',
@@ -112,19 +98,5 @@ class StructureController extends Controller
         }else {
             $validated['image'] = 'structureprejuru_images/default.png';
         }
-
-        // 2.4 ada di stucture.index
-        Structure::create($validated);
-        return redirect()->route('structure.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
-}
-    public function delete($id) {
-    $structure = Structure::findOrFail ($id);
-
-        if ($structure->image && $structure->image !== 'structureprejuru_images/default.png'){
-            Storage::disk('public')->delete($structure->image);
-        }
-
-        $structure->delete();
-        return redirect()->route('structure.index')->with('success', 'Data Berhasil Dihapus!');
     }
 }

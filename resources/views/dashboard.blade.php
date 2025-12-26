@@ -126,21 +126,21 @@
       </div>
 
     <!-- Tombol Tambah di Tengah -->
-    <div class="w-full flex justify-center items-center mb-2">
-        @auth
-        @if (Auth::user()->role == 0)
-            <a href="{{ route('news.create-news') }}">
-                <button
-                    type="button"
-                    class="btn bg-gray-400 hover:bg-gray-500 
-                    rounded-full px-5 py-2 text-black font-semibold shadow-sm"
-                >
-                    <i class="fa-solid fa-plus"></i> Tambah Data
-                </button>
-            </a>
-        @endif
-        @endauth
-    </div>
+    @auth
+      @if (Auth::user()->role == 0)
+      <div class="w-full flex justify-center items-center mb-2">
+          <a href="{{ route('news.create-news') }}">
+            <button
+              type="button"
+              class="btn bg-gray-400 hover:bg-gray-500 
+              rounded-full px-5 py-2 text-black font-semibold shadow-sm"
+              >
+              <i class="fa-solid fa-plus"></i> Tambah Data
+            </button>
+          </a>
+      </div>
+      @endif
+    @endauth
 
     <!-- Swiper -->
     <div class="swiper mySwiper">
@@ -149,7 +149,7 @@
         @foreach ($news as $n)
         <!-- Slide 1 -->
         <div class="swiper-slide">
-          <div style="height: 580px" class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div style="height: 620px" class="bg-white rounded-lg shadow-md overflow-hidden">
           <img src="{{asset('storage/' . ($n->image ?? 'news_images/default.png'))}}" alt="" class="w-full h-48 object-cover"/>
             <div class="p-4">
               <span class="inline-block bg-amber-900 text-white text-xs px-5 py-1 rounded-full mb-2">
@@ -211,8 +211,8 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-around">
           <!-- Item 1 -->
           <div class="text-white">
-            <h4 class="font-bold text-2xl">120RB</h4>
-            <p class="text-sm">Warga</p>
+            <h4 class="font-bold text-2xl">2.693</h4>
+            <p class="text-sm">Penduduk Gegem</p>
           </div>
 
           <!-- Item 2 -->
@@ -340,32 +340,6 @@
     <div class="mx-5">
       <div class="card" id="chartpendapatan"></div>
     </div>
-
-    <!-- <div id="chartpendapatan"
-     data-pendapatan='@json($pendapatan)'
-     data-belanja='@json($belanja)'
-     data-year='@json($year)'></div>
-
-    <script>
-      var chartDiv = document.getElementById("chartpendapatan");
-
-      var options = {
-        series: [
-          { name: "Pendapatan Desa", data: JSON.parse(chartDiv.dataset.pendapatan) },
-          { name: "Belanja Desa", data: JSON.parse(chartDiv.dataset.belanja) },
-        ],
-        chart: { height: 350, type: "area" },
-        dataLabels: { enabled: false },
-        stroke: { curve: "smooth" },
-        xaxis: { categories: JSON.parse(chartDiv.dataset.year) },
-        tooltip: {
-          y: { formatter: function (val) { return "Rp" + val.toLocaleString("id-ID"); } }
-        },
-      };
-
-      var chart = new ApexCharts(chartDiv, options);
-      chart.render();
-    </script> -->
 
     <script>
       var options = {

@@ -49,24 +49,23 @@
       <!-- End Title -->
     
       <!-- Button Edit -->
+      @Auth
+        @if (Auth::user()->role == 0)
         <div class="row">
           <div class="md:ml-auto mx-auto w-fit my-5">
             <a href="/financials">
-
-            @Auth
-            @if (Auth::user()->role == 0)
-            <button
-              type="button"
-              class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-4 py-2 text-white font-semibold"
-              >
-              <i class="fa-solid fa-edit"></i>
-              Edit Data
-            </button>
-            @endif
-            @endauth
-
+              <button
+                type="button"
+                class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-4 py-2 text-white font-semibold"
+                >
+                <i class="fa-solid fa-edit"></i>
+                Edit Data
+              </button>
+            </a>
           </div>
         </div>
+        @endif
+      @endauth
       <!-- End Button Edit -->
 
       <!-- Row 1 -->
@@ -127,7 +126,7 @@
             <div>
               <p class="text-lg font-medium">Pengeluaran</p>
               <p class="text-3xl font-bold">
-                Rp {{ number_format ($yearspending, 0, ',', '.') }}
+                Rp{{ number_format($yearspending, 0, ',', '.') }}
               </p>
             </div>
             <img src="{{asset('storage/assets/expenses.png')}}" alt="pengeluaran" class="w-25 h-25" />

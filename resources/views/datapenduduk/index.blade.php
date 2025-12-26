@@ -50,12 +50,11 @@
 
     <!-- Tombol Edit -->
       @foreach($datapenduduk as $d)
+      @Auth
+        @if (Auth::user()->role == 0)
         <div class="row">
           <div class="md:ml-auto mx-auto w-fit my-1 mt-5">
             <a href="{{route('datapenduduk.edit-datapenduduk', $d->id)}}">
-
-            @Auth
-            @if (Auth::user()->role == 0)
               <button
                 type="button"
                 class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-4 py-2 text-white font-semibold"
@@ -63,11 +62,11 @@
                 <i class="fa-solid fa-edit"></i>
                 Edit Data
               </button>
-            @endif
-            @endauth
-
+            </a>
           </div>
         </div>
+        @endif
+      @endauth
     <!-- End Tombol Edit -->
 
     <!-- Card Konten -->
@@ -113,6 +112,7 @@
             <p>Mutasi Penduduk</p>
           </div>
         </div>
+        
       </div>
     <!-- End Card Konten -->
 

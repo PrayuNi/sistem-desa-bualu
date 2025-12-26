@@ -144,7 +144,7 @@
           <i class="fa-solid fa-city text-6xl md:text-9xl m-3"></i>
           <div>
             <h4 class="font-bold text-2xl md:text-3xl">Lokasi Banjar Adat</h4>
-            <h2 class="text-xl md:text-2xl">Desa Adat Bualu <span class="text-sm">, Nusa Dua</span></h2>
+            <h2 class="text-xl md:text-2xl">Desa Adat Bualu <span class="text-sm"></span></h2>
           </div>
         </div>
 

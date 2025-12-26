@@ -43,6 +43,11 @@
             border: 1px solid #ccc;
             font-size: 0.9rem;
         }
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #F99C0F;
+        }
         textarea {
             min-height: 90px;
             resize: vertical;

@@ -44,6 +44,10 @@
             border: 1px solid #ccc;
             font-size: 0.9rem;
         }
+        input:focus {
+            outline: none;
+            border-color: #F99C0F;
+        }
         .btn-wrap {
             display: flex;
             flex-direction: column;

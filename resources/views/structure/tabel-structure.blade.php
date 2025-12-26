@@ -174,17 +174,6 @@
       .btn-kembali:hover {
         background-color: #5a6268;
       }
-      .btn-tambah {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 15px;
-      }
-      .btn-tambah button {
-        margin: 0 !important; /* override m-5 */
-      }
-      .btn-tambah button:hover {
-        background-color: #718096;
-      }
       .aksi-btn {
         display: flex;
         justify-content: center;
@@ -206,22 +195,6 @@
     </style>
 
     <h2>Edit Data Struktur Prejuru</h2>
-    <!-- Button Tambah -->
-    @Auth
-        @if (Auth::user()->role == 0)
-        <div class="btn-tambah">
-            <a href="{{route('structure.create-structure')}}">
-            <button
-                type="button"
-                class="btn bg-gray-400 rounded-full w-fit px-4 py-2 m-5 text-black font-semibold"
-            >
-            <i class="fa-solid fa-plus"></i> Tambah Data
-            </button>
-            </a> <br>
-        </div> 
-        @endif
-    @endauth
-    <!-- End Button Tambah -->
 
     <div class="table-container">
       <table class="modern-table">
@@ -242,6 +215,7 @@
               <div class=" flex justify-center"> <img class="w-20" src="{{asset('storage/' . ($item->image ?? 'structureprejuru_images/default.png'))}}" alt=""></div>
             </td>
 
+          
             <td>
               <div class="aksi-btn">
                 <a href="{{route('structure.edit-structure', $item->id)}}">
@@ -249,15 +223,6 @@
                     <i class="fa-solid fa-edit"></i>
                   </button>
                 </a>
-                <form action="{{route('structure.delete', $item->id)}}" 
-                  method="POST" 
-                  onsubmit="return confirm('Yakin Mau Dihapus?')">
-                  @csrf
-                  @method('DELETE')
-                    <button class="btn-delete" type="submit">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                </form>
               </div> 
             </td>
           </tr>
