@@ -16,10 +16,11 @@
         body {
             font-family: 'Poppins', Arial, sans-serif;
             background: linear-gradient(135deg, #ffb84d, #ff8800);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* padding: 15px; */
         }
 
         .wrapper {
@@ -152,7 +153,37 @@
             .form-section {
                 padding: 30px 25px;
             }
+        }    
+
+        @media (max-width: 375px) {
+            .wrapper {
+                width: 100%;
+                margin: 0;
+                border-radius: 12px;
+            }
+
+            .form-section {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 13px;
+            }
         }
+        @media (max-width: 375px) {
+            .image-section img {
+                max-width: 140px;
+            }
+
+            .image-section h1 {
+                font-size: 18px;
+            }
+        }
+   
     </style>
 </head>
 

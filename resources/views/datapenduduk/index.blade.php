@@ -43,7 +43,7 @@
         >
         <h4 class="font-semibold text-3xl">Administrasi Penduduk Adat Desa Adat Bualu</h4>
         <p>
-          Jumlah ini menunjukkan total penduduk adat (Krama Adat) yang tinggal di Desa Adat Bualu dan terdaftar sebagai warga banjar di wilayah Desa Adat Bualu.
+          Jumlah ini menunjukkan total penduduk adat (Krama Adat) yang tinggal di Desa Adat Bualu dan terdaftar sebagai warga yang mebanjar di wilayah Desa Adat Bualu.
         </p>
       </div>
     <!-- End Title -->

@@ -11,7 +11,7 @@
           class="mx-auto title w-fit px-7 py-5 border-solid border-2 border-black rounded-lg m-2 p-2 text-center shadow-lg shadow-amber-200"
           >
           <h4 class="font-semibold text-3xl">Administrasi Penduduk Tamiu Desa Adat Bualu</h4>
-          <p>Jumlah ini menunjukkan total penduduk pendatang (Krama Tamiu) yang tinggal sementara di Desa Adat Bualu dan terdaftar sebagai warga sementara untuk tinggal di wilayah Desa Adat Bualu.</p>
+          <p>Jumlah ini menunjukkan total penduduk pendatang (Krama Tamiu) yang datang dan tinggal sementara di Desa Adat Bualu dan terdaftar sebagai warga sementara untuk tinggal di wilayah Desa Adat Bualu.</p>
         </div>
       <!-- End Title -->
 
