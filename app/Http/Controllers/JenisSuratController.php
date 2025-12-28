@@ -22,15 +22,14 @@ class JenisSuratController extends Controller
         return view('jenissurat.edit-jenissurat', compact('jenissurats'));
     }
     public function update(Request $request, $id){
-        // dd($request->all());
     $jenissurats = JenisSurat::findOrFail($id);
 
     $validated = $request->validate([
         'jenis' => 'required|max:100|unique:jenis_surat,jenis,' . $id . ',id',
         'print_able'   => 'required|max:100',
-        'judul'        => 'required',
-        'pendahuluan'  => 'required',
-        'penutup'      => 'required',
+        'judul'        => 'nullable',
+        'pendahuluan'  => 'nullable',
+        'penutup'      => 'nullable',
     ]);
 
     $jenissurats->update($validated);
@@ -42,9 +41,9 @@ class JenisSuratController extends Controller
         $validated = $request->validate ([
             'jenis'=> 'required',
             'print_able'=>'required',
-            'judul'=>'required',
-            'pendahuluan'=>'required',
-            'penutup'=>'required',
+            'judul'=>'nullable',
+            'pendahuluan'=>'nullable',
+            'penutup'=>'nullable',
         ]);
 
     // 2.4 ada di profil.index

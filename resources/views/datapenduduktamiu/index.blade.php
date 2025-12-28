@@ -3,6 +3,37 @@
     Data Penduduk Tamiu Desa Adat Bualu
   </x-slot>
 
+  <!--Notifikasi berhasil disimpan  -->
+    @if(session('success'))
+    <div id="toastSuccess" class="fixed top-5 right-5 flex items-center p-4 rounded-lg shadow-lg bg-green-600 text-white animate-slide-in">
+      <i class="fa-solid fa-circle-check text-2xl mr-3"></i>
+      <span class="text-lg font-semibold">{{ session('success') }}</span>
+    </div>
+
+    <style>
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateX(100%); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(100%); }
+      }
+      .animate-slide-in{
+        animation: slideIn 0.10s ease-out forwards;
+      }
+    </style>
+
+    <script>
+      setTimeout(() => {
+        const toast = document.getElementById('toastSuccess');
+        toast.style.animation = "slideOut 0.5s ease-in forwards";
+        setTimeout(() => toast.remove(), 600);
+      }, 3000);
+    </script>
+    @endif
+  <!-- End Notifikasi berhasil disimpan -->
+
   <!-- Konten -->
     <section class="content h-fit container mx-auto py-7 px-2">
 
