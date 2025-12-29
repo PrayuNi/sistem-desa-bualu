@@ -451,11 +451,11 @@
 
         </div>
         <!-- Copyright -->
-  <div class="mt-10 border-t border-white/30">
-    <p class="text-center text-sm py-4 text-white/90">
-      © {{ date('Y') }} Desa Adat Bualu/Portal-Digital.
-    </p>
-  </div>
+        <div class="mt-10 border-t border-white/30">
+          <p class="text-center text-sm py-4 text-white/90">
+            <span class="font-semibold">Copyright © {{ date('Y') }}</span> <span class="font-semibold text-amber-900">SI-DAB</span> | Portal-Digital. 
+          </p>
+        </div>
       </footer>
     <!-- End Footer -->
 
