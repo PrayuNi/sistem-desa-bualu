@@ -7,6 +7,7 @@ use App\Models\JenisSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PengajuanSuratController extends Controller
 {
@@ -127,12 +128,12 @@ class PengajuanSuratController extends Controller
         } else {
             $data['image'] = null; // atau default.png
         }
-        
+
         PengajuanSurat::create($data);
 
         return redirect()->route('pengajuansurat.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 
 }
-        public function delete ($id) {
+    public function delete ($id) {
         $pengajuansurat = PengajuanSurat::findOrFail($id);
 
         if ($pengajuansurat->image && $pengajuansurat->image !== 'image'){
@@ -143,14 +144,14 @@ class PengajuanSuratController extends Controller
         return redirect()->route('pengajuansurat.index')->with('success', 'Data Berhasil Dihapus!');
     }
 
-    public function print($id)
-{
+    public function print($id) {
         $data = PengajuanSurat::findOrFail($id);
-        $data_jenis = JenisSurat::all()->where('jenis', $data->jenis_surat)->first();
+        $data_jenis = JenisSurat::where('jenis', $data->jenis_surat)->first();
 
-        $pdf = \PDF::loadView('pengajuansurat.surat-pdf', compact('data', 'data_jenis'))
-            ->setPaper('A4', 'potrait');
+        $pdf = Pdf::loadView('pengajuansurat.surat-pdf', compact('data', 'data_jenis'))
+            ->setPaper('A4', 'portrait');
 
         return $pdf->stream('surat-'.$data->name.'.pdf');
-        }
+    }
+
 }

@@ -460,7 +460,7 @@
 
                         @if(strtolower($item->status) === 'disetujui')
                             @if($item->print_able == 1)
-                                <a class="mx-1" href="{{ route('pengajuansurat.print', $item->id) }}">
+                                <a class="mx-1" href="{{ route('pengajuansurat.print', $item->id) }} " target="_blank">
                                     <button type="button" class="btn bg-green-800 hover:bg-green-900 rounded-full w-fit px-3 py-1 text-white font-semibold">
                                         <i class="fa-solid fa-print"></i>
                                     </button>
