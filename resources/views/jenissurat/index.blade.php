@@ -68,6 +68,8 @@
         @endif  
     <!-- End Notifikasi berhasil dihapus -->
 
+    @include('components.login-modal')
+    @include('components.notif-modal')
     <style>
         .row-card {
             margin: 10px auto;
@@ -209,6 +211,46 @@
         }
     </style>
 
+    @if($errors->any())
+        <div id="errorAlert"
+            class="fixed top-5 left-1/2 -translate-x-1/2 -translate-y-10
+                    bg-red-100 border border-red-400 text-red-700 
+                    px-4 py-3 rounded shadow-lg 
+                    w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 
+                    text-center z-50 opacity-0 
+                    transition-transform  duration-500 ease-out">
+            <strong>⚠ Periksa kembali inputan Anda:</strong>
+            <ul class="mt-2">
+                @foreach($errors->all() as $err)
+                    <li>Kolom wajib diisi</li>
+                @endforeach
+            </ul>
+        </div>
+
+        <script>
+            const alert = document.getElementById('errorAlert');
+
+            // Slide-in + bounce effect
+            setTimeout(() => {
+                alert.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease';
+                alert.classList.remove('-translate-y-10', 'opacity-0');
+                alert.classList.add('translate-y-1', 'opacity-100'); // sedikit bounce ke bawah
+                // setelah bounce, kembali ke posisi normal
+                setTimeout(() => {
+                    alert.classList.remove('translate-y-1');
+                    alert.classList.add('translate-y-0');
+                }, 300);
+            }, 100);
+
+            // Slide-out naik + fade-out
+            setTimeout(() => {
+                alert.classList.remove('translate-y-0', 'opacity-100');
+                alert.classList.add('-translate-y-10', 'opacity-0');
+                setTimeout(() => alert.remove(), 600);
+            }, 4000);
+        </script>
+    @endif
+
     <h2>Tabel Jenis Surat</h2>
     <!-- Button Tambah -->
     @Auth
@@ -229,18 +271,6 @@
 
 
     <div class="table-container">
-    <!-- ALERT -->
-    @if($errors->any())
-        <div style="background:#f8d7da; border-left: 5px solid #dc3545; padding:10px; margin:15px auto; width:600px; border-radius:6px;">
-            <strong>Periksa kembali inputan Anda:</strong>
-            <ul style="margin-top:8px; margin-left:20px;">
-                @foreach($errors->all() as $err)
-                <li>{{ $err }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
         <table class="modern-table">
             <tr>
                 <th>No</th>  

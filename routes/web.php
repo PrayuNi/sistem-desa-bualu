@@ -45,7 +45,7 @@ Route::get('/populations/edit/{id}', [DashboardController::class, 'editpopulatio
 Route::post('/populations/update/{id}', [DashboardController::class, 'updatepopulation'])->name('population.update');
 
 Route::get('/financials', [DashboardController::class, 'listfinancial'])->name('financial.index');
-Route::get('/financials/edit/{id}', [DashboardController::class, 'editfinancial'])->name('financial.edit');
+Route::get('/financials/edit/{id}', [DashboardController::class, 'editfinancial'])->name('financial.edit-financial');
 Route::post('/financials/update/{id}', [DashboardController::class, 'updatefinancial'])->name('financial.update');
 
 

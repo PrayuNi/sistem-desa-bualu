@@ -35,8 +35,9 @@
   <!-- End Notifikasi berhasil disimpan -->
 
   @include('components.login-modal')
+  @include('components.notif-modal')
   <!-- Konten -->
-    <section class="strukturprejuru container mx-auto">
+    <section class="container mx-auto">
 
       <!-- Title -->
         <div class="text-center mt-10 mb-5">

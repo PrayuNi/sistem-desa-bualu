@@ -139,22 +139,51 @@
         }      
     </style>
 
+    @if($errors->any())
+        <div id="errorAlert"
+            class="fixed top-5 left-1/2 -translate-x-1/2 -translate-y-10
+                    bg-red-100 border border-red-400 text-red-700 
+                    px-4 py-3 rounded shadow-lg 
+                    w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 
+                    text-center z-50 opacity-0 
+                    transition-transform  duration-500 ease-out">
+            <strong>⚠ Periksa kembali inputan Anda:</strong>
+            <ul class="mt-2">
+                @foreach($errors->all() as $err)
+                    <li>Kolom wajib diisi</li>
+                @endforeach
+            </ul>
+        </div>
+
+        <script>
+            const alert = document.getElementById('errorAlert');
+
+            // Slide-in + bounce effect
+            setTimeout(() => {
+                alert.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease';
+                alert.classList.remove('-translate-y-10', 'opacity-0');
+                alert.classList.add('translate-y-1', 'opacity-100'); // sedikit bounce ke bawah
+                // setelah bounce, kembali ke posisi normal
+                setTimeout(() => {
+                    alert.classList.remove('translate-y-1');
+                    alert.classList.add('translate-y-0');
+                }, 300);
+            }, 100);
+
+            // Slide-out naik + fade-out
+            setTimeout(() => {
+                alert.classList.remove('translate-y-0', 'opacity-100');
+                alert.classList.add('-translate-y-10', 'opacity-0');
+                setTimeout(() => alert.remove(), 600);
+            }, 4000);
+        </script>
+    @endif
+
     <div class="form-container">
         <form class="form-card" action="{{ route('jenissurat.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <h2>Form Tambah Jenis Surat</h2>
-
-            @if($errors->any())
-                <div class="error-alert">
-                    <strong>Periksa kembali inputan Anda:</strong>
-                        <ul>
-                            @foreach($errors->all() as $err)
-                            <li>{{ $err }}</li>
-                            @endforeach
-                        </ul>
-                </div>
-            @endif
 
             <label>Jenis Surat:</label>
             <input type="text" name="jenis" id="jenis" placeholder=""> <br>

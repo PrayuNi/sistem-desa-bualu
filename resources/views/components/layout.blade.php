@@ -75,7 +75,7 @@
                           <div id="dropdownMenuStruktur"
                             class="absolute hidden bg-white text-gray-800 shadow-lg rounded-md w-52 z-[9999] top-full mt-2"
                             >
-                            <a href="/structures" class="block px-4 py-2 hover:bg-gray-100">Struktur Prejuru</a>
+                            <a href="/structures" onclick="return requireNotif()" class="block px-4 py-2 hover:bg-gray-100">Struktur Prejuru</a>
                             <a href="/structurestaff" class="block px-4 py-2 hover:bg-gray-100">Struktur Staff Kantor Desa</a>
                           </div>
                       </div>
@@ -184,7 +184,7 @@
             <details class="bg-amber-600 p-2 rounded">
                 <summary class="cursor-pointer">Struktur</summary>
                 <div class="ml-4 mt-2 space-y-2 text-sm">
-                    <a href="/structures" class="block">Struktur Prejuru</a>
+                    <a href="/structures" onclick="return requireNotif()"  class="block">Struktur Prejuru</a>
                     <a href="/structurestaff" class="block">Struktur Staff Kantor Desa</a>
                 </div>
             </details>
@@ -285,38 +285,79 @@
       <!-- End JavaScript untuk Toggle Menu Data Penduduk -->
 
       <!-- JavaScript Modal Pengajuan Surat -->
-      <script>
-        (() => {
-          const body = document.body;
+        <script>
+          (() => {
+            const body = document.body;
 
-          const IS_LOGGED_IN = body.dataset.auth === '1';
-          const USER_ROLE = body.dataset.role !== ''
-            ? Number(body.dataset.role)
-            : null;
+            const IS_LOGGED_IN = body.dataset.auth === '1';
+            const USER_ROLE = body.dataset.role !== ''
+              ? Number(body.dataset.role)
+              : null;
 
-          window.requireLogin = function () {
-            const modal = document.getElementById('loginModal');
+            window.requireLogin = function () {
+              const modal = document.getElementById('loginModal');
 
-            // Belum login → tampilkan modal
-            if (!IS_LOGGED_IN) {
-              if (modal) {
-                modal.classList.remove('hidden');
+              // Belum login → tampilkan modal
+              if (!IS_LOGGED_IN) {
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+                return false;
               }
+
+              // Sudah login & role diizinkan
+              if ([0, 1, 2].includes(USER_ROLE)) {
+                window.location.href = "/pengajuansurats";
+                return true;
+              }
+
+              // Role tidak diizinkan
+              alert('Anda tidak memiliki akses ke fitur ini.');
               return false;
-            }
+            };
+          })();
+        </script>
+      <!-- End JavaScript Modal Pengajuan Surat -->
 
-            // Sudah login & role diizinkan
-            if ([0, 1, 2].includes(USER_ROLE)) {
-              window.location.href = "/pengajuansurats";
-              return true;
-            }
+      <!-- JavaScript Notif Modal -->
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                const modal = document.getElementById('notifModal');
+                const closeBtn = document.getElementById('notifCloseBtn');
 
-            // Role tidak diizinkan
-            alert('Anda tidak memiliki akses ke fitur ini.');
-            return false;
-          };
-        })();
-      </script>
+                if (!modal || !closeBtn) {
+                  console.error('notifModal atau close button tidak ditemukan');
+                  return;
+                }
+
+                window.requireNotif = function () {
+                  const body = document.body;
+                  const isAuth = body.dataset.auth === '1';
+                  const role = parseInt(body.dataset.role);
+
+                  // cek apakah modal perlu ditampilkan
+                  if (!isAuth || role !== 0) {
+                      modal.classList.remove('hidden');
+                      return false; // hentikan redirect hanya saat modal muncul
+                  } else {
+                      modal.classList.add('hidden'); // admin → modal hilang
+                      return true; // biarkan halaman terbuka
+                  }
+                };
+
+                closeBtn.addEventListener('click', function () {
+                  modal.classList.add('hidden');
+                });
+
+                modal.addEventListener('click', function (e) {
+                  if (e.target === modal) {
+                    modal.classList.add('hidden');
+                  }
+                });
+              });
+            </script>
+      <!-- End JavaScript Notif Modal -->
+
 
         <!-- <script>
           function requireLogin() {
@@ -334,7 +375,7 @@
           }
         </script> -->
         
-      <!-- End JavaScript Modal Pengajuan Surat -->
+        <!-- End JavaScript Modal Pengajuan Surat -->
 
 
     {{ $slot }}
@@ -550,5 +591,6 @@
       </script>
     <!-- Javascript Footer -->
 
+@include('components.notif-modal')
 </body>
 </html>

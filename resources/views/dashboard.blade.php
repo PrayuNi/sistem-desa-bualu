@@ -64,6 +64,7 @@
   </style>
 
   @include('components.login-modal')
+  @include('components.notif-modal')
     <!-- jumbotron -->
     <section
       class="jumbotron relative min-h-screen bg-cover bg-center"
@@ -326,7 +327,7 @@
     <div class="w-full flex justify-center items-center mb-4">
       @auth
       @if (Auth::user()->role == 0)
-        <a href="{{route('financial.index')}}">
+        <a href="{{ route('financial.index') }}">
           <button type="button" class="btn bg-blue-900 hover:bg-blue-800 rounded-full w-fit px-6 py-3 mb-2 text-white font-semibold">
             <i class="fa-solid fa-edit"></i>
             Edit Data

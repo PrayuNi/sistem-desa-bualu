@@ -72,25 +72,62 @@ class PengajuanSuratController extends Controller
         }
 
     public function  store(Request $request) {
-        $data =[
-            'name' => $request-> name,
-            'tanggal_lahir' =>$request-> tanggal_lahir,
-            'jenis_kelamin'=>$request-> jenis_kelamin,
-            'alamat'=> $request-> alamat,
-            'nik' => Auth::user()->nik,
-            'jenis_surat'=> $request-> jenis_surat,
-            'no_whatsapp'=> $request-> no_whatsapp ,
-            'tanggal_pengajuan'=> $request-> tanggal_pengajuan ,
-            'image'=> $request-> image,
-            'print_able'=> JenisSurat::all()->where('jenis', $request-> jenis_surat)->first()->print_able,
-            'status' => $request-> status,
-        ];
-      
-        if($request->hasFile('image')){
-            $pdfName = time().'_'.$request->file('image')->getClientOriginalName();
-            $pathPdf = $request->file('image')->storeAs('ktp_images', $pdfName, 'public');
-            $validated['image'] = $pathPdf;
+        //Validasi form terlebih dahulu
+        $request->validate([
+            'name' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'jenis_surat' => 'required',
+            'no_whatsapp' => 'required',
+            'tanggal_pengajuan' => 'required|date',
+            'image' => 'required|image|max:2048',
+        ], [
+            'name.required' => 'Nama wajib diisi!',
+            'tanggal_lahir.required' => 'Tanggal lahir wajib diisi!',
+            'jenis_kelamin.required' => 'Jenis kelamin wajib dipilih!',
+            'alamat.required' => 'Alamat wajib diisi!',
+            'jenis_surat.required' => 'Jenis surat harus dipilih!',
+            'no_whatsapp.required' => 'Nomor WhatsApp wajib diisi!',
+            'tanggal_pengajuan.required' => 'Tanggal pengajuan wajib diisi!',
+            'image.required' => 'Foto KTP wajib diisi!',
+        ]);
+
+        // Ambil print_able dengan aman
+        $jenis = JenisSurat::whereRaw('LOWER(jenis) = ?', [strtolower($request->jenis_surat)])->first();
+
+        if (!$jenis) {
+            return redirect()->back()->withErrors(['jenis_surat' => 'Jenis surat tidak valid!'])->withInput();
         }
+
+        $data = [
+            'name' => $request->name,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'nik' => Auth::user()->nik,
+            'jenis_surat' => $request->jenis_surat,
+            'no_whatsapp' => $request->no_whatsapp,
+            'tanggal_pengajuan' => $request->tanggal_pengajuan,
+            'image' => $request->image,
+            'print_able' => $jenis->print_able, // aman, pasti ada
+            'status' => $request->status ?? 'pending',
+        ];
+
+        // if($request->hasFile('image')){
+        //     $pdfName = time().'_'.$request->file('image')->getClientOriginalName();
+        //     $pathPdf = $request->file('image')->storeAs('ktp_images', $pdfName, 'public');
+        //     $validated['image'] = $pathPdf;
+        // }
+
+        if($request->hasFile('image')){
+            $imageName = time().'_'.$request->file('image')->getClientOriginalName();
+            $pathImage = $request->file('image')->storeAs('ktp_images', $imageName, 'public');
+            $data['image'] = $pathImage; // pastikan simpan ke $data
+        } else {
+            $data['image'] = null; // atau default.png
+        }
+        
         PengajuanSurat::create($data);
 
         return redirect()->route('pengajuansurat.index')->with('success', 'Data Berhasil Disimpan!'); //1.3 

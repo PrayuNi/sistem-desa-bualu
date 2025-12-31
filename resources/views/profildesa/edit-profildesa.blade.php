@@ -160,16 +160,25 @@
 
             <h2>Edit Profil Desa</h2>
 
-            @if($errors->any())
-                <div class="error-alert">
-                    <strong>Periksa kembali inputan Anda:</strong>
-                    <ul>
-                        @foreach($errors->all() as $err)
-                        <li>{{ $err }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+@if($errors->any())
+    <div id="toastWarning" class="fixed top-5 right-5 bg-yellow-400 text-black p-4 rounded-lg shadow-lg z-50 transform translate-x-20 opacity-0 transition-all duration-500">
+        ⚠ Seluruh kolom wajib diisi
+    </div>
+
+    <script>
+        const toast = document.getElementById('toastWarning');
+        setTimeout(() => {
+            toast.classList.remove('translate-x-20', 'opacity-0');
+            toast.classList.add('translate-x-0', 'opacity-100');
+        }, 100);
+
+        setTimeout(() => {
+            toast.classList.add('translate-x-20', 'opacity-0');
+            setTimeout(() => toast.remove(), 500);
+        }, 4000);
+    </script>
+@endif
+
 
             <label>Nama Bendesa:</label>
             <input type="text" name="name" value="{{ old('name', $profilsdesa->name) }}">

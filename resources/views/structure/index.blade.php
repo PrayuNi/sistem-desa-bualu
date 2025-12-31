@@ -34,6 +34,8 @@
       @endif
     <!-- End Notifikasi berhasil disimpan -->
 
+    @include('components.login-modal')
+    @include('components.notif-modal')
     <!-- Title -->
       <div class="text-center mt-10">
         <h2
@@ -156,11 +158,12 @@
         data: [
           ['Kepala Desa', 'Wakil Kepala Desa'],
           ['Wakil Kepala Desa', 'Sekretaris Desa'],
+          ['Wakil Kepala Desa', 'Baga - Baga'],
           ['Wakil Kepala Desa', 'Bendahara 1'],
           
-          ['Bendahara 1', 'Baga Parahyangan'],
-          ['Bendahara 1', 'Baga Palemahan'],
-          ['Bendahara 1', 'Baga Pawongan'],
+          ['Baga - Baga', 'Baga Parahyangan'],
+          ['Baga - Baga', 'Baga Palemahan'],
+          ['Baga - Baga', 'Baga Pawongan'],
 
           ['Baga Parahyangan', 'Anggota 1'],
           
@@ -194,6 +197,7 @@
             dataLabels: {
               color: 'black'
             },
+            height: 25
           }, 
           {
             level: 4,
@@ -201,7 +205,7 @@
             dataLabels: {
               color: 'black'
             },
-            height: 10
+            height: 25
           },
           {
             level: 5,
@@ -209,6 +213,7 @@
             dataLabels: {
               color: 'black'
             },
+            height: 25
           },
           {
             level: 6,
@@ -216,6 +221,7 @@
             dataLabels: {
               color: 'black'
             },
+            height: 25
           },
           {
             level: 7,
@@ -223,6 +229,7 @@
             dataLabels: {
               color: 'black'
             },
+            height: 25
           },
           {
             level: 8,
@@ -230,6 +237,7 @@
             dataLabels: {
               color: 'black'
             },
+            height: 25
           }
         ],
 
@@ -260,7 +268,7 @@
             title: '{{$structures[3]->position}}',
             name: '{{$structures[3]->name}}',
             image: '{{ asset('storage/' . $structures[3]->image) }}'
-          }, 
+          },
           
         // Anggota Baga Parahyangan
           {

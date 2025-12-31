@@ -158,7 +158,7 @@
                 <td>{{$item->income}}</td>
                 <td>{{$item->spending}}</td>
                 <td>
-                <a href="{{route('financial.edit', $item->id)}}">
+                <a href="{{ route('financial.edit-financial', $item->id) }}">
                     <button
                         type="button"
                         class="btn-edit"

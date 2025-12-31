@@ -9,21 +9,37 @@
             font-family:'Times New Roman', Times, serif; 
             font-size: 14px; 
         } 
+        .title-wrapper {
+            text-align: center; /* ini yang membuat judul berada di tengah */
+        }
         .title{ 
+            display: inline-block; 
             text-align: center; 
             font-weight: bold; 
             font-size: 20px; 
-            /* margin-bottom: 20px;  */
+            margin-bottom: 0px; 
             text-transform: uppercase; 
             position: relative 
-        } 
+        }
+        .nomor-surat {
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
         .title::after { 
+            content: ''; 
+            display: block; 
+            width: 100%; /* panjang garis */ 
+            height: 2px; /* tebal garis */ 
+            background: #000; 
+            margin: 6px auto 0; /* auto = agar ke tengah */ 
+            border-radius: 2px; /* opsional */ 
+        } 
+        .tembusan::after { 
             content: ''; 
             display: block; 
             width: 200px; /* panjang garis */ 
             height: 2px; /* tebal garis */ 
             background: #000; 
-            margin: 6px auto 0; /* auto = agar ke tengah */ 
             border-radius: 2px; /* opsional */ 
         } 
         .indent { 
@@ -31,7 +47,7 @@
         } 
         .content{ 
             margin: 0 40px; 
-            line-height: 1.6; 
+            line-height: 1.3; 
         } 
         .kop-surat{ 
             text-align: center; 
@@ -71,12 +87,14 @@
             <img class="kop" src="./storage/assets/kop-desa.png" alt="">
         </div> 
         <!-- Judul Surat -->
-        <h2 class="title">{{$data_jenis->judul}}</h2>
+        <div class="title-wrapper">
+            <h2 class="title">{{$data_jenis->judul}}</h2>
+        </div>
 
         <!-- Nomor Surat -->
         <div class="content">
         @if($data->jenis_surat === 'Keterangan Krama')
-                <p style="text-align: center;">Nomor: 00/S-KET/DAB/<?php 
+                <p style="text-align: center">Nomor: 00/S-KET/DAB/<?php 
                     $bulanRomawi = [
                         1 => 'I',
                         2 => 'II',
@@ -99,7 +117,7 @@
                 /{{today()->format('Y')}}</p>
             @else
             <table>
-                <tr>
+                <tr class="nomor-surat">
                     <td>Nomor</td>
                     <td>: 00/REK/DAB/{{today()->format('m')}}/{{today()->format('Y')}}</td>
                 </tr>
@@ -166,12 +184,12 @@
 
             <!-- TTD Bandesa -->
             <div class="ttd-space">
-                <img class="img-ttd" src="./storage/assets/ttd-contoh.png" alt="">
+                <!-- <img class="img-ttd" src="./storage/assets/ttd-contoh.png" alt=""> -->
             </div>
 
             <!-- Nama Bandesa -->
             <div class="nama-bandesa">
-                <p>I Wayan Mudita, SH.</p>
+                <p>I Made Suarma</p>
             </div>
                     
             <br>
@@ -179,7 +197,7 @@
             <!-- Tembusan Surat -->
             <div>
                 @if($data->jenis_surat === 'Keterangan Krama')
-                <p>Tembusan disampaikan kepada Yth:</p>
+                <p class="tembusan">Tembusan disampaikan kepada Yth:</p>
                     <ol>
                         <li>Sabha Desa Adat Bualu</li>
                         <li>Kerta Desa Adat Bualu</li>
@@ -187,9 +205,9 @@
                         <li>Arsipan</li>
                     </ol>
                 @else
-                <p>Tembusan Bukan Krama:</p>
+                <p class="tembusan">Tembusan disampaikan kepada Yth:</p>
                     <ol>
-                        <li>1. Arsipan</li>
+                        <li>Arsipan</li>
                     </ol>
                 @endif
             </div>

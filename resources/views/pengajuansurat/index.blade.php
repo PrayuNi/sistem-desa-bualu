@@ -2,7 +2,7 @@
     <x-slot:title>
         Pengajuan Surat
     </x-slot>
-
+    
     <!-- Notifikasi berhasil disimpan -->
         @if(session('success'))
         <div id="toastSuccess" class="fixed top-5 right-5 flex items-center p-4 rounded-lg shadow-lg bg-green-600 text-white animate-slide-in">
@@ -141,6 +141,46 @@
             }
         }
     </style>
+
+    @if($errors->any())
+        <div id="errorAlert"
+            class="fixed top-5 left-1/2 -translate-x-1/2 -translate-y-10
+                    bg-red-100 border border-red-400 text-red-700 
+                    px-4 py-3 rounded shadow-lg 
+                    w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 
+                    text-center z-50 opacity-0 
+                    transition-transform  duration-500 ease-out">
+            <strong>⚠ Periksa kembali inputan Anda:</strong>
+            <ul class="mt-2">
+                @foreach($errors->all() as $err)
+                    <li>Kolom wajib diisi</li>
+                @endforeach
+            </ul>
+        </div>
+
+        <script>
+            const alert = document.getElementById('errorAlert');
+
+            // Slide-in + bounce effect
+            setTimeout(() => {
+                alert.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease';
+                alert.classList.remove('-translate-y-10', 'opacity-0');
+                alert.classList.add('translate-y-1', 'opacity-100'); // sedikit bounce ke bawah
+                // setelah bounce, kembali ke posisi normal
+                setTimeout(() => {
+                    alert.classList.remove('translate-y-1');
+                    alert.classList.add('translate-y-0');
+                }, 300);
+            }, 100);
+
+            // Slide-out naik + fade-out
+            setTimeout(() => {
+                alert.classList.remove('translate-y-0', 'opacity-100');
+                alert.classList.add('-translate-y-10', 'opacity-0');
+                setTimeout(() => alert.remove(), 600);
+            }, 4000);
+        </script>
+    @endif
 
 <form class="form-card" action="{{ route('pengajuansurat.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -399,9 +439,14 @@
                         <td>Boleh</td>
                     @endif
 
-                <td> 
-                    <div class="justify-center"> <img class="w-20" src="{{asset('storage/' . ($item->image ?? 'file_ktp/default.png'))}}" alt=""></div>
+                <td>
+                    <div class="flex justify-center">
+                        <img class="w-20 h-20 object-cover rounded" 
+                            src="{{ asset('storage/' . ($item->image ?? 'ktp_images/default.png')) }}" 
+                            alt="Lampiran">
+                    </div>
                 </td>
+
                 <td>{{$item->status}}</td>
 
                 <!-- Button -->
