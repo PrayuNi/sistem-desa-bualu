@@ -115,12 +115,6 @@ class PengajuanSuratController extends Controller
             'status' => $request->status ?? 'pending',
         ];
 
-        // if($request->hasFile('image')){
-        //     $pdfName = time().'_'.$request->file('image')->getClientOriginalName();
-        //     $pathPdf = $request->file('image')->storeAs('ktp_images', $pdfName, 'public');
-        //     $validated['image'] = $pathPdf;
-        // }
-
         if($request->hasFile('image')){
             $imageName = time().'_'.$request->file('image')->getClientOriginalName();
             $pathImage = $request->file('image')->storeAs('ktp_images', $imageName, 'public');

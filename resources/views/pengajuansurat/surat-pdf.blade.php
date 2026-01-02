@@ -110,7 +110,7 @@
                         12 => 'XII',
                         ];
 
-                    $bulan = today()->format('m');
+                    $bulan = (int) today()->format('m');
 
                     echo $bulanRomawi[$bulan];
                 ?>
