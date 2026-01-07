@@ -212,7 +212,16 @@
 
         <div class="input-group">
             <label>NIK:</label>
-            <input type="text" name="nik" id="nik" placeholder="Isi no KTP">
+            <!-- <input type="text" name="nik" id="nik" placeholder="Isi no KTP"> -->
+            @auth
+                @if(Auth::user()->role == 0)
+                    {{-- ADMIN --}}
+                    <input type="text" name="nik" placeholder="Masukkan NIK masyarakat" required>
+                @else
+                    {{-- USER --}}
+                    <input type="text" name="nik" value="{{ Auth::user()->nik }}" readonly>
+                @endif
+            @endauth
         </div>
 
         <div class="input-group">

@@ -172,25 +172,25 @@
         @endif
 
         <label>Nama:</label>
-        <input type="text" value="{{old('name', $pengajuansurat->name)}}" name="name" id="name" placeholder="Isi nama lengkap"> <br>
+        <input type="text" value="{{ old('name', $pengajuansurat->name) }}" name="name" id="name" placeholder="Isi nama lengkap"> <br>
     
         <label>Tanggal Lahir:</label>
-        <input type="date" value="{{old('tanggal_lahir', $pengajuansurat->tanggal_lahir)}}" name="tanggal_lahir" id="tanggal_lahir" placeholder=""> <br>
+        <input type="date" value="{{ old('tanggal_lahir', $pengajuansurat->tanggal_lahir) }}" name="tanggal_lahir" id="tanggal_lahir" placeholder=""> <br>
 
         <label>Jenis Kelamin:</label>
-        <input type="text" value="{{old('jenis_kelamin', $pengajuansurat->jenis_kelamin)}}" name="jenis_kelamin" id="jenis_kelamin" placeholder="Isi jenis kelamin"> <br>
+        <input type="text" value="{{ old('jenis_kelamin', $pengajuansurat->jenis_kelamin) }}" name="jenis_kelamin" id="jenis_kelamin" placeholder="Isi jenis kelamin"> <br>
 
         <label>Alamat:</label>
-        <textarea type="text" value="{{old('alamat', $pengajuansurat->alamat)}}" name="alamat" id="alamat" placeholder="Isi alamat lengkap">{{old('alamat', $pengajuansurat->alamat)}}</textarea> <br>
+        <textarea type="text" value="{{ old('alamat', $pengajuansurat->alamat) }}" name="alamat" id="alamat" placeholder="Isi alamat lengkap">{{old('alamat', $pengajuansurat->alamat)}}</textarea> <br>
 
         <label>NIK:</label>
-        <input type="text" value="{{old('nik', $pengajuansurat->nik)}}" name="nik" id="nik" placeholder="Isi no KTP"> <br>
+        <input type="text" value="{{ old('nik', $pengajuansurat->nik) }}" name="nik" id="nik" placeholder="Isi no KTP"> <br>
 
         <label>Jenis Surat:</label>
-        <input type="text" value="{{old('jenis_surat', $pengajuansurat->jenis_surat)}}" name="jenis_surat" id="jenis_surat" placeholder="Isi jenis surat yang diperlukan"> <br>
+        <input type="text" value="{{ old('jenis_surat', $pengajuansurat->jenis_surat) }}" name="jenis_surat" id="jenis_surat" placeholder="Isi jenis surat yang diperlukan"> <br>
   
         <label>No Whatsapp:</label>
-        <input type="text" value="{{old('no_whatsapp', $pengajuansurat->no_whatsapp)}}" name="no_whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
+        <input type="text" value="{{ old('no_whatsapp', $pengajuansurat->no_whatsapp) }}" name="no_whatsapp" id="no_whatsapp" placeholder="Isi no whatsapp"> <br>
   
         <label>Tanggal Pengajuan:</label>
         <input type="text" value="{{ old('tanggal_pengajuan', $pengajuansurat->tanggal_pengajuan) }}" name="tanggal_pengajuan" id="tanggal_pengajuan" placeholder=""> <br>

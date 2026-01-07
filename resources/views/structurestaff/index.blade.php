@@ -71,7 +71,6 @@
   <!-- End Notifikasi berhasil dihapus -->
   
   @include('components.login-modal')
-  @include('components.notif-modal')
   <!-- Konten -->
     <section class="strukturprejuru container pt-10 pb-16 mx-auto">
 

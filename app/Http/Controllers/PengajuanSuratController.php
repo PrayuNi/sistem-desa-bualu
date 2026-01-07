@@ -30,7 +30,6 @@ class PengajuanSuratController extends Controller
 
      public function create(){
         $jenis = JenisSurat::all();
-
         return view('pengajuansurat.create-pengajuansurat', compact('jenis'));
     }
 
@@ -54,6 +53,10 @@ class PengajuanSuratController extends Controller
             // 'print_able'=>'required|max:200',
             'status' => 'nullable | max:20',
         ]);
+
+        if (Auth::user()->role != 0) {
+            $validated['nik'] = Auth::user()->nik;
+        }
 
         if ($request->hasFile('image')){
             if($pengajuansurat->image && $pengajuansurat->image !== 'ktp_images/default.png'){
@@ -79,6 +82,7 @@ class PengajuanSuratController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
+            'nik' => 'required',
             'jenis_surat' => 'required',
             'no_whatsapp' => 'required',
             'tanggal_pengajuan' => 'required|date',
@@ -88,6 +92,7 @@ class PengajuanSuratController extends Controller
             'tanggal_lahir.required' => 'Tanggal lahir wajib diisi!',
             'jenis_kelamin.required' => 'Jenis kelamin wajib dipilih!',
             'alamat.required' => 'Alamat wajib diisi!',
+            'nik.required' => 'NIK wajib diisi!',
             'jenis_surat.required' => 'Jenis surat harus dipilih!',
             'no_whatsapp.required' => 'Nomor WhatsApp wajib diisi!',
             'tanggal_pengajuan.required' => 'Tanggal pengajuan wajib diisi!',
@@ -106,7 +111,8 @@ class PengajuanSuratController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
-            'nik' => Auth::user()->nik,
+            // 'nik' => Auth::user()->nik,
+            'nik' => $request->nik,
             'jenis_surat' => $request->jenis_surat,
             'no_whatsapp' => $request->no_whatsapp,
             'tanggal_pengajuan' => $request->tanggal_pengajuan,
@@ -114,6 +120,10 @@ class PengajuanSuratController extends Controller
             'print_able' => $jenis->print_able, // aman, pasti ada
             'status' => $request->status ?? 'pending',
         ];
+
+        if (Auth::user()->role != 0) {
+            $data['nik'] = Auth::user()->nik;
+        }
 
         if($request->hasFile('image')){
             $imageName = time().'_'.$request->file('image')->getClientOriginalName();

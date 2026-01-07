@@ -320,7 +320,7 @@
       <!-- End JavaScript Modal Pengajuan Surat -->
 
       <!-- JavaScript Notif Modal -->
-            <script>
+            <!-- <script>
               document.addEventListener('DOMContentLoaded', function () {
                 const modal = document.getElementById('notifModal');
                 const closeBtn = document.getElementById('notifCloseBtn');
@@ -355,28 +355,8 @@
                   }
                 });
               });
-            </script>
+            </script> -->
       <!-- End JavaScript Notif Modal -->
-
-
-        <!-- <script>
-          function requireLogin() {
-            @if (!Auth::check())
-              document.getElementById('loginModal').classList.remove('hidden');
-              return false;
-            @else
-              @if (Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->role == 0)
-                window.location.href = "/pengajuansurats";
-              @else
-                alert('Anda tidak memiliki akses ke fitur ini.');
-                return false;
-              @endif
-            @endif
-          }
-        </script> -->
-        
-        <!-- End JavaScript Modal Pengajuan Surat -->
-
 
     {{ $slot }}
     <!-- Footer -->

@@ -34,6 +34,7 @@
     @endif
   <!-- End Notifikasi berhasil disimpan -->
 
+  @include('components.login-modal')
   <!-- Content -->
     <section class="min-h-screen mx-auto container">
       <div class="text-center mt-12 mb-6">

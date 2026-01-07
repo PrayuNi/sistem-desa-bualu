@@ -35,7 +35,6 @@
     <!-- End Notifikasi berhasil disimpan -->
 
     @include('components.login-modal')
-    @include('components.notif-modal')
     <!-- Title -->
       <div class="text-center mt-10">
         <h2

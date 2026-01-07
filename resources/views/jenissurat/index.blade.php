@@ -69,7 +69,6 @@
     <!-- End Notifikasi berhasil dihapus -->
 
     @include('components.login-modal')
-    @include('components.notif-modal')
     <style>
         .row-card {
             margin: 10px auto;

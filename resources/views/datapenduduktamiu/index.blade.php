@@ -35,7 +35,6 @@
   <!-- End Notifikasi berhasil disimpan -->
 
   @include('components.login-modal')
-  @include('components.notif-modal')
   <!-- Konten -->
     <section class="content h-fit container mx-auto py-7 px-2">
 
