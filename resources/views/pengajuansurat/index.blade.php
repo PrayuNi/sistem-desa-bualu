@@ -125,8 +125,8 @@
             font-weight: bold;
             width: fit-content;
         }
-        .button-simpan :hover {
-            background-color: #218838;
+        .button-simpan:hover { 
+            background-color: #218838; 
         }
 
         @media (max-width: 768px) {
@@ -213,15 +213,11 @@
         <div class="input-group">
             <label>NIK:</label>
             <!-- <input type="text" name="nik" id="nik" placeholder="Isi no KTP"> -->
-            @auth
-                @if(Auth::user()->role == 0)
-                    {{-- ADMIN --}}
-                    <input type="text" name="nik" placeholder="Masukkan NIK masyarakat" required>
-                @else
-                    {{-- USER --}}
-                    <input type="text" name="nik" value="{{ Auth::user()->nik }}" readonly>
-                @endif
-            @endauth
+            @if(Auth::user()->role == 0)
+                <input type="text" name="nik" id="nik" value="{{ old('nik') }}" placeholder="Masukkan NIK masyarakat">
+            @else
+                <input type="text" name="nik" value="{{ Auth::user()->nik }}" readonly class="bg-gray-200 cursor-not-allowed">
+            @endif
         </div>
 
         <div class="input-group">
