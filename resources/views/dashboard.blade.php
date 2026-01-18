@@ -203,7 +203,7 @@
         });
       </script>
     </section>
-    <!-- End Tools untu Slider News -->
+  <!-- End Tools untu Slider News -->
 
     <!-- Summary -->
     <section class="summary my-5 px-4 py-10 bg-linear-to-r from-amber-500 to-amber-700">

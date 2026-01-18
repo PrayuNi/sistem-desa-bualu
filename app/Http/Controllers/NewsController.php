@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index() {
-        $news = News::all(); //1.1 untuk baca semua data
+        $news = News::orderBy('created_at', 'desc')->get(); //1.1 untuk mensortir dan memilih data baru
         return view('news.index', compact('news')); // 1.2 untuk menampilkan halaman dari data
     }
     

@@ -40,7 +40,7 @@ class DashboardController extends Controller
         ->orderBy('years', 'asc')
         ->pluck('total');
 
-        $news = News::all();
+        $news = News::orderBy('created_at', 'desc')->get();
         
         return view('dashboard', compact('pendapatan', 'belanja', 'year', 'adat', 'pendatang', 'yearinc', 'yearspend', 'surplus', 'news')); // 1.2 untuk menampilkan halaman dari data
     }
