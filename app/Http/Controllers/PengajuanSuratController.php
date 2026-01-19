@@ -11,21 +11,55 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PengajuanSuratController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
     $jenis = JenisSurat::all();
     $user = Auth::user();
+    $query = PengajuanSurat::query();
 
     if ($user->role == 0) {
         // Admin: tampilkan semua pengajuan
-        $pengajuansurat = PengajuanSurat::all();
+        $pengajuansurat = PengajuanSurat::orderBy('created_at', 'desc')->get();
     } elseif (in_array($user->role, [1,2])) {
         // User biasa: tampilkan pengajuan sesuai NIK
-        $pengajuansurat = PengajuanSurat::where('nik', $user->nik)->get();
+        $pengajuansurat = PengajuanSurat::where('nik', $user->nik)->orderBy('created_at', 'desc')->get();
     } else {
         $pengajuansurat = collect(); // kosong jika role lain
     }
 
-    return view('pengajuansurat.index', compact('pengajuansurat', 'jenis'));
+    
+    // Jika bukan admin → hanya surat miliknya
+    if ($user->role == 0) {
+        $query = PengajuanSurat::query();
+    }
+        elseif (in_array($user->role, [1,2])) {
+        $query =  PengajuanSurat::where('nik', $user->nik);
+    }
+
+    // FILTER jika admin mengklik card summary
+    if ($request->filled('jenis_surat')) {
+        $query->where('jenis_surat', $request->jenis_surat);
+    }
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
+    }
+
+    $pengajuansurat = $query->orderBy('created_at', 'desc')->get();
+
+    // Hitung jumlah per status
+    $summary = $query->selectRaw('jenis_surat, status, COUNT(*) as total')
+                    ->groupBy('jenis_surat','status')
+                    ->get();
+
+    $summaryArray = [];
+    if($summary && $summary->count() > 0) {
+        foreach($summary as $item){
+            $summaryArray[$item->jenis_surat][$item->status] = $item->total;
+        }
+    }
+
+    $jenis = JenisSurat::all();
+
+    return view('pengajuansurat.index', compact('pengajuansurat', 'jenis', 'summary', 'summaryArray'));
     }
 
      public function create(){
